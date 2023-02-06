@@ -11,7 +11,7 @@ Puedes Ver el sitio <a href="#">🔗 aqui</a>
     <br><br>
     <b>Mongo</b>
     <br>
-    Esta es una de las bases de datos no relacionales mas famosas que hay. Integrar Mongo y JavaScript es super sencillo con la ayuda de mongoose, una librería que nos permite modelar la data de la base de datos de manera fantástica.
+    Esta es una de las bases de datos no relacionales mas famosas que hay. En lugar de guardar los datos en tablas, tal y como se hace en las bases de datos relacionales, Mongo guarda estructuras de datos BSON con un esquema dinámico, haciendo que la integración de los datos en ciertas aplicaciones sea más fácil y rápida.
     <br><br>
     <b>Express</b>
     <br>
