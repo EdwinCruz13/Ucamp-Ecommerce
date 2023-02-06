@@ -7,7 +7,7 @@ Puedes Ver el sitio <a href="#">🔗 aqui</a>
   <summary><h2>✨Acerca del proyecto</h2></summary>
   <br>
 <p dir="auto">
-    MERN es un stack en el que se usa JavaScript tanto en el cliente como en el servidor, es decir, Full Stack JavaScript. Básicamente, la pila MERN es un conjunto de marcos/tecnologías utilizados para el desarrollo web de aplicaciones que consta de MongoDB, React JS, Express JS y Node JS como sus componentes.
+    <b>MERN</b> es un stack en el que se usa JavaScript tanto en el cliente como en el servidor, es decir, Full Stack JavaScript. Básicamente, la pila MERN es un conjunto de marcos/tecnologías utilizados para el desarrollo web de aplicaciones que consta de MongoDB, React JS, Express JS y Node JS como sus componentes.
     <br><br>
     <b>Mongo</b>
     <br>
@@ -51,7 +51,7 @@ Dentro de src encontraremos
   <br>
 - [x] 🗎  El archivo <b>index.js</b> es el archivo maestro.
   <br><br>
-  <img src="https://github.com/EdwinCruz13/Ucamp-Restaurant/blob/main/structure/e1.png?raw=true" />
+  <img src="" />
             
 </p>
 </details>
@@ -59,11 +59,11 @@ Dentro de src encontraremos
 <details open="">
   <summary><h2>💡 Resultado</h2></summary>
 <p dir="auto"> 
-  Ver el proyecto <a href="https://restaurant-website-0y6g.onrender.com/Home">🔗 aqui</a>
+  Ver el proyecto <a href="#">🔗 aqui</a>
   <br>
   <ul>
-    <li><a href="https://github.com/EdwinCruz13/Ucamp-Restaurant/blob/main/structure/e2.png?raw=true">1 - Versión desktop.</a></li>
-    <li><a href="https://github.com/EdwinCruz13/Ucamp-Restaurant/blob/main/structure/e3.png?raw=true"> 2 - Versión mobile.</a></li>
+    <li><a href="#">1 - Versión desktop.</a></li>
+    <li><a href="#"> 2 - Versión mobile.</a></li>
   </ul>        
 </p>
 </details>
@@ -79,6 +79,7 @@ Dentro de src encontraremos
     <li><a href="https://github.com/EdwinCruz13/Ucamp-Crud">CRUD - Lista de tareas usando localstoraged y JS</a></li>
     <li><a href="https://github.com/EdwinCruz13/Ucamp-Dashboard/">Dashboard - Consumiendo una API REST</a></li>
     <li><a href="https://github.com/EdwinCruz13/Ucamp-Restaurant">Sistema de Restaurante - Con React</a></li>
+    <li><a href="https://github.com/EdwinCruz13/Ucamp-Restaurant">Comercio electrónico - Web Full Stack</a></li>
     <li><a href="https://github.com/EdwinCruz13/MERN">MERN</a></li>
     <li><a href="#">Mongo</a></li>
     <li><a href="#">Express</a></li>
