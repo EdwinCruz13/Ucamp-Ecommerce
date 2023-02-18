@@ -1,0 +1,20 @@
+{
+  "name": "ucamp-ecommerce",
+  "version": "1.0.0",
+  "description": "Bienvenido al repositorio de como crear una plataforma Ecommerce desarrollado en el stack MERN (Mongo - ExpressJS - React - NodeJS).\r <br>\r Puedes Ver el sitio <a href=\"#\">🔗 aqui</a>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdwinCruz13/Ucamp-Ecommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdwinCruz13/Ucamp-Ecommerce/issues"
+  },
+  "homepage": "https://github.com/EdwinCruz13/Ucamp-Ecommerce#readme"
+}

@@ -1,0 +1,181 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  list-style: none;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+ul {
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: #fff;
+  text-align: center;
+  border: solid 0.5px #bdbdbd;
+  box-shadow: 0px 3px 1px 5px #efebe9;
+  cursor: pointer;
+  transition: all ease-out 0.5s;
+}
+
+i {
+  font-size: 24px;
+  color: #000;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+span {
+  display: none;
+}
+
+li:hover {
+  width: 150px;
+  border-radius: 50px 50px 50px 50px;
+  transition: all ease-in 0.3s;
+}
+
+li:hover i {
+  color: #fff;
+  transition: all ease-in 0.2s;
+}
+
+li:hover .fa {
+  display: none;
+}
+
+li:hover span {
+  display: block;
+  color: #fff;
+  font-size: 24px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  transition: display ease-in 1s;
+}
+
+span:hover  {
+  display: block;
+  font-size: 50px;
+  transition: all ease-in 2s;
+}
+
+#facebook-li:hover {
+  /*background-color: #3f51b5;*/
+  
+  
+  background: #0575e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4A148C,
+    #2196F3
+  ); 
+  background: linear-gradient(
+    to right,
+    #4A148C,
+    #2196F3
+  );
+  box-shadow: 2px 2px 15px 5px rgba(63,81,181,0.3);
+  transition: all ease-in 0.3s;
+}
+
+#twitter-li:hover {
+  /*background-color: #29b6f6;*/
+
+  background: #9cecfb; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #0052d4,
+    #65c7f7,
+    #9cecfb
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #0052d4,
+    #65c7f7,
+    #9cecfb
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 2px 2px 15px 5px rgba(101, 199, 247, 0.3);
+  transition: all ease-in 0.3s;
+}
+
+#linkedin-li:hover {
+  /*background-color: #283593;*/
+
+  background: #3a7bd5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #3a6073,
+    #3a7bd5
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3a6073,
+    #3a7bd5
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 2px 2px 15px 5px rgba(58, 96, 115, 0.3);
+  transition: all ease-in 0.3s;
+}
+
+#instagram-li:hover {
+  /*background-color: #9c27b0;*/
+
+  background: #ff00cc; 
+  background: -webkit-linear-gradient(
+    to right,
+    #333399,
+    #ff00cc
+  ); 
+  background: linear-gradient(
+    to right,
+    #333399,
+    #ff00cc
+  );
+
+  
+  box-shadow: 2px 2px 15px 5px rgba(255, 0, 204, 0.3);
+  transition: all ease-in 0.3s;
+}
+
+
+#youtube-li:hover {
+  /*background-color: #9c27b0;*/
+
+  background: #AD1457; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #AD1457,
+    #C62828
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #AD1457,
+    #C62828
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 2px 2px 15px 5px rgba(173, 20, 87, 0.3);
+  transition: all ease-in 0.3s;
+}
