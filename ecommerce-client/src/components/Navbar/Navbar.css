@@ -1,0 +1,258 @@
+.navbar {
+  z-index: 999;
+  position: relative;
+}
+
+.navbar {
+  background-color: rgba(224, 224, 224, 0.123);
+
+  padding: 0.75rem 3.25rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+
+.navbar-tablet {
+  padding: 0.75rem 3.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-collapse-menu {
+  padding: 0.75rem 3.25rem;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.navbar-collapse-menu {
+  font-size: 28px;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.navbar-collapse ul > li {
+  padding: 0.88rem;
+  text-align: center;
+}
+
+.navbar-collapse ul > li > a {
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+}
+
+.navbar-tablet {
+  display: none;
+  background-color: rgba(224, 224, 224, 0.123);
+}
+
+.navbar .brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+}
+
+.navbar .brand i {
+  display: none;
+}
+
+.navbar .user-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  padding: 1rem 0;
+}
+
+.navbar .user-section ul {
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  gap: 2.5rem;
+}
+
+.navbar .user-section ul > li,
+.navbar-tablet > li {
+  display: block;
+  border-bottom: none;
+}
+
+.navbar .user-section ul > li > a,
+.navbar-tablet > li > a {
+  text-decoration: none;
+  color: #fff;
+  transition: color linear 0.5s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0 0 2px 0;
+  font-size: 32px;
+}
+
+.navbar .user-section ul > li > a::after,
+.navbar-tablet > li > a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #fff;
+  transform: scale(0, 1);
+  transform-origin: center;
+  transition: transform 0.15s;
+}
+.navbar .user-section ul > li > a:hover::after,
+.navbar-tablet > li > a:hover::after {
+  color: #fff;
+  transform: scale(1, 1);
+}
+
+.navbar-collapse {
+  display: block;
+  position: absolute;
+  background-color: rgba(224, 224, 224, 0.123);
+  width: 100%;
+  top: -200px;
+  z-index: -200;
+  transition: top ease-in-out 0.55s;
+}
+
+.navbar-collapse > ul > li:hover {
+  background-color: #bdbdbd;
+  transition: all ease-in-out 0.25s;
+}
+
+.navbar-collapse > ul > li:hover a {
+  color: #000;
+  transition: all ease-in-out 0.25s;
+}
+
+/*for Ipad on potrait*/
+@media (min-width: 768px) and (max-width: 1282px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .navbar .user-section ul {
+    display: none;
+  }
+  .navbar-tablet {
+    padding: 0.75rem 0.25rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 999;
+    position: relative;
+  }
+
+  .navbar-tablet > li > a {
+    font-size: 32px;
+  }
+}
+
+/*other size landscape*/
+@media (min-width: 767px) and (max-width: 876px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .navbar .user-section ul {
+    display: none;
+  }
+  .navbar-tablet {
+    padding: 0.75rem 0.25rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 999;
+    position: relative;
+  }
+
+  .navbar-tablet > li > a {
+    font-size: 32px;
+  }
+}
+
+/*for mobile and small Ipad*/
+@media (min-width: 480px) and (max-width: 767px) {
+  .navbar {
+    justify-content: center;
+
+    padding: 0;
+  }
+  .navbar .brand a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar .user-section ul,
+  .navbar .btn-group {
+    display: none;
+  }
+  .navbar .brand i {
+    display: block;
+  }
+
+  .brand {
+    z-index: 100;
+  }
+  .brand:hover .navbar-collapse {
+    display: block;
+    top: 56px;
+    transition: top ease-in 0.85s;
+  }
+}
+
+/*mobile*/
+@media (max-width: 480px) {
+  .navbar {
+    justify-content: center;
+
+    padding: 0;
+  }
+  .navbar .brand a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar .user-section ul,
+  .navbar .btn-group {
+    display: none;
+  }
+  .navbar .brand i {
+    display: block;
+  }
+
+  .brand {
+    z-index: 100;
+  }
+  .brand:hover .navbar-collapse {
+    display: block;
+    top: 56px;
+    transition: top ease-in 0.55s;
+  }
+}
