@@ -25,7 +25,7 @@ const CreateUsers = async (req, resp) => {
       Username: Username,
     });
 
-    //saving the data
+    //saving the user
     await newUser.save();
 
     //send a 201 code if the process has been sucessed
@@ -47,9 +47,8 @@ const ListUsers = async (req, resp) => {
     const users = await UserModel.find();
     resp.json(users);
   } catch (error) {
-    resp.json({
-      message: "Error looking up users list",
-    });
+    FailureMessage.message = "Error looking for a user: " + error;
+    resp.status(400).json(FailureMessage);
   }
 };
 
@@ -59,10 +58,10 @@ const ListUsers = async (req, resp) => {
  * @param {*} resp
  */
 const DetailUser = async (req, resp) => {
-  const { Email } = req.params;
+  const { _id } = req.params;
   try {
     //find a user by "Email"
-    const user = await UserModel.findOne({ Email: Email });
+    const user = await UserModel.findById({ _id });
     resp.json(user);
   } catch (error) {
     FailureMessage.message = "Error looking for a user: " + error;
@@ -77,10 +76,11 @@ const DetailUser = async (req, resp) => {
  */
 const UpdateUser = async (req, resp) => {
   //destructuring the object that we recieved as params body
-  const { Email, Password, UserName } = req.body;
+  const { Email, Password, Username } = req.body;
+  const _id = req.params._id
 
   try {
-    const _user = await UserModel.findOne({ Email: req.params.Email });
+    const _user = await UserModel.findById(_id);
 
     //sending response according the searching
     if (_user === null) {
@@ -91,7 +91,7 @@ const UpdateUser = async (req, resp) => {
     //if we found one user matching
     else {
       //edit user by Email
-      await userModels.updateOne({ Email }, { Password, UserName });
+      await userModels.findByIdAndUpdate({ _id }, { Email, Password, Username });
 
       //sending results
       SuccessMessage.message = "A user has been updated";

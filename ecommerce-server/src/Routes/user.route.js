@@ -14,10 +14,10 @@ router.post("/create", CreateUsers);
 router.get("/list", ListUsers);
 
 //detailing of a user
-router.get("/detail/:Email", DetailUser);
+router.get("/detail/:_id", DetailUser);
 
 //editing a user route
-router.put("/update/:Email", UpdateUser);
+router.put("/update/:_id", UpdateUser);
 
 
 

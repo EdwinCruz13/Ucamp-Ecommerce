@@ -7,6 +7,7 @@ const UserSchema = new moongose.Schema({
     Username: { type:String, required: true, trim: true, unique: true},
     DateAt: { type: Date, default: Date.now()}
 }, {
+    //use this property in order to catch the creation/modification collection
     timestamps: true
 });
 

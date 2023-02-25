@@ -1,27 +1,25 @@
 const { Router } = require("express");
-const { ListProducts, DetailProduct } = require("../Controllers/product.controller");
+const { CreateProduct, ListProduct, DetailProduct, UpdateProduct } = require("../Controllers/product.controller");
 
 
 
 const router = Router();
-
 /* ----------------------------------------------------
   defining routes
 ----------------------------------------------------*/
+//creating users routes
+router.post("/create", CreateProduct);
 
-//list of products
-router.get("/list", ListProducts);
+//listing of users
+router.get("/list", ListProduct);
 
-//detail of a product
-router.get("/detail/:id", DetailProduct);
+//detailing of a user
+router.get("/detail/:_id", DetailProduct);
 
-/*router.post("/new/:id", (request, response) => {
-  response.send("here, creating detail");
-});
+//editing a user route
+router.put("/update/:_id", UpdateProduct);
 
-router.put("/edit/:id", (request, response) => {
-  response.send("here, editing detail");
-});*/
 
-//export router
+
+
 module.exports = router;
