@@ -1,10 +1,10 @@
 const { request, response } = require("express");
 
 //others settings
-const { SuccessMessage, FailureMessage } = require("../Config/message_code");
+const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
 
 //import the model
-const ProductModel = require("../Models/Products/product.models");
+const ProductModel = require("../../Models/Products/product.models");
 
 /**
  * Product Creation
@@ -15,13 +15,31 @@ const ProductModel = require("../Models/Products/product.models");
  */
 const CreateProduct = async (req, resp) => {
   try {
-    const { ProductID, Name, Type, Description, Abbr, Url, Price, Tax, inStock } = req.body;
+    const { Name, Description, Abbr, Url, Price, Tax, inStock, Type } =
+      req.body;
 
-    console.log(Type);
+    //verify the consecutive number
+    let consecutive = 0;
+    let LastItem = await ProductModel.find();
+
+    if (LastItem.length > 0)
+      consecutive =
+        LastItem.reduce(function (prev, current) {
+          return prev.ProductID > current.ProductID ? prev : current;
+        }).ProductID + 1;
+    else consecutive = 1;
 
     //adding the data into the model
     const newProduct = ProductModel({
-      Name, ProductID, Type, Description, Abbr, Url, Price, Tax, inStock
+      Name,
+      ProductID: consecutive,
+      Type,
+      Description,
+      Abbr,
+      Url,
+      Price,
+      Tax,
+      inStock,
     });
 
     //save product
@@ -41,7 +59,7 @@ const CreateProduct = async (req, resp) => {
  * @param {*} req
  * @param {*} resp
  */
-const ListProduct = async(req, resp) => {
+const ListProduct = async (req, resp) => {
   try {
     const products = await ProductModel.find();
     resp.json(products);
@@ -56,7 +74,7 @@ const ListProduct = async(req, resp) => {
  * @param {*} req
  * @param {*} resp
  */
-const DetailProduct = async(req, resp) => {
+const DetailProduct = async (req, resp) => {
   const { ProductID } = req.params;
   try {
     //find a user by "Email"
@@ -66,8 +84,6 @@ const DetailProduct = async(req, resp) => {
     FailureMessage.message = "Error looking for a product: " + error;
     resp.status(400).json(FailureMessage);
   }
-
-
 };
 
 /**

@@ -1,11 +1,11 @@
 const { request, response } = require("express");
 
 //others settings
-const { SuccessMessage, FailureMessage } = require("../Config/message_code");
-const userModels = require("../Models/Users/user.models");
+const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
+const userModels = require("../../Models/Users/user.models");
 
 //import users model schema
-const UserModel = require("../Models/Users/user.models");
+const UserModel = require("../../Models/Users/user.models");
 
 /**
  * Users Creation,
