@@ -13,8 +13,8 @@ appServer.use(cors());
 appServer.use(express.json());
 
 //routes
-const ProductsRouter = require("./Routes/products.route.js");
-const UsersRouter = require("./Routes/user.route.js");
+const ProductsRouter = require("./Routes/products.routes.js");
+const UsersRouter = require("./Routes/user.routes.js");
 
 appServer.use("/api/products", ProductsRouter);
 appServer.use("/api/users", UsersRouter);

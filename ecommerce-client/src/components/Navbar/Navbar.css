@@ -103,6 +103,9 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 0 0 2px 0;
   font-size: 32px;
+
+  text-shadow: 0.5px 0.5px #000;
+  
 }
 
 .navbar .user-section ul > li > a::after,

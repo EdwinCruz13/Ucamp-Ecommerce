@@ -39,7 +39,7 @@
   font-size: 92px;
   font-family: "Times New Roman", Times, serif;
   color: #fff;
-  text-shadow: 2px 10px #000;
+  text-shadow: 2px 4px #000;
 }
 
 #Home #home-header article p {
@@ -71,7 +71,7 @@
 
   #Home #home-header article {
     justify-content: center;
-    margin-top: 0rem;
+    margin-top: 5rem;
   }
 
   #Home #home-header article h1 {
