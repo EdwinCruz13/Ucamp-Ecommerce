@@ -53,6 +53,7 @@ const CreateProduct = async (request, response) => {
     response.status(201).json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = FailureMessage.message + error;
+    FailureMessage.data = null;
     response.status(400).json(FailureMessage);
   }
 };
@@ -74,6 +75,7 @@ const ListProduct = async (req, resp) => {
     resp.json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = "Error looking for a product: " + error;
+    FailureMessage.data = null;
     resp.status(500).json(FailureMessage);
   }
 };
@@ -97,6 +99,7 @@ const DetailProduct = async (req, resp) => {
     resp.json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = "Error looking for a product: " + error;
+    FailureMessage.data = null;
     resp.status(500).json(FailureMessage);
   }
 };

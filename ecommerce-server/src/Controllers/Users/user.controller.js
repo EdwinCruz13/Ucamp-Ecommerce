@@ -36,6 +36,7 @@ const CreateUsers = async (req, resp) => {
     resp.status(201).json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = FailureMessage.message + error;
+    FailureMessage.data = null;
     resp.status(500).json(FailureMessage);
   }
 };
@@ -57,6 +58,7 @@ const ListUsers = async (req, resp) => {
     resp.json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = "Error looking for a user: " + error;
+    FailureMessage.data = null;
     resp.status(500).json(FailureMessage);
   }
 };
@@ -80,6 +82,7 @@ const DetailUser = async (req, resp) => {
     resp.json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = "Error looking for a user: " + error;
+    FailureMessage.data = null;
     resp.status(500).json(FailureMessage);
   }
 };
@@ -117,6 +120,7 @@ const UpdateUser = async (req, resp) => {
     }
   } catch (error) {
     FailureMessage.message = "Error by editing the user: " + error;
+    FailureMessage.data = null;
     resp.status(500).json(FailureMessage);
   }
 };
