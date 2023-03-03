@@ -37,6 +37,7 @@ body {
   color:#fff;
   text-shadow: 0.5px 0.5px #000;
 
+  cursor: pointer;
 
   background-color: transparent;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -67,4 +68,22 @@ body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+
+hr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 1px;
+  border: 0;
+  border-top: 0.025rem solid #ccc;
+  margin: 0em 2em ;
+  
+  padding: 0;
+
+  
+  width: 80%;
 }

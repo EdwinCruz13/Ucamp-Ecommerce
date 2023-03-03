@@ -13,7 +13,7 @@ const ProductModel = require("../../Models/Products/product.models");
  * @param {*} req
  * @param {*} resp
  */
-const CreateProduct = async (req, resp) => {
+const CreateProduct = async (request, response) => {
   try {
     const { Name, Description, Abbr, Url, Price, Tax, inStock, Type } =
       req.body;
@@ -47,10 +47,10 @@ const CreateProduct = async (req, resp) => {
 
     //send a 201 code if the process has been sucessed
     SuccessMessage.message = "A product has been created";
-    resp.status(201).json(SuccessMessage);
+    response.status(201).json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = FailureMessage.message + error;
-    resp.status(400).json(FailureMessage);
+    response.status(400).json(FailureMessage);
   }
 };
 
@@ -75,10 +75,10 @@ const ListProduct = async (req, resp) => {
  * @param {*} resp
  */
 const DetailProduct = async (req, resp) => {
-  const { ProductID } = req.params;
+  const { _id } = req.params;
   try {
     //find a user by "Email"
-    const product = await ProductModel.findById({ ProductID });
+    const product = await ProductModel.findById({ _id });
     resp.json(product);
   } catch (error) {
     FailureMessage.message = "Error looking for a product: " + error;
