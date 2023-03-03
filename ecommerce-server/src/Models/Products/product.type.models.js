@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const TypeSchema = new mongoose.Schema({
-    TypeID: { type: String, trim: true, require: true, _id: false }, 
-    Description: { type: String, trim: true, require: true}
-}, { _id: false });
+    DateAt: { type: Date, trim: true, require: true}, 
+    Description: { type: String, unique: true,  trim: true, require: true, lowercase: false}
+});
 
 
 //export schema and model
-const TypeModel = mongoose.model("Type", TypeSchema);
-module.exports = {TypeModel, TypeSchema}
+const TypeProductModel = mongoose.model("Type", TypeSchema);
+module.exports = {TypeProductModel, TypeSchema}

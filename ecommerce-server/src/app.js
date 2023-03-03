@@ -12,11 +12,14 @@ appServer.set("port", process.env.EXPRESS_PORT);
 appServer.use(cors());
 appServer.use(express.json());
 
-//routes
-const ProductsRouter = require("./Routes/products.routes.js");
-const UsersRouter = require("./Routes/user.routes.js");
+//create basic routes 
+const ProductsRouter = require("./Routes/Products/products.routes.js");
+const Type = require("./Routes/Products/products.types.routes");
+const UsersRouter = require("./Routes/Users/user.routes.js");
 
+//
 appServer.use("/api/products", ProductsRouter);
+appServer.use("/api/products/type", Type);
 appServer.use("/api/users", UsersRouter);
 
 
