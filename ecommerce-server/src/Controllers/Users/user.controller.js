@@ -28,12 +28,15 @@ const CreateUsers = async (req, resp) => {
     //saving the user
     await newUser.save();
 
-    //send a 201 code if the process has been sucessed
+    //preparing the object to send
     SuccessMessage.message = "A user has been created";
+    SuccessMessage.data = null;
+
+    //send information in json format
     resp.status(201).json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = FailureMessage.message + error;
-    resp.status(400).json(FailureMessage);
+    resp.status(500).json(FailureMessage);
   }
 };
 
@@ -45,10 +48,16 @@ const CreateUsers = async (req, resp) => {
 const ListUsers = async (req, resp) => {
   try {
     const users = await UserModel.find();
-    resp.json(users);
+
+    //preparing the object to send
+    SuccessMessage.message = "";
+    SuccessMessage.data = users;
+
+    //send information in json format
+    resp.json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = "Error looking for a user: " + error;
-    resp.status(400).json(FailureMessage);
+    resp.status(500).json(FailureMessage);
   }
 };
 
@@ -62,10 +71,16 @@ const DetailUser = async (req, resp) => {
   try {
     //find a user by "Email"
     const user = await UserModel.findById({ _id });
-    resp.json(user);
+      
+    //preparing the object to send
+    SuccessMessage.message = "";
+    SuccessMessage.data = user;
+
+    //send information in json format
+    resp.json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = "Error looking for a user: " + error;
-    resp.status(400).json(FailureMessage);
+    resp.status(500).json(FailureMessage);
   }
 };
 
@@ -85,7 +100,7 @@ const UpdateUser = async (req, resp) => {
     //sending response according the searching
     if (_user === null) {
       FailureMessage.message = "We can not find the user to update.";
-      resp.status(400).json(FailureMessage);
+      resp.status(500).json(FailureMessage);
     } 
     
     //if we found one user matching
@@ -93,13 +108,16 @@ const UpdateUser = async (req, resp) => {
       //edit user by Email
       await userModels.findByIdAndUpdate({ _id }, { Email, Password, Username });
 
-      //sending results
+      //preparing the object to send
       SuccessMessage.message = "A user has been updated";
+      SuccessMessage.data = null;
+
+      //send information in json format
       resp.status(201).json(SuccessMessage);
     }
   } catch (error) {
     FailureMessage.message = "Error by editing the user: " + error;
-    resp.status(400).json(FailureMessage);
+    resp.status(500).json(FailureMessage);
   }
 };
 

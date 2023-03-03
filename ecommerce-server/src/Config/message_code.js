@@ -1,4 +1,5 @@
 const FailureMessage = {
+    data: null,
     status: "failure",
     code: false,
     message: "Error ",
@@ -7,6 +8,7 @@ const FailureMessage = {
 
 
 const SuccessMessage = {
+    data: null,
     status: "ok",
     code: true,
     message: "Process completed",

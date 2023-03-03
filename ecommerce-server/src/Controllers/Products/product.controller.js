@@ -45,8 +45,11 @@ const CreateProduct = async (request, response) => {
     //save product
     await newProduct.save();
 
-    //send a 201 code if the process has been sucessed
+    //preparing the object to send
     SuccessMessage.message = "A product has been created";
+    SuccessMessage.data = null;
+
+  //send information in json format
     response.status(201).json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = FailureMessage.message + error;
@@ -62,10 +65,16 @@ const CreateProduct = async (request, response) => {
 const ListProduct = async (req, resp) => {
   try {
     const products = await ProductModel.find();
-    resp.json(products);
+
+    //preparing the object to send
+    SuccessMessage.data = products;
+    SuccessMessage.message = "";
+
+    //send information in json format
+    resp.json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = "Error looking for a product: " + error;
-    resp.status(400).json(FailureMessage);
+    resp.status(500).json(FailureMessage);
   }
 };
 
@@ -79,10 +88,16 @@ const DetailProduct = async (req, resp) => {
   try {
     //find a user by "Email"
     const product = await ProductModel.findById({ _id });
-    resp.json(product);
+
+    //preparing the object to send
+    SuccessMessage.data = product;
+    SuccessMessage.message = "";
+
+    //send information in json format
+    resp.json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = "Error looking for a product: " + error;
-    resp.status(400).json(FailureMessage);
+    resp.status(500).json(FailureMessage);
   }
 };
 
