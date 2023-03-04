@@ -12,14 +12,16 @@ appServer.set("port", process.env.EXPRESS_PORT);
 appServer.use(cors());
 appServer.use(express.json());
 
-//create basic routes 
+//adding routers
 const ProductsRouter = require("./Routes/Products/products.routes.js");
-const Type = require("./Routes/Products/products.types.routes");
+const TypeRouter = require("./Routes/Products/products.types.routes");
+const ColorRouter = require("./Routes/Products/products.colors.routes");
 const UsersRouter = require("./Routes/Users/user.routes.js");
 
-//
+// create a basic routes
 appServer.use("/api/products", ProductsRouter);
-appServer.use("/api/products/type", Type);
+appServer.use("/api/products/type", TypeRouter);
+appServer.use("/api/products/color", ColorRouter);
 appServer.use("/api/users", UsersRouter);
 
 

@@ -101,5 +101,11 @@ const UpdateType = async (request, response) => {
   }
 };
 
+
+
+
+
+
+
 //export the arrow method
 module.exports = { CreateType, ListType, DetailType, UpdateType };

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const ColorSchema = new mongoose.Schema({
-    ColorID: { type: String, trim: true, require: true},
     Color: { type: String, trim: true, require: true },
-    Hexadecimal: { type: String, trim: true, require: true },
-    RGB: { type: String, trim: true, require: true }
-}, { _id: false });
+    Hexadecimal: { type: String, unique:true, trim: true, require: true },
+    RGB: { type: String, trim: true, require: true },
+    DateAt: { type: Date, require: true, default: Date.Now}
+});
 
 
 //export schema and model
