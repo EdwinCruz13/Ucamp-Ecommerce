@@ -5,21 +5,21 @@ const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
 
 //import the model
 const {
-  TypeProductModel,
-} = require("../../Models/Products/product.type.models");
+  CategoryModel,
+} = require("../../Models/Products/product.category.models");
 
 /**
  * create a new type of product
  * @param {*} request
  * @param {*} response
  */
-const CreateType = async (request, response) => {
+const CreateCategory = async (request, response) => {
   try {
     //get the params from the header request
     const { Description } = request.body;
 
     //keep an object
-    const newType = TypeProductModel({
+    const newType = CategoryModel({
       DateAt: Date.now(),
       Description: Description,
     });
@@ -45,9 +45,9 @@ const CreateType = async (request, response) => {
  * @param {*} request
  * @param {*} response
  */
-const ListType = async (request, response) => {
+const ListCategory = async (request, response) => {
   try {
-    const Types = await TypeProductModel.find();
+    const Types = await CategoryModel.find();
 
     //preparing the object to send
     SuccessMessage.message = "";
@@ -62,9 +62,9 @@ const ListType = async (request, response) => {
   }
 };
 
-const DetailType = async (request, response) => {
+const DetailCategory = async (request, response) => {
   try {
-    const Type = await TypeProductModel.findById(request.params._id);
+    const Type = await CategoryModel.findById(request.params._id);
 
     //preparing the object to send
     SuccessMessage.message = "";
@@ -79,11 +79,11 @@ const DetailType = async (request, response) => {
   }
 };
 
-const UpdateType = async (request, response) => {
+const UpdateCategory = async (request, response) => {
   try {
     const { Description } = request.body;
 
-    const Type = await TypeProductModel.findByIdAndUpdate(
+    const Type = await CategoryModel.findByIdAndUpdate(
       { _id: request.params._id },
       { Description: Description }
     );
@@ -108,4 +108,4 @@ const UpdateType = async (request, response) => {
 
 
 //export the arrow method
-module.exports = { CreateType, ListType, DetailType, UpdateType };
+module.exports = { CreateCategory, ListCategory, DetailCategory, UpdateCategory };

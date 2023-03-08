@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 //other subschema
-const { TypeSchema } = require("./product.type.models");
+const { CategorySchema } = require("./product.category.models");
 const { ColorSchema } = require("./product.color.models");
 
 
 const ProductSchema = new mongoose.Schema({
     ProductID: { type: Number, unique: true, require: true, trim: true}, 
-    Type: TypeSchema,
+    Category: CategorySchema,
     Color: ColorSchema,
     Name: { type: String, unique: true, trim: true, lowercase: false, require: true},
     Description: { type: String, trim: true, lowercase: false, require: true},
@@ -14,9 +14,10 @@ const ProductSchema = new mongoose.Schema({
     Url: { type: String, trim: true, lowecase:true, require: true},
     Price: { type: Number, require: true, require: true},
     Tax: { type: Number, require: true },
-    inStock: { type: Boolean, require: true}
+    Discount: { type: Number, require: true },
+    inStock: { type: Boolean, require: true }
 }, { timestamps: true });
 
 //export model
-const ProductModel = mongoose.model("Product", ProductSchema)
-module.exports = ProductModel;
+const ProductModel = mongoose.model("Product", ProductSchema);
+module.exports = { ProductModel, ProductSchema};

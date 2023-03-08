@@ -4,7 +4,7 @@ const { request, response } = require("express");
 const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
 
 //import the model
-const ProductModel = require("../../Models/Products/product.models");
+const {ProductModel} = require("../../Models/Products/product.models");
 
 /**
  * Product Creation
@@ -13,9 +13,9 @@ const ProductModel = require("../../Models/Products/product.models");
  * @param {*} req
  * @param {*} resp
  */
-const CreateProduct = async (request, response) => {
+const CreateProduct = async (req, resp) => {
   try {
-    const { Name, Description, Abbr, Url, Price, Tax, inStock, Type } =
+    const { Name, Description, Abbr, Url, Price, Tax, inStock, Discount, Category, Color } =
       req.body;
 
     //verify the consecutive number
@@ -31,15 +31,17 @@ const CreateProduct = async (request, response) => {
 
     //adding the data into the model
     const newProduct = ProductModel({
-      Name,
       ProductID: consecutive,
-      Type,
+      Name,
       Description,
       Abbr,
       Url,
       Price,
       Tax,
+      Discount,
       inStock,
+      Category,
+      Color
     });
 
     //save product
@@ -50,11 +52,11 @@ const CreateProduct = async (request, response) => {
     SuccessMessage.data = null;
 
   //send information in json format
-    response.status(201).json(SuccessMessage);
+  resp.status(201).json(SuccessMessage);
   } catch (error) {
     FailureMessage.message = FailureMessage.message + error;
     FailureMessage.data = null;
-    response.status(400).json(FailureMessage);
+    resp.status(400).json(FailureMessage);
   }
 };
 
