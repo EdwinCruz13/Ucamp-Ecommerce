@@ -1,11 +1,11 @@
-const { request, response } = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 //others settings
-const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
-const userModels = require("../../Models/Users/user.models");
+const {MessageResponse}  = require("../../Config/message_code");
 
-//import users model schema
-const UserModel = require("../../Models/Users/user.models");
+//import users model and schema
+const {UserModel} = require("../../Models/Users/user.models");
 
 /**
  * Users Creation,
@@ -18,10 +18,33 @@ const CreateUsers = async (req, resp) => {
     //destructuring the object
     const { Email, Password, Username } = req.body;
 
-    //adding into our model
+    //validate the user
+    if(!(Email && Password && Username) ){
+      let Message = new MessageResponse("All inputs are required", false, null);
+      return resp.status(400).json(Message.GetMessage());
+    }
+
+
+    //check an existed user
+    if(await UserModel.findOne({Email}))
+    {
+      let Message = new MessageResponse(Email + " is already registered", false, null);
+      return resp.status(400).json(Message.GetMessage());
+    }
+
+    //check an existed user
+    if(await UserModel.findOne({Username}))
+    {
+      let Message = new MessageResponse(`${Username} is already registered`, false, null);
+      return resp.status(400).json(Message.GetMessage());
+    }
+
+
+    //creating a new user
+    const encryptedPass = await bcrypt.hash(Password, 10);
     const newUser = UserModel({
       Email: Email,
-      Password: Password,
+      Password: encryptedPass,
       Username: Username,
     });
 
@@ -29,17 +52,18 @@ const CreateUsers = async (req, resp) => {
     await newUser.save();
 
     //preparing the object to send
-    SuccessMessage.message = "A user has been created";
-    SuccessMessage.data = null;
+    let Message = new MessageResponse("A user has been created", true, null);
 
     //send information in json format
-    resp.status(201).json(SuccessMessage);
+    return resp.status(201).json(Message.GetMessage());
+
+
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    resp.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error creating a user: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
+
 
 /**
  * Get the list of users
@@ -51,15 +75,15 @@ const ListUsers = async (req, resp) => {
     const users = await UserModel.find();
 
     //preparing the object to send
-    SuccessMessage.message = "";
-    SuccessMessage.data = users;
+    let Message = new MessageResponse("", true, users);
 
     //send information in json format
-    resp.json(SuccessMessage);
+    return resp.status(200).json(Message.GetMessage());
+
+
   } catch (error) {
-    FailureMessage.message = "Error looking for a user: " + error;
-    FailureMessage.data = null;
-    resp.status(500).json(FailureMessage);
+    let Message = new MessageResponse(error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
@@ -75,15 +99,14 @@ const DetailUser = async (req, resp) => {
     const user = await UserModel.findById({ _id });
       
     //preparing the object to send
-    SuccessMessage.message = "";
-    SuccessMessage.data = user;
+    let Message = new MessageResponse("", true, user);
 
     //send information in json format
-    resp.json(SuccessMessage);
+    return resp.status(200).json(Message.GetMessage());
+
   } catch (error) {
-    FailureMessage.message = "Error looking for a user: " + error;
-    FailureMessage.data = null;
-    resp.status(500).json(FailureMessage);
+    let Message = new MessageResponse(error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
@@ -102,26 +125,25 @@ const UpdateUser = async (req, resp) => {
 
     //sending response according the searching
     if (_user === null) {
-      FailureMessage.message = "We can not find the user to update.";
-      resp.status(500).json(FailureMessage);
+      let Message = new MessageResponse('We can not find the user to update.', false, null);
+      return resp.status(400).json(Message.GetMessage());
     } 
     
     //if we found one user matching
     else {
       //edit user by Email
-      await userModels.findByIdAndUpdate({ _id }, { Email, Password, Username });
+      const encryptedPass = await bcrypt.hash(Password, 10);
+      await UserModel.findByIdAndUpdate({ _id }, { Email, Password: encryptedPass, Username });
 
       //preparing the object to send
-      SuccessMessage.message = "A user has been updated";
-      SuccessMessage.data = null;
+      let Message = new MessageResponse("A user has been updated", true, null);
 
       //send information in json format
-      resp.status(201).json(SuccessMessage);
+      return resp.status(201).json(Message.GetMessage());
     }
   } catch (error) {
-    FailureMessage.message = "Error by editing the user: " + error;
-    FailureMessage.data = null;
-    resp.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error updating the user: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 

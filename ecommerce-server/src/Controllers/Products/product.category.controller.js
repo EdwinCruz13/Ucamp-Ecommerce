@@ -1,7 +1,5 @@
-const { request, response } = require("express");
-
 //others settings
-const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
+const {MessageResponse}  = require("../../Config/message_code");
 
 //import the model
 const {
@@ -13,10 +11,10 @@ const {
  * @param {*} request
  * @param {*} response
  */
-const CreateCategory = async (request, response) => {
+const CreateCategory = async (req, resp) => {
   try {
     //get the params from the header request
-    const { Description } = request.body;
+    const { Description } = req.body;
 
     //keep an object
     const newType = CategoryModel({
@@ -28,15 +26,14 @@ const CreateCategory = async (request, response) => {
     await newType.save();
 
     //preparing the object to send
-    SuccessMessage.message = "A Type of product has been created";
-    SuccessMessage.data = null;
+    let Message = new MessageResponse("A category of product has been created", true, null);
 
-    //send the information in json format
-    response.status(201).json(SuccessMessage);
+    //send information in json format
+    return resp.status(201).json(Message.GetMessage());
+
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    response.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error creating a category: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
@@ -45,59 +42,54 @@ const CreateCategory = async (request, response) => {
  * @param {*} request
  * @param {*} response
  */
-const ListCategory = async (request, response) => {
+const ListCategory = async (req, resp) => {
   try {
     const Types = await CategoryModel.find();
 
     //preparing the object to send
-    SuccessMessage.message = "";
-    SuccessMessage.data = Types;
+    let Message = new MessageResponse("", true, Types);
 
-    //send the information in json format
-    response.status(201).json(SuccessMessage);
+    //send information in json format
+    return resp.status(200).json(Message.GetMessage());
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    response.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error listing a category: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
-const DetailCategory = async (request, response) => {
+const DetailCategory = async (req, resp) => {
   try {
-    const Type = await CategoryModel.findById(request.params._id);
+    const Type = await CategoryModel.findById(req.params._id);
 
-    //preparing the object to send
-    SuccessMessage.message = "";
-    SuccessMessage.data = Type;
+     //preparing the object to send
+     let Message = new MessageResponse("", true, Type);
 
-    //send the information in json format
-    response.status(201).json(SuccessMessage);
+     //send information in json format
+     return resp.status(200).json(Message.GetMessage());
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    response.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error detailing a category: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
-const UpdateCategory = async (request, response) => {
+const UpdateCategory = async (req, resp) => {
   try {
-    const { Description } = request.body;
+    const { Description } = req.body;
 
     const Type = await CategoryModel.findByIdAndUpdate(
-      { _id: request.params._id },
+      { _id: req.params._id },
       { Description: Description }
     );
 
     //preparing the object to send
-    SuccessMessage.message = "";
-    SuccessMessage.data = null;
+     //preparing the object to send
+     let Message = new MessageResponse("A category of product has been updated", true, null);
 
-    //send the information in json format
-    response.status(201).json(SuccessMessage);
+     //send information in json format
+     return resp.status(201).json(Message.GetMessage());
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    response.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error updating a category: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 

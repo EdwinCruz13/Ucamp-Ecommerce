@@ -1,7 +1,7 @@
 const { request, response } = require("express");
 
 //others settings
-const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
+const {MessageResponse}  = require("../../Config/message_code");
 
 //import the model
 const {ProductModel} = require("../../Models/Products/product.models");
@@ -48,15 +48,14 @@ const CreateProduct = async (req, resp) => {
     await newProduct.save();
 
     //preparing the object to send
-    SuccessMessage.message = "A product has been created";
-    SuccessMessage.data = null;
+    let Message = new MessageResponse("A product has been created", true, null);
 
-  //send information in json format
-  resp.status(201).json(SuccessMessage);
+    //send information in json format
+    return resp.status(201).json(Message.GetMessage());
+
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    resp.status(400).json(FailureMessage);
+    let Message = new MessageResponse("There is an error creating a product: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
@@ -67,18 +66,18 @@ const CreateProduct = async (req, resp) => {
  */
 const ListProduct = async (req, resp) => {
   try {
+    //list all the products
     const products = await ProductModel.find();
 
-    //preparing the object to send
-    SuccessMessage.data = products;
-    SuccessMessage.message = "";
+   //preparing the object to send
+   let Message = new MessageResponse("", true, products);
 
-    //send information in json format
-    resp.json(SuccessMessage);
+   //send information in json format
+   return resp.status(200).json(Message.GetMessage());
+
   } catch (error) {
-    FailureMessage.message = "Error looking for a product: " + error;
-    FailureMessage.data = null;
-    resp.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error listing a product: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
@@ -94,15 +93,14 @@ const DetailProduct = async (req, resp) => {
     const product = await ProductModel.findById({ _id });
 
     //preparing the object to send
-    SuccessMessage.data = product;
-    SuccessMessage.message = "";
+    let Message = new MessageResponse("", true, product);
 
-    //send information in json format
-    resp.json(SuccessMessage);
+   //send information in json format
+   return resp.status(200).json(Message.GetMessage());
+
   } catch (error) {
-    FailureMessage.message = "Error looking for a product: " + error;
-    FailureMessage.data = null;
-    resp.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error detailing a product: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 

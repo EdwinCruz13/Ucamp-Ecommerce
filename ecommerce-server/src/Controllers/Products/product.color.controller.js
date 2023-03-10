@@ -1,4 +1,4 @@
-const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
+const {MessageResponse}  = require("../../Config/message_code");
 const { ColorModel } = require("../../Models/Products/product.color.models");
 
 /**
@@ -6,7 +6,7 @@ const { ColorModel } = require("../../Models/Products/product.color.models");
  * @param {*} request 
  * @param {*} response 
  */
-const CreateColor = async (request, response) => {
+const CreateColor = async (request, resp) => {
   try {
     const { Color, Hexadecimal } = request.body;
     const _RGB = hexToRgb(Hexadecimal);
@@ -25,15 +25,14 @@ const CreateColor = async (request, response) => {
     await newColor.save();
 
     //preparing the object to send as response
-    SuccessMessage.message = "A color has been created";
-    SuccessMessage.data = null;
+    let Message = new MessageResponse("A color has been created", true, null);
 
-    //send the response using a json format.
-    response.status(201).json(SuccessMessage);
+    //send information in json format
+    return resp.status(201).json(Message.GetMessage());
+
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    response.status(500).json(FailureMessage);
+    let Message = new MessageResponse("Error creating a color: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
@@ -42,21 +41,20 @@ const CreateColor = async (request, response) => {
  * @param {*} request 
  * @param {*} response 
  */
-const ListColor = async (request, response) => {
+const ListColor = async (request, resp) => {
   try {
     //consulting to database
     const Colors = await ColorModel.find();
 
     //preparing the message to send
-    SuccessMessage.message = "";
-    SuccessMessage.data = Colors;
+    let Message = new MessageResponse("", true, Colors);
 
-    //send the message in json format
-    response.status(201).json(SuccessMessage);
+    //send information in json format
+    return resp.status(200).json(Message.GetMessage());
+
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    response.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error listing colors: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
@@ -65,22 +63,20 @@ const ListColor = async (request, response) => {
  * @param {*} request 
  * @param {*} response 
  */
-const DetailColor = async (request, response) => {
+const DetailColor = async (request, resp) => {
   try {
     //find a color by ID
     const color = await ColorModel.findById(request.params._id);
     console.log(color)
 
     //preparing the object to send
-    SuccessMessage.message = "";
-    SuccessMessage.data = color;
+    let Message = new MessageResponse("", true, color);
 
-    //send the response in json format
-    response.status(201).json(SuccessMessage);
+    //send information in json format
+    return resp.status(200).json(Message.GetMessage());
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    response.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error detailing a color: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
@@ -89,7 +85,7 @@ const DetailColor = async (request, response) => {
  * @param {*} request 
  * @param {*} response 
  */
-const UpdateColor = async (request, response) => {
+const UpdateColor = async (request, resp) => {
   try {
     const { Color, Hexadecimal } = request.body;
     const _RGB = hexToRgb(Hexadecimal);
@@ -97,16 +93,16 @@ const UpdateColor = async (request, response) => {
     //update changes
     await ColorModel.findByIdAndUpdate({ _id: request.params._id }, { Color, Hexadecimal, RGB: _RGB });
 
-    //preparing the object to send
-    SuccessMessage.message = "A color has been updated";
-    SuccessMessage.data = null;
+   //preparing the message to send
+   let Message = new MessageResponse("A color has been updated", true, null);
 
-    //send the information in json format
-    response.status(201).json(SuccessMessage);
+   //send information in json format
+   return resp.status(201).json(Message.GetMessage());
+
+
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    response.status(500).json(FailureMessage);
+    let Message = new MessageResponse("There is an error updating a color: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
   }
 };
 
