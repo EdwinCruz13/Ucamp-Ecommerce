@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const { SuccessMessage, FailureMessage } = require("../Config/message_code");
+const { MessageResponse } = require("../Config/message_code");
 
 /**
  * this middleware allows to verify the token for certain private site
@@ -13,9 +13,8 @@ const VerifyToken = (req, resp, next) => {
   const token = req.body.token || req.query.token || req.headers["x-access-token"];
 
   if (!token) {
-    FailureMessage.message = "A token is required for authentication";
-    FailureMessage.data = null;
-    return resp.status(400).json(FailureMessage);
+    let message = new MessageResponse("A token is required for authentication", false, null)
+    return resp.status(400).json(message.GetMessage());
   }
   try {
     //verify the token
@@ -26,9 +25,8 @@ const VerifyToken = (req, resp, next) => {
 
     
   } catch (err) {
-    FailureMessage.message = "Invalid Token";
-    FailureMessage.data = null;
-    return resp.status(400).json(FailureMessage);
+    let message = new MessageResponse("Invalid Token", false, null)
+    return resp.status(400).json(message.GetMessage());
   }
   return next();
 };

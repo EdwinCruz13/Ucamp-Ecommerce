@@ -2,8 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 //others settings
-const { SuccessMessage, FailureMessage } = require("../../Config/message_code");
-
+const { MessageResponse } = require("../../Config/message_code");
 
 
 //import users model and schema
@@ -19,26 +18,23 @@ const SigupUser = async (req, resp) => {
 
     //validate the user
     if(!(Email && Password && Username) ){
-      FailureMessage.message = "All inputs are required";
-      FailureMessage.data = null;
-      return resp.status(400).json(FailureMessage);
+      let message = new MessageResponse("All inputs are required", false, null)
+      return resp.status(400).json(message.GetMessage());
     }
 
 
     //check an existed user
     if(await UserModel.findOne({Email}))
     {
-      FailureMessage.message = Email + " is already registered";
-      FailureMessage.data = null;
-      return resp.status(400).json(FailureMessage);
+      let message = new MessageResponse(Email + " is already registered", false, null)
+      return resp.status(400).json(message.GetMessage());
     }
 
     //check an existed user
     if(await UserModel.findOne({Username}))
     {
-      FailureMessage.message = `${Username} is already registered`;
-      FailureMessage.data = null;
-      return resp.status(400).json(FailureMessage);
+      let message = new MessageResponse(Username + " is already registered", false, null)
+      return resp.status(400).json(message.GetMessage());
     }
 
     //creating a new user
@@ -63,18 +59,14 @@ const SigupUser = async (req, resp) => {
     });
 
     newUser.Token = token
-
-
-    //preparing the object to send
-    SuccessMessage.message = "A user has been created";
-    SuccessMessage.data = newUser;
+    let message = new MessageResponse("A user has been created", true, newUser)
+    
 
     //send information in json format
-    return resp.status(201).json(SuccessMessage);
+    return resp.status(201).json(message.GetMessage());
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    return resp.status(500).json(FailureMessage);
+    let message = new MessageResponse("There is an error: " + error, false, null)
+    return resp.status(400).json(message.GetMessage());
   }
 };
 
@@ -93,18 +85,16 @@ const LoginUser = async (req, resp) => {
     //validate Email
     const foundUser = await UserModel.findOne({ Email });
     if(!foundUser){
-      FailureMessage.message = Email + " has not been found.";
-      FailureMessage.data = null;
-      return resp.status(400).json(FailureMessage);
+      let message = new MessageResponse(Email + " has not been found.", false, null)
+      return resp.status(400).json(message.GetMessage());
     }
 
     //check the password
     const isPasswordValid = await bcrypt.compare(Password, foundUser.Password);
 
     if(!isPasswordValid){
-      FailureMessage.message = "Invalid password";
-      FailureMessage.data = null;
-      return resp.status(400).json(FailureMessage);
+      let message = new MessageResponse("Invalid password.", false, null)
+      return resp.status(400).json(message.GetMessage());
     }
 
 
@@ -116,20 +106,16 @@ const LoginUser = async (req, resp) => {
     }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.TOKEN_EXPIRE});
     foundUser.Token = token;
 
-
-    //in any case evertthin is ok
-    //preparing the object to send
-    SuccessMessage.message = "A user has been logged.";
-    SuccessMessage.data = foundUser;
-
-    //send response
-    return resp.status(200).json(SuccessMessage);
+    //prepare the message
+    let message = new MessageResponse("A user has been logged", true, foundUser)
+    
+    //send information in json format
+    return resp.status(201).json(message.GetMessage());
 
 
   } catch (error) {
-    FailureMessage.message = FailureMessage.message + error;
-    FailureMessage.data = null;
-    return resp.status(500).json(FailureMessage);
+    let message = new MessageResponse("There is an error: " + error, false, null)
+    return resp.status(500).json(message.GetMessage());
   }
 }
 
