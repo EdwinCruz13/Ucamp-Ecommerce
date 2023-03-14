@@ -1,0 +1,87 @@
+.detail > .navbar {
+  background-color: #fff;
+}
+
+.detail > ul li a,
+.detail > .navbar ul li a,
+.detail > .navbar ul li a,
+.detail > .navbar ul,
+.detail > ul li,
+.detail > .navbar .brand a,
+.detail .navbar .btn {
+  color: #000;
+  text-shadow: none;
+}
+
+#Detail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  height: 87.6vh;
+  width: 100%;
+}
+
+.Product-img {
+  height: 100%;
+  width: 50%;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0rem;
+}
+
+.Product-img > img {
+  width: 550px;
+  height: 550px;
+  align-items: center;
+}
+
+.product-img-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+.img-box {
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin-top: -50px;
+
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  z-index: 100;
+  transition: all 0.5s ease-in;
+}
+
+.img-box > img {
+  width: inherit;
+  height: inherit;
+}
+
+.img-box:hover {
+  opacity: 0.6;
+  box-shadow: inset 0 -3px 0px 0px #616161;
+  background-color: #616161;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.Product-info {
+  height: 100%;
+  width: 50%;
+  z-index: 100;
+  padding: 2rem;
+}

@@ -31,14 +31,6 @@
   border-radius: 5%;
 }
 
-/*.item:hover img {
-  opacity: 0.6;
-  transform: scale(1.01);
-  border: 0.01rem solid #e0e0e0;
-  transition: 0.3s ease-in-out;
-}*/
-
-
 
 .img-container .control-purchases{
   display: flex;

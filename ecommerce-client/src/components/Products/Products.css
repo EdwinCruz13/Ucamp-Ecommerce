@@ -1,0 +1,16 @@
+.products{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1.8rem;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.products .search{
+    display: inline-block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    color: #BDBDBD;
+}

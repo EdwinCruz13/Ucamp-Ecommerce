@@ -7,8 +7,6 @@ export const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        
-
         <div className="brand">
           <a href="#" className="navbar-collapse-menu">
             <i class="fa fa-list" aria-hidden="true">
@@ -52,12 +50,21 @@ export const Navbar = () => {
                 </i>
               </Link>
             </li>
+
+            <li>
+              <Link to="/signin">
+                Sign In
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/signup">
+                Sign Up
+              </Link>
+            </li>
           </ul>
 
-          <div className="btn-group">
-            <button className="btn btn-primary">Sign In</button>
-            <button className="btn">Sign In</button>
-          </div>
+         
         </div>
       </nav>
 
@@ -80,6 +87,18 @@ export const Navbar = () => {
             </i>
           </Link>
         </li>
+
+        <li>
+              <Link to="/signin">
+                Sign In
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/signup">
+                Sign Up
+              </Link>
+            </li>
       </ul>
     </>
   );

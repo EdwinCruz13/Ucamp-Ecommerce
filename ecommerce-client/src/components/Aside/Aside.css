@@ -1,0 +1,226 @@
+/*panel izquierdo*/
+aside ul,
+aside ul h3,
+aside li {
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+
+.main-menu {
+    background-color: #fff;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    /*height:100%;*/
+    left: 0;
+    /*width:60px;*/
+    width: 280px;
+    overflow: hidden;
+    z-index: 100;
+    box-shadow: inset -0.5px 0px 0px 0px #f3e7e7;
+    overflow-y: scroll;
+  
+    /*una animación para el incremento de tamaño de ancho*/
+    transition: width 0.5s ease-out;
+  }
+  
+  .list > h3 {
+    margin-left: 2rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #9e9e9e;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .main-menu > ul {
+    margin: 10px 0;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    gap: 1px;
+  }
+
+ 
+  .main-menu li > a {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin: 0 15px;
+  
+    border-spacing: 0;
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    
+    width: 320px;
+    height: 40px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    transition: all 0.15s linear;
+  }
+
+
+
+.main-menu li:hover {
+  color: #000;
+  /*background-color:#fbc02d;*/
+  background-color: #d7ccc8;
+  transition: all 0.15s linear;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+.main-menu::-webkit-scrollbar, .main-menu2::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.main-menu::-webkit-scrollbar:vertical, .main-menu2::-webkit-scrollbar:horizontal {
+  width: 8px;
+}
+
+.main-menu::-webkit-scrollbar-thumb, .main-menu2::-webkit-scrollbar-thumb {
+  background-color: #9E9E9E;
+  border-radius: 10px;
+  border: 1px solid #f1f2f3;
+}
+
+.main-menu::-webkit-scrollbar-track, .main-menu2::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+
+
+
+
+
+.main-menu2 {
+    box-shadow: inset -0.5px 0px 0px 0px #f3e7e7;
+    transition: width 0.5s ease-out;
+    width: 640px;
+    overflow-x: scroll;
+    display: none;
+  }
+  
+  .main-menu2 > ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    justify-content: left;
+    gap: 1rem;
+  }
+  
+  .main-menu2 li > a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100px;
+  
+  
+    border-spacing: 0;
+    color: #000;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.15s linear;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .main
+  
+  .main-menu2 li:hover > a {
+    color: #000;
+    /*background-color:#fbc02d;*/
+    background-color: #d7ccc8;
+    transition: all 0.15s linear;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1282px) {
+    .main-menu {
+        display: none;
+      }
+    
+      .main-menu2 {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        height: auto;
+        width: 876px;
+      }
+}
+
+@media (min-width: 767px) and (max-width: 876px) {
+  .main-menu {
+    display: none;
+  }
+
+  .main-menu2 {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    height: auto;
+    width: 876px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .main-menu {
+    display: none;
+  }
+
+  .main-menu2 {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    height: auto;
+    width: 480px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-menu {
+    display: none;
+  }
+
+  .main-menu2 {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    height: auto;
+    width: 480px;
+  }
+}

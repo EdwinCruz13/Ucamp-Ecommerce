@@ -19,7 +19,7 @@ body {
   gap:2.25rem;
 }
 
-.btn {
+.btn{
   display: inline-block;
   font-weight: 300;
   text-align: center;
@@ -31,7 +31,7 @@ body {
   font-size: 1rem;
   line-height: 2;
   border-radius: 0;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: normal;
   font-size: 18px;
   color:#fff;
@@ -52,15 +52,26 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(69, 90, 100, 0.25);
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: #212121;
+  border-color:#212121;
+}
+
 .btn-primary:hover {
   color: #fff;
   background-color: #212121;
-  border-color:#fff;
+  border-color:#616161;
 }
 
 .btn-primary:focus, .btn-primary.focus {
   box-shadow: 0 0 0 0.2rem rgba(69, 90, 100, 0.25);
 }
+
+
+
+
+
 
 .container{
   width: 100%;
@@ -83,7 +94,64 @@ hr {
   margin: 0em 2em ;
   
   padding: 0;
-
-  
   width: 80%;
+}
+
+.form-link{
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+  color: #424242;
+
+  transition: all 0.15s ease-in-out;
+}
+
+.form-link:hover{
+  color: #757575;
+  transition: all ease 0.15s;
+}
+
+.inputs-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap:1.5rem;
+  width: 120%;
+}
+
+.inputs-box > div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap:1.1rem;
+  width: 100%;
+  
+}
+
+.form-control {
+  display: inline;
+  padding: 0.475rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  width: 100%;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  /* box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); */
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+  opacity: 1;
 }

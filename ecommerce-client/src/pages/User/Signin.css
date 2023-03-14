@@ -1,0 +1,185 @@
+.sign {
+  height: 100vh;
+}
+.sign > .navbar {
+  background-color: #fff;
+}
+
+.sign > ul li a,
+.sign > .navbar ul li a,
+.sign > .navbar ul li a,
+.sign > .navbar ul,
+.sign > ul li,
+.sign > .navbar .brand a,
+.sign .navbar .btn {
+  color: #000;
+  text-shadow: none;
+}
+
+#Sign {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  height: 100%;
+  width: 100%;
+}
+
+.Sign-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.Sign-form {
+  height: 100%;
+  width: 50%;
+  background-color: #eeeeee;
+}
+
+#Sign .title {
+  font-size: 58px;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#Sign .Sign-aside .title {
+  color: #fff;
+}
+
+.Sign-aside {
+  height: 100%;
+  width: 50%;
+  z-index: 100;
+
+}
+
+.signin-container-info {
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+.signin-container-form {
+  animation-duration: 1.5s;
+  animation-name: slidein-form;
+}
+
+@keyframes slidein {
+  from {
+    transform: translate(-900px, 0);
+  }
+  to {
+    transform: translate(0px, 0);
+  }
+}
+
+@keyframes slidein-form {
+  from {
+    transform: translate(900px, 0);
+  }
+  to {
+    transform: translate(0px, 0);
+  }
+}
+
+
+
+
+
+
+.signup-container-info {
+  animation-duration: 1.5s;
+  animation-name: slideup;
+}
+
+.signup-container-form {
+  animation-duration: 1.5s;
+  animation-name: slideup-form;
+}
+
+
+
+@keyframes slideup {
+  from {
+    transform: translate(900px, 0);
+  }
+  to {
+    transform: translate(0px, 0);
+  }
+}
+
+@keyframes slideup-form {
+  from {
+    transform: translate(-900px, 0);
+  }
+  to {
+    transform: translate(0px, 0);
+  }
+
+  
+}
+
+
+
+.signin-container-info {
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.signup-container-info {
+  background: #2c5364; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+
+
+
+.Sign-transformation {
+  /* transform: translate(0px, 0);
+  transition: transform ease 0.78s;  */
+}
+
+.Sign-aside > div {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.Sign-aside > article > p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  font-size: 18px;
+  padding: 0.3rem 0rem;
+  text-align: center;
+}
