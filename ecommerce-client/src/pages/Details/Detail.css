@@ -30,11 +30,11 @@
   padding: 1rem;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: center;
-  gap: 0rem;
+  align-items:flex-start;
+  gap: 1.5rem;
 }
 
 .Product-img > img {
@@ -45,16 +45,16 @@
 
 .product-img-list {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 1rem;
 }
 .img-box {
   display: block;
-  width: 150px;
-  height: 150px;
-  margin-top: -50px;
+  width: 125px;
+  height: 125px;
+  
 
   line-height: 1.5;
   color: #495057;
@@ -69,6 +69,7 @@
 .img-box > img {
   width: inherit;
   height: inherit;
+  background-color: #fff;
 }
 
 .img-box:hover {
@@ -79,9 +80,49 @@
   transition: all 0.5s ease;
 }
 
+
+
+
+
 .Product-info {
   height: 100%;
   width: 50%;
   z-index: 100;
-  padding: 2rem;
+  padding: 1rem;
+
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+
+
+.Product-info .info-header{
+  font-size: 56px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
+  padding: 0.5rem 1.2rem;
+
+  background-color: #90CAF9;
+  border-radius: 25px 25px 0 0;
+  margin-bottom: 2rem;
+}
+
+.Product-info .info-body{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+
+  gap: 1rem;
+}
+
+.Product-info .info-body .info-characterist{
+  font-size: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: justify;
+  color: #000;
 }
