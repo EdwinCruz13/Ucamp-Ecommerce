@@ -22,7 +22,7 @@ export const Detailt = () => {
             <div className="product-img-list">
               <div className="img-box">
                 <img
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/eebd6480-c425-4984-99a0-4236fcd84091/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
+                  src="https://static.nike.com/a/images/t_PDP_1728_v1/fdcbac72-e321-4fb0-a52f-ab549f69947a/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
                   alt=""
                 />
               </div>
@@ -45,17 +45,42 @@ export const Detailt = () => {
                   alt=""
                 />
               </div>
+
+              <div className="img-box">
+                <img
+                  src="https://static.nike.com/a/images/t_PDP_1728_v1/0c448cc2-539d-47cb-a15e-16dbce223e96/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
+                  alt=""
+                />
+              </div>
+
+              <div className="img-box">
+                <img
+                  src="https://static.nike.com/a/images/t_PDP_1728_v1/eebd6480-c425-4984-99a0-4236fcd84091/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
+                  alt=""
+                />
+              </div>
+
+              <div className="img-box">
+                <img
+                  src="https://static.nike.com/a/images/t_PDP_1728_v1/6bb84178-9de6-4481-b223-9eb79b52bd9a/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
 
           <div className="Product-info">
             <section className="product-description">
               <div className="info-header">
-                <h3>Title Product</h3>
+                <h3>About this product</h3>
               </div>
 
               <div className="info-body">
-                <h3 style={{ "font-size": "32px" }}>Description Product</h3>
+                <div className="info-">
+                  <h3 className="info-name">Description Product</h3>
+                  <h2 className="info-price">$ 200</h2>
+                </div>
+
                 <div className="info-characterist">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
@@ -63,15 +88,17 @@ export const Detailt = () => {
                   printer took a galley of type and scrambled it to make a type
                   specimen book.
                 </div>
-                <div className="info-price">
-                  <h2>$ 200</h2>
-                </div>
               </div>
             </section>
 
             <section className="info-opc">
-              <button>Add</button>
-              <button>Buy</button>
+              <div>
+                <p>Make every gift special</p>
+                <p>For your beloveds.</p>
+              </div>
+              <div>
+                <button className="btn btn-primary" style={{"margin-top": "1.5rem"}}>Add to cart</button>
+              </div>
             </section>
           </div>
         </div>

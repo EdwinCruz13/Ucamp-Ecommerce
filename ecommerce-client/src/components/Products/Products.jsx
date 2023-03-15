@@ -20,7 +20,7 @@ export const Products = () => {
               src="https://static.nike.com/a/images/t_PDP_1728_v1/fdcbac72-e321-4fb0-a52f-ab549f69947a/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
               alt="Ecommerce"
             />
-            <div className="control-purchases">
+            <div className="control-purchases control">
               <div className="control-opc">
                 <Link to="/detail">
                   <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
