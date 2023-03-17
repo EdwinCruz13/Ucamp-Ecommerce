@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { CreateProduct, ListProduct, DetailProduct, UpdateProduct } = require("../../Controllers/Products/product.controller");
+const { CreateProduct, ListProduct, ListByCategory, DetailProduct, UpdateProduct } = require("../../Controllers/Products/product.controller");
 
 
 
@@ -7,16 +7,19 @@ const router = Router();
 /* ----------------------------------------------------
   defining routes
 ----------------------------------------------------*/
-//creating users routes
+//creating products routes
 router.post("/create", CreateProduct);
 
-//listing of users
+//listing of products
 router.get("/list", ListProduct);
 
-//detailing of a user
+//get list of products by Category
+router.get("/ListByCategory/:_id", ListByCategory);
+
+//detailing of a products
 router.get("/detail/:_id", DetailProduct);
 
-//editing a user route
+//editing a products route
 router.put("/update/:_id", UpdateProduct);
 
 

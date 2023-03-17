@@ -23,7 +23,7 @@ export const Home = () => {
               </p>
               <button className="btn btn-primary">
                 View Collection{" "}
-                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                <i className="fa fa-chevron-circle-right" aria-hidden="true"></i>
               </button>
             </article>
           </section>

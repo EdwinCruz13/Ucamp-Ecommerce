@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 
 //import the navbar in whole page sections
 import { Navbar } from "../../components/Navbar/Navbar";
@@ -9,7 +10,9 @@ import "./Warehouse.css";
 import "../../components/Article/Article.css";
 
 
+
 export const Warehouse = () => {
+  
   return (
     <>
       <section id="container" className="warehouse">

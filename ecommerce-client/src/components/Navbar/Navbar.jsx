@@ -9,7 +9,7 @@ export const Navbar = () => {
       <nav className="navbar">
         <div className="brand">
           <a href="#" className="navbar-collapse-menu">
-            <i class="fa fa-list" aria-hidden="true">
+            <i className="fa fa-list" aria-hidden="true">
               {" "}
             </i>
             Close One
@@ -44,7 +44,7 @@ export const Navbar = () => {
 
             <li>
               <Link to="/ShoppingCart">
-                <i class="fa fa-shopping-cart" aria-hidden="true">
+                <i className="fa fa-shopping-cart" aria-hidden="true">
                   {" "}
                   0
                 </i>
@@ -81,7 +81,7 @@ export const Navbar = () => {
 
         <li>
           <Link to="/ShoppingCart">
-            <i class="fa fa-shopping-cart" aria-hidden="true">
+            <i className="fa fa-shopping-cart" aria-hidden="true">
               {" "}
               0
             </i>

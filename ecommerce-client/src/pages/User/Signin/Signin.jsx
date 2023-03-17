@@ -1,33 +1,61 @@
-import React from "react";
+import { React, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../Signin.css";
 
 //import the navbar in whole page sections
-import { Navbar } from "../../../components/Navbar/Navbar";
+//import { Navbar } from "../../../components/Navbar/Navbar";
+
+//import user context
+import { UserContext } from "../../../context/UserContext";
 
 export const Signin = () => {
+  const { Login } = useContext(UserContext);
+
+  //usestate for login
+  const [login, setLogin] = useState({ Email: "", Password: "" });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(login);
+  };
+
+  const handleChange = (event) => {
+    //get the data from form
+    let _Email = document.getElementById("EmailInput").value;
+    let _Passwprd = document.getElementById("PasswordInput").value;
+
+    setLogin({
+      Email:  _Email, 
+      Password: _Passwprd
+    });
+
+    //console.log(login);
+  };
+
   return (
     <div className="sign">
       <div id="Sign">
         <section className="Sign-form Sign-container signin-container-form">
           <h1 className="title">Sign In</h1>
-          <form style={{ width: "40%" }}>
+          <form style={{ width: "40%" }} onSubmit={handleSubmit}>
             <div className="inputs-box">
               <div>
                 <input
                   type="text"
                   id="EmailInput"
                   className="form-control"
-                  placeholder="Correo"
+                  placeholder="Email"
+                  onChange={handleChange}
                 />
               </div>
 
               <div>
                 <input
                   type="password"
-                  id="EPasswordInput"
+                  id="PasswordInput"
                   className="form-control"
-                  placeholder="Contraseña"
+                  placeholder="Password"
+                  onChange={handleChange}
                 />
               </div>
 
@@ -36,7 +64,9 @@ export const Signin = () => {
                   Did you forget your password?
                 </Link>
               </div>
-              <button className="btn btn-primary">Sign In</button>
+              <button type="submit" className="btn btn-primary">
+                Sign In
+              </button>
             </div>
           </form>
         </section>
@@ -49,13 +79,12 @@ export const Signin = () => {
           </article>
 
           <div>
-           
             <Link to="/Signup" className="btn btn-primary">
-                Sign Up
+              Sign Up
             </Link>
 
             <Link to="/home" className="btn btn-primary">
-                Home
+              Home
             </Link>
           </div>
         </aside>

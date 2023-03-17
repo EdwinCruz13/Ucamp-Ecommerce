@@ -1,49 +1,57 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { useEffect } from "react";
 import "./Aside.css";
 
+//import api for this componente
+import { getCategoriesRequest } from "../../api/products.api";
+
+//other components
+import { CategoryItem } from "./CategoryItem";
+
+//import categories context
+import { CategoryContext } from "../../context/CategoryContext";
+import { ProductContext } from "../../context/ProductContext";
+
 export const Aside = ({ ClassName }) => {
+  //import these context
+  const { categories, setCategories } = useContext(CategoryContext);
+  
+  //use this in order to upload all of products
+  const { LoadProduct } = useContext(ProductContext);
+
+  useEffect(() => {
+    /**
+     * Function that consume api that download the
+     * information of products
+     */
+    async function LoadProduct() {
+      const response = await getCategoriesRequest();
+      const items = response.data;
+
+      //set the categories state
+      setCategories(items.data);
+    }
+
+    LoadProduct();
+    //console.table(categories);
+  }, []);
+
   return (
     <aside className={ClassName}>
       <ul className="list">
         <h3>Type</h3>
-        <li>
-          <a href="#">Shoes</a>
-        </li>
-        <li>
-          <a href="#">Jordan</a>
-        </li>
-        <li>
-          <a href="#">Clothing</a>
-        </li>
-        <li>
-          <a href="#">Hoodies & Pullovers</a>
-        </li>
 
         <li>
-          <a href="#">Shorts</a>
+          <a onClick={() => LoadProduct() }>
+            ALL
+          </a>
         </li>
 
-        <li>
-          <a href="#">Tops & T-Shirts</a>
-        </li>
-
-        <li>
-          <a href="#">Pants & Tights</a>
-        </li>
-
-        <li>
-          <a href="#">Jackets & Vests</a>
-        </li>
-
-        <li>
-          <a href="#">Accesories & Equipments</a>
-        </li>
-
-        <li>
-          <a href="#">Socks</a>
-        </li>
+        {categories.map((item) => {
+          return <CategoryItem key={item._id} Category={item} />;
+        })}
       </ul>
+
       <hr />
       <ul className="list">
         <h3>By Sex</h3>

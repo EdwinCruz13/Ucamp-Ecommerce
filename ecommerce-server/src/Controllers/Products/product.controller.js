@@ -1,8 +1,8 @@
 //others settings
-const {MessageResponse}  = require("../../Config/message_code");
+const { MessageResponse } = require("../../Config/message_code");
 
 //import the model
-const {ProductModel} = require("../../Models/Products/product.models");
+const { ProductModel } = require("../../Models/Products/product.models");
 
 /**
  * Product Creation
@@ -13,8 +13,18 @@ const {ProductModel} = require("../../Models/Products/product.models");
  */
 const CreateProduct = async (req, resp) => {
   try {
-    const { Name, Description, Abbr, Url, Price, Tax, inStock, Discount, Category, Color } =
-      req.body;
+    const {
+      Name,
+      Description,
+      Abbr,
+      Url,
+      Price,
+      Tax,
+      inStock,
+      Discount,
+      Category,
+      Color,
+    } = req.body;
 
     //verify the consecutive number
     let consecutive = 0;
@@ -39,7 +49,7 @@ const CreateProduct = async (req, resp) => {
       Discount,
       inStock,
       Category,
-      Color
+      Color,
     });
 
     //save product
@@ -50,9 +60,12 @@ const CreateProduct = async (req, resp) => {
 
     //send information in json format
     return resp.status(201).json(Message.GetMessage());
-
   } catch (error) {
-    let Message = new MessageResponse("There is an error creating a product: " + error, false, null);
+    let Message = new MessageResponse(
+      "There is an error creating a product: " + error,
+      false,
+      null
+    );
     return resp.status(500).json(Message.GetMessage());
   }
 };
@@ -67,14 +80,46 @@ const ListProduct = async (req, resp) => {
     //list all the products
     const products = await ProductModel.find();
 
-   //preparing the object to send
-   let Message = new MessageResponse("", true, products);
+    //preparing the object to send
+    let Message = new MessageResponse("", true, products);
 
-   //send information in json format
-   return resp.status(200).json(Message.GetMessage());
-
+    //send information in json format
+    return resp.status(200).json(Message.GetMessage());
   } catch (error) {
-    let Message = new MessageResponse("There is an error listing a product: " + error, false, null);
+    let Message = new MessageResponse(
+      "There is an error listing a product: " + error,
+      false,
+      null
+    );
+    return resp.status(500).json(Message.GetMessage());
+  }
+};
+
+/**
+ * Find a product according a categoryID
+ * @param {*} req
+ * @param {*} resp
+ * @returns
+ */
+const ListByCategory = async (req, resp) => {
+  try {
+    const { _id } = req.params;
+    let Category = { _id: _id };
+
+    //list all the products
+    const products = await ProductModel.find({ Category: Category });
+
+    //preparing the object to send
+    let Message = new MessageResponse("", true, products);
+
+    //send information in json format
+    return resp.status(200).json(Message.GetMessage());
+  } catch (error) {
+    let Message = new MessageResponse(
+      "There is an error listing a product: " + error,
+      false,
+      null
+    );
     return resp.status(500).json(Message.GetMessage());
   }
 };
@@ -93,11 +138,14 @@ const DetailProduct = async (req, resp) => {
     //preparing the object to send
     let Message = new MessageResponse("", true, product);
 
-   //send information in json format
-   return resp.status(200).json(Message.GetMessage());
-
+    //send information in json format
+    return resp.status(200).json(Message.GetMessage());
   } catch (error) {
-    let Message = new MessageResponse("There is an error detailing a product: " + error, false, null);
+    let Message = new MessageResponse(
+      "There is an error detailing a product: " + error,
+      false,
+      null
+    );
     return resp.status(500).json(Message.GetMessage());
   }
 };
@@ -110,4 +158,10 @@ const DetailProduct = async (req, resp) => {
 const UpdateProduct = async (req, resp) => {};
 
 //export methods
-module.exports = { CreateProduct, ListProduct, DetailProduct, UpdateProduct };
+module.exports = {
+  CreateProduct,
+  ListProduct,
+  ListByCategory,
+  DetailProduct,
+  UpdateProduct,
+};
