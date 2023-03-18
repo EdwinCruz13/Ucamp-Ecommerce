@@ -11,9 +11,7 @@ export const Navbar = () => {
   const { user } = useContext(UserContext);
 
   //check for any changes on the useState "user"
-  useEffect(() =>{
-
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -42,7 +40,7 @@ export const Navbar = () => {
         </div>
 
         <div className="user-section">
-          <ul>
+          <ul className="list-user-section">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -61,14 +59,26 @@ export const Navbar = () => {
                 </i>
               </Link>
             </li>
+            { console.log(user)}
 
-            {user.Email 
-            ? (
+            {user.Email ? (
               <li>
-                <Link to="/logged">{user.Username}</Link>
+                  <a className="usermenu">{user.Username} <i className="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                    <ul className="dropdown">
+                    <li className="dropdown-item">
+                      <Link className="dropdown-link">Products Management</Link>
+                    </li>
+                    <li className="dropdown-item">
+                      <Link className="dropdown-link">Users Management</Link>
+                    </li>
+                    <li className="dropdown-item">
+                      <Link className="dropdown-link">Invoices Management</Link>
+                    </li>
+                  </ul>
+                  </a>
+                  
               </li>
-            ) 
-            : (
+            ) : (
               <>
                 <li>
                   <Link to="/signin">Sign In</Link>

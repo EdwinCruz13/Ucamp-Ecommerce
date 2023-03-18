@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useRef } from "react";
 
 import { postLoginRequest } from "../api/users.api";
 
@@ -8,6 +8,8 @@ export const UserContext = createContext();
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({ _id: "", Email: "", Username: "" });
   const [token, setToken] = useState("");
+
+  //const login = useRef(); 
 
   /**
    * funtion that consumes and api request

@@ -80,7 +80,7 @@
   padding: 1rem 0;
 }
 
-.navbar .user-section ul {
+.navbar .user-section ul.list-user-section {
   padding: 0.25rem;
   display: flex;
   flex-direction: row;
@@ -95,7 +95,7 @@
   border-bottom: none;
 }
 
-.navbar .user-section ul > li > a,
+.navbar .user-section > ul > li > a,
 .navbar-tablet > li > a {
   text-decoration: none;
   color: #fff;
@@ -142,6 +142,60 @@
 .navbar-collapse > ul > li:hover a {
   color: #000;
   transition: all ease-in-out 0.25s;
+}
+
+.dropdown-main{ height: auto; width: auto; padding: inherit;}
+.usermenu{
+  display: block;
+  cursor: pointer;
+  width: 175px;
+
+  padding: 2rem;
+  text-align: center;
+}
+
+.usermenu:hover .dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 0;
+  background-color: #A1887F;
+  
+  z-index: 100;
+  opacity: 1;
+  overflow: hidden;
+  transition: all ease 0.55s;
+}
+
+.dropdown {
+  position: absolute;
+  display: none;
+  overflow: hidden;
+  transition: all ease 0.55s;
+  /*display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 0;
+  background-color: #A1887F;
+  
+  z-index: 100;*/
+}
+
+.dropdown > .dropdown-item a{
+  
+  display: block;
+  padding: 1.3rem 1rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  color:#000;
+  text-shadow: none;
+  cursor: pointer;
+}
+
+.dropdown > .dropdown-item:hover{
+  background-color: #E0E0E0;
+  transition: background-color ease 0.55s;
 }
 
 /*for Ipad on potrait*/
