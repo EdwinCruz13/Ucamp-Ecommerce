@@ -86,7 +86,7 @@ const LoginUser = async (req, resp) => {
     const foundUser = await UserModel.findOne({ Email });
     if(!foundUser){
       let message = new MessageResponse(Email + " has not been found.", false, null)
-      return resp.status(400).json(message.GetMessage());
+      return resp.status(200).json(message.GetMessage());
     }
 
     //check the password
@@ -94,7 +94,7 @@ const LoginUser = async (req, resp) => {
 
     if(!isPasswordValid){
       let message = new MessageResponse("Invalid password.", false, null)
-      return resp.status(400).json(message.GetMessage());
+      return resp.status(200).json(message.GetMessage());
     }
 
 

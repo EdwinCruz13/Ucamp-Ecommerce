@@ -1,9 +1,20 @@
-import React from "react";
+import { React, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+
+//import userContext
+import { UserContext } from "../../context/UserContext";
 
 import "./Navbar.css";
 
 export const Navbar = () => {
+  //get the user context saved
+  const { user } = useContext(UserContext);
+
+  //check for any changes on the useState "user"
+  useEffect(() =>{
+
+  }, []);
+
   return (
     <>
       <nav className="navbar">
@@ -51,7 +62,25 @@ export const Navbar = () => {
               </Link>
             </li>
 
-            <li>
+            {user.Email 
+            ? (
+              <li>
+                <Link to="/logged">{user.Username}</Link>
+              </li>
+            ) 
+            : (
+              <>
+                <li>
+                  <Link to="/signin">Sign In</Link>
+                </li>
+
+                <li>
+                  <Link to="/signup">Sign Up</Link>
+                </li>
+              </>
+            )}
+
+            {/* <li>
               <Link to="/signin">
                 Sign In
               </Link>
@@ -61,10 +90,8 @@ export const Navbar = () => {
               <Link to="/signup">
                 Sign Up
               </Link>
-            </li>
+            </li> */}
           </ul>
-
-         
         </div>
       </nav>
 
@@ -89,16 +116,12 @@ export const Navbar = () => {
         </li>
 
         <li>
-              <Link to="/signin">
-                Sign In
-              </Link>
-            </li>
+          <Link to="/signin">Sign In</Link>
+        </li>
 
-            <li>
-              <Link to="/signup">
-                Sign Up
-              </Link>
-            </li>
+        <li>
+          <Link to="/signup">Sign Up</Link>
+        </li>
       </ul>
     </>
   );

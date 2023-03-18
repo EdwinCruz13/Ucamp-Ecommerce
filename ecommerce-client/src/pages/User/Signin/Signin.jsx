@@ -1,5 +1,5 @@
 import { React, useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Signin.css";
 
 //import the navbar in whole page sections
@@ -9,14 +9,33 @@ import "../Signin.css";
 import { UserContext } from "../../../context/UserContext";
 
 export const Signin = () => {
-  const { Login } = useContext(UserContext);
+  const { CreateToken } = useContext(UserContext);
 
   //usestate for login
   const [login, setLogin] = useState({ Email: "", Password: "" });
 
-  const handleSubmit = (e) => {
+  let navigate = useNavigate();
+  /**
+   * after submit
+   * validate and create a toke
+   * then build up the session variable
+   * @param {*} e e as evento handler
+   */
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(login);
+
+    //set a token
+    const response = await CreateToken(login);
+
+    if (response.status == true) {
+      alert(response.message);
+
+      //redirect to home
+      navigate("/home");
+    } else {
+      console.log(response);
+      alert("There are some problems to logging you");
+    }
   };
 
   const handleChange = (event) => {
@@ -25,8 +44,8 @@ export const Signin = () => {
     let _Passwprd = document.getElementById("PasswordInput").value;
 
     setLogin({
-      Email:  _Email, 
-      Password: _Passwprd
+      Email: _Email,
+      Password: _Passwprd,
     });
 
     //console.log(login);
