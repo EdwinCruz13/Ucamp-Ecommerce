@@ -31,4 +31,30 @@ const VerifyToken = (req, resp, next) => {
   return next();
 };
 
-module.exports = { VerifyToken };
+const Auth_Authorization = async(req, resp, next) => {
+  try {
+    //   get the token from the authorization header
+    const token = await req.headers.authorization.split(" ")[1];
+
+    //console.log(token);
+
+    //check if the token matches the supposed origin
+    const decodedToken = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+    // retrieve the user details of the logged in user
+    const user = await decodedToken;
+
+    // pass the user down to the endpoints here
+    req.user = user;
+
+    // pass down functionality to the endpoint
+    next();
+    
+  } catch (error) {
+    let message = new MessageResponse("Invalid Token", false, null)
+    return resp.status(401).json(message.GetMessage());
+  }
+};
+
+
+module.exports = { VerifyToken, Auth_Authorization };

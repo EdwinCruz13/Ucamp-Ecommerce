@@ -1,4 +1,5 @@
 import { createContext, useState, useRef } from "react";
+import Cookies from 'universal-cookie';
 
 import { postLoginRequest } from "../api/users.api";
 
@@ -33,14 +34,35 @@ export const UserContextProvider = ({ children }) => {
       await setToken(values.data.Token);
     }
 
-    console.log(user, token);
+    //console.log(user, token);
+
+    //create the cookie
+    const cookies = new Cookies();
+    cookies.set('Token', values.data.Token, {path: '/'});
+
+    //check the cookie
+    //console.log(cookies.get('Token')); //
+    
 
     //return message response
     return { message: values.message, status: values.code };
   }
 
+  /**
+   * this function remove the existed cookie
+   */
+  async function Logout(){
+    try {
+      const cookies = new Cookies();
+      await cookies.remove("Token", { path: "/" });
+      return { message: "", status: true };
+    } catch (error) {
+      return { message: error, status: false };
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ user, CreateToken }}>
+    <UserContext.Provider value={{ user, CreateToken, Logout }}>
       {children}
     </UserContext.Provider>
   );

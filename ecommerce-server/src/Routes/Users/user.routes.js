@@ -1,8 +1,10 @@
 const { Router } = require("express");
 
-const { VerifyToken } = require("../../Middleware/auth.middleware");
+const { Auth_Authorization } = require("../../Middleware/auth.middleware");
 const { CreateUsers, ListUsers, DetailUser, UpdateUser } = require("../../Controllers/Users/user.controller");
 const { SigupUser, LoginUser } = require("../../Controllers/Auths/auth.controller");
+
+const { MessageResponse } = require("../../Config/message_code");
 
 
 
@@ -16,6 +18,11 @@ router.post("/signup", SigupUser);
 
 //validate a new users
 router.post("/login", LoginUser);
+
+router.get("/auth-access", Auth_Authorization, (req, resp) => {
+  let message = new MessageResponse("You are authorized to access me", true, null)
+  resp.json(message);
+});
 
 
 //creating a new user

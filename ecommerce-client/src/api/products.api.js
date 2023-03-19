@@ -5,7 +5,11 @@ import axios from "axios";
  * @returns the list the categories of prodcucts
  */
 export const getCategoriesRequest = async () => {
-  return await axios.get("http://localhost:5000/api/products/categories/list");
+  try {
+    return await axios.get(
+      "http://localhost:5000/api/products/categories/list"
+    );
+  } catch (error) {}
 };
 
 /**
@@ -13,18 +17,22 @@ export const getCategoriesRequest = async () => {
  * from an api request
  */
 export const getProductsRequest = async () => {
-  return await axios.get("http://localhost:5000/api/products/list");
+  try {
+    return await axios.get("http://localhost:5000/api/products/list");
+  } catch (error) {}
 };
 
 /**
  * Find a product by category
  * @param {*} CategoryID Send CategoryID in order to find a producy by an specifi ID
- * @returns 
+ * @returns
  */
 export const getProductsByCategoryRequest = async (CategoryID) => {
-  return await axios.get(
-    `http://localhost:5000/api/products/ListByCategory/${CategoryID}`
-  );
+  try {
+    return await axios.get(
+      `http://localhost:5000/api/products/ListByCategory/${CategoryID}`
+    );
+  } catch (error) {}
 };
 
 /**
@@ -33,5 +41,7 @@ export const getProductsByCategoryRequest = async (CategoryID) => {
  * @param {*} product product to create
  */
 export const createProductsRequest = async (product) => {
-  await axios.post("http://localhost:5000/api/products/create", product);
+  try {
+    await axios.post("http://localhost:5000/api/products/create", product);
+  } catch (error) {}
 };

@@ -1,8 +1,12 @@
 import { React, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 //import userContext
 import { UserContext } from "../../context/UserContext";
+
+//import api request
+import { getAuthorizationRequest } from "../../api/users.api";
 
 import "./Navbar.css";
 
@@ -11,7 +15,23 @@ export const Navbar = () => {
   const { user } = useContext(UserContext);
 
   //check for any changes on the useState "user"
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const cookies = new Cookies();
+        let Token = cookies.get("Token");
+
+        //consume a api
+        const response = await getAuthorizationRequest(Token);
+        //get data
+        const values = await response.data;
+
+        console.log(values); //
+      } catch (error) {}
+    }
+
+    loadData();
+  }, []);
 
   return (
     <>
@@ -59,12 +79,16 @@ export const Navbar = () => {
                 </i>
               </Link>
             </li>
-            { console.log(user)}
 
             {user.Email ? (
               <li>
-                  <a className="usermenu">{user.Username} <i className="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                    <ul className="dropdown">
+                <a className="usermenu">
+                  {user.Username}{" "}
+                  <i
+                    className="fa fa-chevron-circle-down"
+                    aria-hidden="true"
+                  ></i>
+                  <ul className="dropdown">
                     <li className="dropdown-item">
                       <Link className="dropdown-link">Products Management</Link>
                     </li>
@@ -75,8 +99,7 @@ export const Navbar = () => {
                       <Link className="dropdown-link">Invoices Management</Link>
                     </li>
                   </ul>
-                  </a>
-                  
+                </a>
               </li>
             ) : (
               <>

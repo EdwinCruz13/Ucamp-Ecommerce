@@ -120,6 +120,4 @@ const LoginUser = async (req, resp) => {
 }
 
 
-
-
 module.exports = { LoginUser, SigupUser };
