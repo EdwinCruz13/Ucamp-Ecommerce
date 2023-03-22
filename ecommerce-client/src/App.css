@@ -126,7 +126,32 @@ hr {
   align-items: center;
   gap:1.1rem;
   width: 100%;
-  
+}
+
+.inputs-box > .form-control-inline{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap:1.1rem;
+  width: 100%;
+}
+
+.inputs-box > .form-control-inline div{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap:0.5rem;
+  align-items:center;
+  width: 100%;
+  padding: 0 0.3rem;
+
+}
+
+label{
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
 }
 
 .form-control {

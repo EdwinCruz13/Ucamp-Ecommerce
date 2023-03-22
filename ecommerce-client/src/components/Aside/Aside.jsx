@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import "./Aside.css";
 
 //import api for this componente
-import { getCategoriesRequest } from "../../api/products.api";
+import { getCategoriesRequest } from "../../api/categories.api";
 
 //other components
 import { CategoryItem } from "./CategoryItem";
@@ -15,7 +15,7 @@ import { ProductContext } from "../../context/ProductContext";
 export const Aside = ({ ClassName }) => {
   //import these context
   const { categories, setCategories } = useContext(CategoryContext);
-  
+
   //use this in order to upload all of products
   const { LoadProduct } = useContext(ProductContext);
 
@@ -42,9 +42,7 @@ export const Aside = ({ ClassName }) => {
         <h3>Type</h3>
 
         <li>
-          <a onClick={() => LoadProduct() }>
-            ALL
-          </a>
+          <a onClick={() => LoadProduct()}>ALL</a>
         </li>
 
         {categories.map((item) => {

@@ -1,0 +1,46 @@
+.product >  ul li a,
+.product > .navbar ul li a,
+.product > .navbar ul li a,
+.product > .navbar ul,
+.product > ul li,
+.product > .navbar .brand a,
+.product .navbar .btn {
+  color: #000;
+  text-shadow: none;
+}
+
+
+#ProductForm{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap:8px;
+    width: 100%;
+}
+
+.form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding: 1rem;
+    width: 80%;
+}
+
+.color-hexadecimal{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    width: 25px;
+    height: 25px;
+}
+
+.color-hexadecimal li{
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-color: aqua;
+}
