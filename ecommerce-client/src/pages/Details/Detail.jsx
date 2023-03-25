@@ -1,12 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 
 import "./Detail.css";
+
+//use Product and user Context
+import { ProductContext } from "../../context/ProductContext";
+import { UserContext } from "../../context/UserContext";
 
 //Other routes
 import { Navbar } from "../../components/Navbar/Navbar";
 
 export const Detailt = () => {
+  let params = useParams();
+
+  
+  const { product, LoadProductByID } = useContext(ProductContext);
+  const { user, authStatus, VerifyingToken } = useContext(UserContext);
+
+  useEffect(() => {
+    async function LoadbyID() {
+      await LoadProductByID(params.id);
+    }
+
+    LoadbyID();
+  }, []);
+
   return (
     <>
       <section className="detail">
@@ -14,57 +32,11 @@ export const Detailt = () => {
 
         <div id="Detail">
           <div className="Product-img">
-            <img
-              src="https://static.nike.com/a/images/t_PDP_1728_v1/fdcbac72-e321-4fb0-a52f-ab549f69947a/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
-              alt="Ecommerce"
-            />
+            <img src={product.Url} alt="Ecommerce" />
 
             <div className="product-img-list">
               <div className="img-box">
-                <img
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/fdcbac72-e321-4fb0-a52f-ab549f69947a/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
-                  alt=""
-                />
-              </div>
-              <div className="img-box">
-                <img
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/d3a80cb6-09db-4974-bc8d-a454709cb0ea/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
-                  alt=""
-                />
-              </div>
-              <div className="img-box">
-                <img
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/94e4443c-4caa-4ffd-80e8-37aa2f5f1e28/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
-                  alt=""
-                />
-              </div>
-
-              <div className="img-box">
-                <img
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/81ba18fe-b1ed-489b-8bf6-e6bc57286906/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
-                  alt=""
-                />
-              </div>
-
-              <div className="img-box">
-                <img
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/0c448cc2-539d-47cb-a15e-16dbce223e96/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
-                  alt=""
-                />
-              </div>
-
-              <div className="img-box">
-                <img
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/eebd6480-c425-4984-99a0-4236fcd84091/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
-                  alt=""
-                />
-              </div>
-
-              <div className="img-box">
-                <img
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/6bb84178-9de6-4481-b223-9eb79b52bd9a/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
-                  alt=""
-                />
+                <img src={product.Url} alt="" />
               </div>
             </div>
           </div>
@@ -72,22 +44,21 @@ export const Detailt = () => {
           <div className="Product-info">
             <section className="product-description">
               <div className="info-header">
-                <h3>About this product</h3>
+                <h5>About this product</h5>
+                <span>
+                  <Link>
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                  </Link>
+                </span>
               </div>
 
               <div className="info-body">
                 <div className="info-">
-                  <h3 className="info-name">Description Product</h3>
-                  <h2 className="info-price">$ 200</h2>
+                  <h3 className="info-name">{product.Name}</h3>
+                  <h2 className="info-price">$ {product.Price}</h2>
                 </div>
 
-                <div className="info-characterist">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
+                <div className="info-characterist">{product.Description}.</div>
               </div>
             </section>
 
@@ -97,7 +68,12 @@ export const Detailt = () => {
                 <p>For your beloveds.</p>
               </div>
               <div>
-                <button className="btn btn-primary" style={{"margin-top": "1.5rem"}}>Add to cart</button>
+                <button
+                  className="btn btn-primary"
+                  style={{ marginTop: "1.5rem" }}
+                >
+                  Add to cart
+                </button>
               </div>
             </section>
           </div>

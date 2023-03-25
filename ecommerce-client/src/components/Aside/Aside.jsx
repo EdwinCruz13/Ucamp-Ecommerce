@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { useEffect } from "react";
 import "./Aside.css";
 
-//import api for this componente
-import { getCategoriesRequest } from "../../api/categories.api";
 
 //other components
 import { CategoryItem } from "./CategoryItem";
@@ -14,25 +12,13 @@ import { ProductContext } from "../../context/ProductContext";
 
 export const Aside = ({ ClassName }) => {
   //import these context
-  const { categories, setCategories } = useContext(CategoryContext);
+  const { categories, GetCategories } = useContext(CategoryContext);
 
   //use this in order to upload all of products
   const { LoadProduct } = useContext(ProductContext);
 
   useEffect(() => {
-    /**
-     * Function that consume api that download the
-     * information of products
-     */
-    async function LoadProduct() {
-      const response = await getCategoriesRequest();
-      const items = response.data;
-
-      //set the categories state
-      setCategories(items.data);
-    }
-
-    LoadProduct();
+    GetCategories();
     //console.table(categories);
   }, []);
 

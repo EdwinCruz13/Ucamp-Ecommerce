@@ -96,7 +96,8 @@
 }
 
 .navbar .user-section > ul > li > a,
-.navbar-tablet > li > a {
+.navbar-tablet > li > a,
+.username {
   text-decoration: none;
   color: #fff;
   transition: color linear 0.5s;
@@ -146,12 +147,14 @@
 
 .dropdown-main{ height: auto; width: auto; padding: inherit;}
 .usermenu{
-  display: block;
+  display: flex;
   cursor: pointer;
   width: 175px;
 
-  padding: 2rem;
+  font-size: 32px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+  color: #fff;
 }
 
 .usermenu:hover .dropdown {
@@ -205,7 +208,7 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  .navbar .user-section ul {
+  .navbar .user-section ul.list-user-section {
     display: none;
   }
   .navbar-tablet {
@@ -231,7 +234,7 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  .navbar .user-section ul {
+  .navbar .user-section ul.list-user-section {
     display: none;
   }
   .navbar-tablet {
@@ -264,7 +267,8 @@
     justify-content: center;
     align-items: center;
   }
-  .navbar .user-section ul,
+  .user-section{ display: none;}
+  .navbar .user-section ul.list-user-section,
   .navbar .btn-group {
     display: none;
   }
@@ -296,7 +300,8 @@
     justify-content: center;
     align-items: center;
   }
-  .navbar .user-section ul,
+  .user-section{ display: none;}
+  .navbar .user-section ul.list-user-section,
   .navbar .btn-group {
     display: none;
   }

@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Signin.css";
 
 export const Signup = () => {
+  const [formData, setFormData] = useState({ Email: "", Username: "", Password: ""});
+  
+  //create a handlesubmit in order to catch the datas from the form
+  const handleChange = (event) => {
+    event.preventDefault();
+
+    //set formdata with the value
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+
+    console.log(formData);
+  };
+
+  const handlesubmit = (event) => {
+
+  }
+
   return (
     <div className="sign">
       <div id="Sign">
@@ -26,14 +42,23 @@ export const Signup = () => {
 
         <section className="Sign-form Sign-container signup-container-form">
           <h1 className="title">Sign Up</h1>
-          <form style={{ width: "40%" }}>
+          <form style={{ width: "40%" }} onSubmit = {handlesubmit}>
             <div className="inputs-box">
               <div>
                 <input
-                  type="text"
+                  type="email"
                   id="EmailInput"
                   className="form-control"
                   placeholder="Email"
+                />
+              </div>
+
+              <div>
+                <input
+                  type="text"
+                  id="UsernameInput"
+                  className="form-control"
+                  placeholder="Username"
                 />
               </div>
 
@@ -54,7 +79,6 @@ export const Signup = () => {
                   placeholder="Repeat your password"
                 />
               </div>
-
 
               <button className="btn btn-primary">Sign Up</button>
             </div>

@@ -11,3 +11,20 @@ export const getColorsRequest = async () => {
     );
   } catch (error) {}
 };
+
+
+/**
+ * this method allow to save a colors
+ * @param {*} Color Color to save
+ * @returns 
+ */
+export const postSaveColorsRequest = async (Color) => {
+  try {
+    return await axios.post(
+      "http://localhost:5000/api/products/colors/create", Color
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+

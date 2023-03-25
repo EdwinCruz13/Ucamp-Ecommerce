@@ -24,7 +24,8 @@
 .warehouse > .navbar ul,
 .warehouse > ul li,
 .warehouse > .navbar .brand a,
-.warehouse .navbar .btn {
+.warehouse .navbar .btn,
+.warehouse .usermenu {
   color: #000;
   text-shadow: none;
 }

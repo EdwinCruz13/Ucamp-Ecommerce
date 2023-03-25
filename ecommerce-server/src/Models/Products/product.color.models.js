@@ -2,9 +2,8 @@ const mongoose = require("mongoose");
 
 const ColorSchema = new mongoose.Schema({
     Color: { type: String, trim: true, require: true },
-    Hexadecimal: { type: String, unique:true, trim: true, require: true },
-    RGB: { type: String, trim: true, require: true },
-    DateAt: { type: Date, require: true, default: Date.Now}
+    Hexadecimal: { type: String, trim: true },
+    RGB: { type: String, trim: true},
 });
 
 

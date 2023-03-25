@@ -9,7 +9,7 @@ import "../Signin.css";
 import { UserContext } from "../../../context/UserContext";
 
 export const Signin = () => {
-  const { CreateToken } = useContext(UserContext);
+  const { Signin } = useContext(UserContext);
 
   //usestate for login
   const [login, setLogin] = useState({ Email: "", Password: "" });
@@ -25,7 +25,7 @@ export const Signin = () => {
     e.preventDefault();
 
     //set a token
-    const response = await CreateToken(login);
+    const response = await Signin(login);
 
     if (response.status == true) {
       alert(response.message);

@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 const CategorySchema = new mongoose.Schema({
-    DateAt: { type: Date, trim: true, require: true}, 
-    Description: { type: String, unique: true,  trim: true, require: true, lowercase: false}
+    Description: { type: String, trim: true, require: true, lowercase: false}
 });
 
 

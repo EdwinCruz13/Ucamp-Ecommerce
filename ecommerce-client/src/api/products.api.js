@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 /**
  * Function that returns the list of products
  * from an api request
@@ -11,12 +10,21 @@ export const getProductsRequest = async () => {
   } catch (error) {}
 };
 
+export const getProductbyID = async (_id) => {
+  try {
+    return await axios.get(`http://localhost:5000/api/products/detail/${_id}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 /**
  * Find a product by category
  * @param {*} CategoryID Send CategoryID in order to find a producy by an specifi ID
  * @returns
  */
 export const getProductsByCategoryRequest = async (CategoryID) => {
+  console.log(CategoryID);
   try {
     return await axios.get(
       `http://localhost:5000/api/products/ListByCategory/${CategoryID}`
@@ -31,6 +39,8 @@ export const getProductsByCategoryRequest = async (CategoryID) => {
  */
 export const createProductsRequest = async (product) => {
   try {
-    await axios.post("http://localhost:5000/api/products/create", product);
-  } catch (error) {}
+    return await axios.post("http://localhost:5000/api/products/create", product);
+  } catch (error) {
+    console.log(error);
+  }
 };

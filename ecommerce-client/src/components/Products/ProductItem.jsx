@@ -2,17 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const ProductItem = ({Product}) => {
+  let strLink = `/detail/${Product._id}`
 
   return (
     <article className="item">
       <div className="img-container">
         <img
-          src="https://static.nike.com/a/images/t_PDP_1728_v1/fdcbac72-e321-4fb0-a52f-ab549f69947a/air-jordan-2-retro-low-womens-shoes-PRd1BH.png"
+          src={Product.Url}
           alt="Ecommerce"
         />
         <div className="control-purchases control">
           <div className="control-opc">
-            <Link to="/detail">
+            <Link to={strLink} relative="path">
               <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
             </Link>
 

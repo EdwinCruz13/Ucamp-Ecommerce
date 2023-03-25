@@ -43,9 +43,14 @@ const Auth_Authorization = async(req, resp, next) => {
 
     // retrieve the user details of the logged in user
     const user = await decodedToken;
+    //user.Token = token;
 
     // pass the user down to the endpoints here
-    req.user = user;
+    let _user = { _id: user.user_id, Email: user.Email, Username: user.Username}
+
+    req.user = _user;
+    console.log(_user);
+
 
     // pass down functionality to the endpoint
     next();

@@ -20,8 +20,8 @@ router.post("/signup", SigupUser);
 router.post("/login", LoginUser);
 
 router.get("/auth-access", Auth_Authorization, (req, resp) => {
-  let message = new MessageResponse("You are authorized to access me", true, null)
-  resp.json(message);
+  let message = new MessageResponse("You are authorized to access me", true, req.user)
+  resp.status(200).json(message.GetMessage());
 });
 
 

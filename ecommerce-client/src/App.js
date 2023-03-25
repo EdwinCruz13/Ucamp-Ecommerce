@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
 import { Warehouse } from "./pages/Warehouse/Warehouse";
 import { ProductForm } from "./pages/Product/ProductForm";
+import { ColorForm } from "./pages/Product/ColorForm";
 import { Detailt } from "./pages/Details/Detail";
 import { Signup } from "./pages/User/Signup/Signup";
 import { Signin } from "./pages/User/Signin/Signin";
@@ -27,9 +28,11 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/warehouse" element={<Warehouse />} />
           <Route path="/product" element={<ProductForm />} />
-          <Route path="/detail" element={<Detailt />} />
+          <Route path="/color" element={<ColorForm />} />
+          <Route path="/detail/:id" element={<Detailt />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
+          
           
         </Routes>
       </ProductContextProvider>

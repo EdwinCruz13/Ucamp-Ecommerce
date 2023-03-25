@@ -5,32 +5,19 @@ import Cookies from "universal-cookie";
 //import userContext
 import { UserContext } from "../../context/UserContext";
 
-//import api request
-import { getAuthorizationRequest } from "../../api/users.api";
-
 import "./Navbar.css";
+
+/*
+ <Navigate to='/login' replace />
+ */
 
 export const Navbar = () => {
   //get the user context saved
-  const { user } = useContext(UserContext);
+  const { user, authStatus, VerifyingToken } = useContext(UserContext);
 
   //check for any changes on the useState "user"
   useEffect(() => {
-    async function loadData() {
-      try {
-        const cookies = new Cookies();
-        let Token = cookies.get("Token");
-
-        //consume a api
-        const response = await getAuthorizationRequest(Token);
-        //get data
-        const values = await response.data;
-
-        console.log(values); //
-      } catch (error) {}
-    }
-
-    loadData();
+    VerifyingToken();
   }, []);
 
   return (
@@ -55,6 +42,8 @@ export const Navbar = () => {
               <li>
                 <Link to="/Contact">Contact</Link>
               </li>
+
+              
             </ul>
           </div>
         </div>
@@ -80,17 +69,18 @@ export const Navbar = () => {
               </Link>
             </li>
 
-            {user.Email ? (
-              <li>
-                <a className="usermenu">
-                  {user.Username}{" "}
+            {authStatus ? (
+              <li className="usermenu">
+                 {user.Username}{" "}
                   <i
                     className="fa fa-chevron-circle-down"
                     aria-hidden="true"
                   ></i>
                   <ul className="dropdown">
                     <li className="dropdown-item">
-                      <Link className="dropdown-link">Products Management</Link>
+                      <Link to="/product" className="dropdown-link">
+                        Products Management
+                      </Link>
                     </li>
                     <li className="dropdown-item">
                       <Link className="dropdown-link">Users Management</Link>
@@ -99,7 +89,6 @@ export const Navbar = () => {
                       <Link className="dropdown-link">Invoices Management</Link>
                     </li>
                   </ul>
-                </a>
               </li>
             ) : (
               <>
@@ -112,49 +101,62 @@ export const Navbar = () => {
                 </li>
               </>
             )}
-
-            {/* <li>
-              <Link to="/signin">
-                Sign In
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/signup">
-                Sign Up
-              </Link>
-            </li> */}
           </ul>
         </div>
       </nav>
 
       <ul className="navbar-tablet">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/Warehouse">Collection</Link>
-        </li>
-        <li>
-          <Link to="/Contact">Contact</Link>
-        </li>
+      <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/Warehouse">Collection</Link>
+            </li>
+            <li>
+              <Link to="/Contact">Contact</Link>
+            </li>
 
-        <li>
-          <Link to="/ShoppingCart">
-            <i className="fa fa-shopping-cart" aria-hidden="true">
-              {" "}
-              0
-            </i>
-          </Link>
-        </li>
+            <li>
+              <Link to="/ShoppingCart">
+                <i className="fa fa-shopping-cart" aria-hidden="true">
+                  {" "}
+                  0
+                </i>
+              </Link>
+            </li>
 
-        <li>
-          <Link to="/signin">Sign In</Link>
-        </li>
+            {authStatus ? (
+              <li className="usermenu">
+                 {user.Username}{" "}
+                  <i
+                    className="fa fa-chevron-circle-down"
+                    aria-hidden="true"
+                  ></i>
+                  <ul className="dropdown">
+                    <li className="dropdown-item">
+                      <Link to="/product" className="dropdown-link">
+                        Products Management
+                      </Link>
+                    </li>
+                    <li className="dropdown-item">
+                      <Link className="dropdown-link">Users Management</Link>
+                    </li>
+                    <li className="dropdown-item">
+                      <Link className="dropdown-link">Invoices Management</Link>
+                    </li>
+                  </ul>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/signin">Sign In</Link>
+                </li>
 
-        <li>
-          <Link to="/signup">Sign Up</Link>
-        </li>
+                <li>
+                  <Link to="/signup">Sign Up</Link>
+                </li>
+              </>
+            )}
       </ul>
     </>
   );

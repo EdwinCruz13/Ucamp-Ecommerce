@@ -3,6 +3,9 @@ const { MessageResponse } = require("../../Config/message_code");
 
 //import the model
 const { ProductModel } = require("../../Models/Products/product.models");
+const {
+  CategoryModel,
+} = require("../../Models/Products/product.category.models");
 
 /**
  * Product Creation
@@ -37,6 +40,7 @@ const CreateProduct = async (req, resp) => {
         }).ProductID + 1;
     else consecutive = 1;
 
+
     //adding the data into the model
     const newProduct = ProductModel({
       ProductID: consecutive,
@@ -51,6 +55,8 @@ const CreateProduct = async (req, resp) => {
       Category,
       Color,
     });
+
+    console.log(newProduct);
 
     //save product
     await newProduct.save();
@@ -104,10 +110,17 @@ const ListProduct = async (req, resp) => {
 const ListByCategory = async (req, resp) => {
   try {
     const { _id } = req.params;
-    let Category = { _id: _id };
+
+    let Category = await CategoryModel.findById({ _id });
+    let CategorySchema = {
+      _id: Category._id,
+      Description: Category.Description,
+    };
+
+    //let Category = { _id: _id };
 
     //list all the products
-    const products = await ProductModel.find({ Category: Category });
+    const products = await ProductModel.find({ Category: CategorySchema });
 
     //preparing the object to send
     let Message = new MessageResponse("", true, products);
@@ -155,7 +168,65 @@ const DetailProduct = async (req, resp) => {
  * @param {*} req
  * @param {*} resp
  */
-const UpdateProduct = async (req, resp) => {};
+const UpdateProduct = async (req, resp) => {
+  try {
+    //get Id to modify
+  const { _id } = req.params._id;
+  //get data from the body params
+  const {
+    Name,
+    Description,
+    Abbr,
+    Url,
+    Price,
+    Tax,
+    Discount,
+    inStock,
+    Category,
+    Color,
+  } = req.body;
+
+  //validate the existed product
+  const _product = await UserModel.findById(_id);
+
+  if (_product === null) {
+    let Message = new MessageResponse(
+      "We can not find the user to update.",
+      false,
+      null
+    );
+    return resp.status(400).json(Message.GetMessage());
+  } else {
+    //update the specific product
+    await ProductModel.findByIdAndUpdate(
+      { _id },
+      {
+        Name,
+        Description,
+        Abbr,
+        Url,
+        Price,
+        Tax,
+        Discount,
+        inStock,
+        Category,
+        Color,
+      }
+    );
+
+      //create the message and send
+      //preparing the object to send
+      let Message = new MessageResponse("A product has been updated", true, null);
+
+      //send information in json format
+      return resp.status(201).json(Message.GetMessage());
+
+  }
+  } catch (error) {
+    let Message = new MessageResponse("There is an error updating the product: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
+  }
+};
 
 //export methods
 module.exports = {
