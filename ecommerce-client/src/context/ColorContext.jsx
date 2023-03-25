@@ -15,7 +15,7 @@ export const ColorContextProvider = ({ children }) => {
   /**
    * Load all the colors
    */
-  async function LoadColors() {
+  async function GetColors() {
     try {
       const response = await getColorsRequest();
       const values = await response.data;
@@ -42,6 +42,8 @@ export const ColorContextProvider = ({ children }) => {
   }
 
   return (
-    <ColorContext.Provider value={{colors, color, LoadColors, SaveColor}}>{children}</ColorContext.Provider>
+    <ColorContext.Provider value={{ colors, setColors, color, setColor, GetColors, SaveColor }}>
+      {children}
+    </ColorContext.Provider>
   );
 };

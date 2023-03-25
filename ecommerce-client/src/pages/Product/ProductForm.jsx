@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //import the navbar in whole page sections
 import { Navbar } from "../../components/Navbar/Navbar";
@@ -12,14 +12,17 @@ import { getColorsRequest } from "../../api/colors.api";
 
 //context
 import { ProductContext } from "../../context/ProductContext";
+// import { CategoryContext } from "../../context/CategoryContext";
+// import { ColorContext } from "../../context/ColorContext";
 
 import "./ProductForm.css";
 
 export const ProductForm = () => {
   const { SaveProduct } = useContext(ProductContext);
 
-
-
+  //its necessary these useSate
+  const [categories, setCategories] = useState([]);
+  const [colors, setColors] = useState([]);
   const [form, setForm] = useState({
     Name: "",
     Description: "",
@@ -33,32 +36,20 @@ export const ProductForm = () => {
     Color: { _id: "", Color: "", Hexadecimal: "" },
   });
 
-  const [categories, setCategories] = useState([]);
-  const [colors, setColors] = useState([]);
-
   const [color, setColor] = useState("#ffffff");
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function LoadCategories() {
-      const response = await getCategoriesRequest();
-      const items = response.data;
+    //set the categories state
+    async function fetchData() {
+      let _category = await getCategoriesRequest();
+      let _color = await getColorsRequest();
 
-      //set the categories state
-      setCategories(items.data);
+      setCategories(_category.data.data);
+      setColors(_color.data.data);
     }
 
-    async function LoadColors() {
-      const response = await getColorsRequest();
-      const items = response.data;
-
-      //set the categories state
-      setColors(items.data);
-    }
-
-    LoadCategories();
-    LoadColors();
+    fetchData();
   }, []);
 
   //allow to change the color
@@ -68,17 +59,16 @@ export const ProductForm = () => {
 
     setColor(hexa);
 
-    let _color = { _id: e.target.value, Color: color, Hexadecimal: hexa}
+    let _color = { _id: e.target.value, Color: color, Hexadecimal: hexa };
     setForm({ ...form, Color: _color });
-
-
   };
 
   const handleCategory = (e) => {
-    let description = e.target.options[e.target.selectedIndex].dataset.description;
-    let _category = { _id: e.target.value, Description: description}
+    let description =
+      e.target.options[e.target.selectedIndex].dataset.description;
+    let _category = { _id: e.target.value, Description: description };
     setForm({ ...form, Category: _category });
-  }
+  };
 
   /**
    * this method allows to save the product
@@ -86,19 +76,15 @@ export const ProductForm = () => {
   const handleChange = (event) => {
     event.preventDefault();
     setForm({ ...form, [event.target.name]: event.target.value });
-
   };
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
 
     const response = await SaveProduct(form);
     alert(response.message);
     navigate(0);
-    
   };
-
 
   return (
     <section className="product">
@@ -148,14 +134,18 @@ export const ProductForm = () => {
                 <optgroup label="Select a category" style={{ padding: "2px" }}>
                   {categories.map((item) => {
                     return (
-                      <option key={item._id} value={item._id} data-description={item.Description}>
+                      <option
+                        key={item._id}
+                        value={item._id}
+                        data-description={item.Description}
+                      >
                         {item.Description}
                       </option>
                     );
                   })}
                 </optgroup>
               </select>
-            </div>
+            </div> 
 
             <div className="form-control-inline">
               <label htmlFor="Colors">Colors</label>
@@ -193,7 +183,7 @@ export const ProductForm = () => {
                   })}
                 </optgroup>
               </select>
-            </div>
+            </div> 
 
             <div className="form-control-inline">
               <label htmlFor="Description">Abreviation</label>
