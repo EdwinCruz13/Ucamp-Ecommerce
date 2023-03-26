@@ -11,14 +11,11 @@
   left: 0;
 }
 
-
-
-
 .warehouse > .navbar {
   background-color: #fff;
 }
 
-.warehouse >  ul li a,
+.warehouse > ul li a,
 .warehouse > .navbar ul li a,
 .warehouse > .navbar ul li a,
 .warehouse > .navbar ul,
@@ -31,26 +28,28 @@
 }
 
 .warehouse .list-products {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content:flex-start;
-    padding: 1rem 2rem;
-
-    height:100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  padding: 1rem 2rem;
+  width: 100%;
+  height: 100vh;
 }
 
-
-
-
 .items {
+   /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 3rem;
+  align-items: stretch;
+  height: 100px; */
+
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
-  width: 100%;
+  width: 100%; 
 }
-
 
 .item {
   display: flex;
@@ -60,7 +59,7 @@
   gap: 0.5rem;
 }
 
-.img-container{
+.img-container {
   box-sizing: content-box;
   display: block;
   position: relative;
@@ -77,8 +76,7 @@
   border-radius: 5%;
 }
 
-
-.img-container .control-purchases{
+.img-container .control-purchases {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -88,18 +86,14 @@
   height: 50px;
   text-align: center;
   justify-content: center;
-
-  
-  
-  
 }
 
-.img-container .control-purchases .control-opc{
+.img-container .control-purchases .control-opc {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
 
   width: 210px;
@@ -109,8 +103,6 @@
   border-radius: 8%;
   background-color: rgba(224, 224, 224, 0.8);
   opacity: 0;
-  
-
 }
 
 .item:hover .control-opc {
@@ -122,8 +114,7 @@
   cursor: pointer;
 }
 
-
-.img-container .control-purchases .control-opc a{
+.img-container .control-purchases .control-opc a {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -139,22 +130,12 @@
 
   cursor: pointer;
   transition: all ease-out 0.5s;
-  
-
 }
 
 .img-container .control-purchases .control-opc a i {
   font-size: 18px;
   color: #000;
 }
-
-
-
-
-
-
-
-
 
 .item > .info-item {
   display: flex;
@@ -187,9 +168,7 @@
   color: #e65100;
 }
 
-
 @media (min-width: 768px) and (max-width: 1282px) {
-   
 }
 
 @media (min-width: 767px) and (max-width: 876px) {
@@ -199,7 +178,6 @@
     gap: 1rem;
     width: 100%;
   }
-
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
@@ -218,5 +196,4 @@
     gap: 1rem;
     width: 100%;
   }
-  
 }

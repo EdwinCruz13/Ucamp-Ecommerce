@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { CreateProduct, ListProduct, ListByCategory, DetailProduct, UpdateProduct } = require("../../Controllers/Products/product.controller");
+const { CreateProduct, ListProduct, ListByCategory, ListByColor, DetailProduct, UpdateProduct } = require("../../Controllers/Products/product.controller");
 
 
 
@@ -15,6 +15,8 @@ router.get("/list", ListProduct);
 
 //get list of products by Category
 router.get("/ListByCategory/:_id", ListByCategory);
+
+router.get("/ListByColor/:_id", ListByColor);
 
 //detailing of a products
 router.get("/detail/:_id", DetailProduct);

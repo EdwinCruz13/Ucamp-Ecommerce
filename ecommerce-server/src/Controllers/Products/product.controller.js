@@ -3,9 +3,8 @@ const { MessageResponse } = require("../../Config/message_code");
 
 //import the model
 const { ProductModel } = require("../../Models/Products/product.models");
-const {
-  CategoryModel,
-} = require("../../Models/Products/product.category.models");
+const { CategoryModel} = require("../../Models/Products/product.category.models");
+const { ColorModel} = require("../../Models/Products/product.color.models");
 
 /**
  * Product Creation
@@ -137,6 +136,37 @@ const ListByCategory = async (req, resp) => {
   }
 };
 
+const ListByColor = async (req, resp) => {
+  try {
+    const { _id } = req.params;
+
+    let Color = await ColorModel.findById({ _id });
+    let ColorSchema = {
+      _id: Color._id,
+      Color: Color.Color,
+      Hexadecimal: Color.Hexadecimal,
+    };
+
+    //let Category = { _id: _id };
+
+    //list all the products
+    const products = await ProductModel.find({ Color: ColorSchema });
+
+    //preparing the object to send
+    let Message = new MessageResponse("", true, products);
+
+    //send information in json format
+    return resp.status(200).json(Message.GetMessage());
+  } catch (error) {
+    let Message = new MessageResponse(
+      "There is an error listing a product: " + error,
+      false,
+      null
+    );
+    return resp.status(500).json(Message.GetMessage());
+  }
+};
+
 /**
  * Detail a specific product by id
  * @param {*} req
@@ -233,6 +263,7 @@ module.exports = {
   CreateProduct,
   ListProduct,
   ListByCategory,
+  ListByColor,
   DetailProduct,
   UpdateProduct,
 };

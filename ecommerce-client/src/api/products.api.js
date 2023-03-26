@@ -32,6 +32,14 @@ export const getProductsByCategoryRequest = async (CategoryID) => {
   } catch (error) {}
 };
 
+export const getProductsByColorRequest = async (ColorID) => {
+  try {
+    return await axios.get(
+      `http://localhost:5000/api/products/ListByColor/${ColorID}`
+    );
+  } catch (error) {}
+};
+
 /**
  * Function that send a request in order
  * to create a product

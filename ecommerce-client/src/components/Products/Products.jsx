@@ -7,6 +7,7 @@ import { ProductItem } from "./ProductItem";
 //import product context
 import { ProductContext } from "../../context/ProductContext";
 import { CategoryContext } from "../../context/CategoryContext";
+import { ColorContext } from "../../context/ColorContext";
 
 /**
  * Component products
@@ -15,9 +16,10 @@ import { CategoryContext } from "../../context/CategoryContext";
  */
 export const Products = () => {
   const { products } = useContext(ProductContext);
-  const { LoadProduct, LoadProductByCategory } = useContext(ProductContext);
+  const { LoadProduct, LoadProductByCategory, LoadProductByColor } = useContext(ProductContext);
 
   const { Category } = useContext(CategoryContext);
+  const { Color } = useContext(ColorContext);
 
   //use this hook in order to download all the products
   //from API
@@ -26,11 +28,24 @@ export const Products = () => {
     LoadProduct();
   }, []);
 
+  useEffect(() => {
+    console.log(Color);
+
+    //load of product using a function from product context
+    LoadProductByColor(Color._id);
+  }, [Color]);
+
   //use this hook when the category states changes values
   useEffect(() => {
+    console.log(Category);
+
     //load of product using a function from product context
     LoadProductByCategory(Category._id);
   }, [Category]);
+
+
+
+
 
   return (
     <div className="products">
@@ -40,7 +55,7 @@ export const Products = () => {
       </section>
 
       <section className="items">
-        {products.map((product) => {
+      {products.map((product) => {
           return <ProductItem key={product._id} Product={product} />;
         })}
       </section>

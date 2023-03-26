@@ -10,7 +10,11 @@ export const ColorContext = createContext();
  */
 export const ColorContextProvider = ({ children }) => {
   const [colors, setColors] = useState([]);
-  const [color, setColor] = useState({});
+  const [Color, setColor] = useState({});
+
+  const onSelectColor = async (_item) => {
+    await setColor(_item);
+  };
 
   /**
    * Load all the colors
@@ -20,7 +24,7 @@ export const ColorContextProvider = ({ children }) => {
       const response = await getColorsRequest();
       const values = await response.data;
 
-      setColors(values);
+      setColors(values.data);
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +46,17 @@ export const ColorContextProvider = ({ children }) => {
   }
 
   return (
-    <ColorContext.Provider value={{ colors, setColors, color, setColor, GetColors, SaveColor }}>
+    <ColorContext.Provider
+      value={{
+        colors,
+        setColors,
+        Color,
+        setColor,
+        onSelectColor,
+        GetColors,
+        SaveColor,
+      }}
+    >
       {children}
     </ColorContext.Provider>
   );

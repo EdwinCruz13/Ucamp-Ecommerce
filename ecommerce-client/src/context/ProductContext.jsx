@@ -3,9 +3,12 @@ import { createContext, useState } from "react";
 import {
   getProductsRequest,
   getProductsByCategoryRequest,
+  getProductsByColorRequest,
   createProductsRequest,
   getProductbyID,
 } from "../api/products.api";
+
+
 
 /**
  * this context will be shared for all
@@ -48,12 +51,23 @@ export const ProductContextProvider = ({ children }) => {
     setProduct(values.data);
   }
 
+
   /**
    * find products by category
    */
   async function LoadProductByCategory(categoryID) {
     if (categoryID) {
       const response = await getProductsByCategoryRequest(categoryID);
+      const values = response.data;
+
+      //add the list of products as usestate
+      setProducts(values.data);
+    }
+  }
+
+  async function LoadProductByColor(colorID) {
+    if (colorID) {
+      const response = await getProductsByColorRequest(colorID);
       const values = response.data;
 
       //add the list of products as usestate
@@ -78,6 +92,7 @@ export const ProductContextProvider = ({ children }) => {
         LoadProduct,
         LoadProductByID,
         LoadProductByCategory,
+        LoadProductByColor,
         SaveProduct
 
       }}

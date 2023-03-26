@@ -2,23 +2,28 @@ import React, { useContext } from "react";
 import { useEffect } from "react";
 import "./Aside.css";
 
-
 //other components
 import { CategoryItem } from "./CategoryItem";
+import { ColorItem } from "./ColorItem";
 
 //import categories context
 import { CategoryContext } from "../../context/CategoryContext";
+import { ColorContext } from "../../context/ColorContext";
 import { ProductContext } from "../../context/ProductContext";
 
 export const Aside = ({ ClassName }) => {
   //import these context
   const { categories, GetCategories } = useContext(CategoryContext);
+  const { colors, color, GetColors } = useContext(ColorContext);
 
   //use this in order to upload all of products
   const { LoadProduct } = useContext(ProductContext);
 
   useEffect(() => {
     GetCategories();
+    GetColors();
+
+    console.log(colors);
     //console.table(categories);
   }, []);
 
@@ -37,23 +42,19 @@ export const Aside = ({ ClassName }) => {
       </ul>
 
       <hr />
-      <ul className="list">
-        <h3>By Sex</h3>
-        <li>
-          <a href="#">Men</a>
-        </li>
+      <ul className="list list-row">
+      <h3>By Color</h3>
+        <ul>
+        {colors.map((item) => {
+          return <ColorItem key={item._id} Color={item} />;
+        })}
 
-        <li>
-          <a href="#">Women</a>
-        </li>
-
-        <li>
-          <a href="#">Unisex</a>
-        </li>
+        
+        </ul>
       </ul>
 
       <hr />
-      <ul className="list">
+      {/* <ul className="list">
         <h3>By Age</h3>
         <li>
           <a href="#">Kids</a>
@@ -66,7 +67,7 @@ export const Aside = ({ ClassName }) => {
         <li>
           <a href="#">Teenagers</a>
         </li>
-      </ul>
+      </ul> */}
     </aside>
   );
 };
