@@ -17,6 +17,7 @@ const ProductsRouter = require("./Routes/Products/products.routes.js");
 const CategoryRouter = require("./Routes/Products/products.categories.routes");
 const ColorRouter = require("./Routes/Products/products.colors.routes");
 const UsersRouter = require("./Routes/Users/user.routes.js");
+const ShoppingCart = require("./Routes/ShoppingCart/carts.routes");
 
 // create a basic routes
 appServer.use("/api/products", ProductsRouter);

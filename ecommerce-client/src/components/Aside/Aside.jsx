@@ -29,12 +29,15 @@ export const Aside = ({ ClassName }) => {
 
   return (
     <aside className={ClassName}>
-      <ul className="list">
-        <h3>Type</h3>
-
+      <ul className="list"> 
+        <h3>Select all</h3>
         <li>
           <a onClick={() => LoadProduct()}>ALL</a>
         </li>
+      </ul>
+
+      <ul className="list">
+        <h3>Type</h3>
 
         {categories.map((item) => {
           return <CategoryItem key={item._id} Category={item} />;
@@ -43,13 +46,11 @@ export const Aside = ({ ClassName }) => {
 
       <hr />
       <ul className="list list-row">
-      <h3>By Color</h3>
+        <h3>By Color</h3>
         <ul>
-        {colors.map((item) => {
-          return <ColorItem key={item._id} Color={item} />;
-        })}
-
-        
+          {colors.map((item) => {
+            return <ColorItem key={item._id} Color={item} />;
+          })}
         </ul>
       </ul>
 
