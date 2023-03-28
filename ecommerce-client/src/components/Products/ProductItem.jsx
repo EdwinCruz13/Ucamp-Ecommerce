@@ -1,23 +1,26 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export const ProductItem = ({Product}) => {
-  let strLink = `/detail/${Product._id}`
+const { ShoppingCartContext } = require("../../context/ShoppingCartContext");
+const { UserContext } = require("../../context/UserContext");
+
+export const ProductItem = ({ Product }) => {
+  const { shoppingCart, setShoppingCart, AddCart } = useContext(ShoppingCartContext);
+  const { user } = useContext(UserContext);
+
+  let strLink = `/detail/${Product._id}`;
 
   return (
     <article className="item">
       <div className="img-container">
-        <img
-          src={Product.Url}
-          alt="Ecommerce"
-        />
+        <img src={Product.Url} alt="Ecommerce" />
         <div className="control-purchases control">
           <div className="control-opc">
             <Link to={strLink} relative="path">
               <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
             </Link>
 
-            <a href="#">
+            <a href="#" onClick={(e) => AddCart(user, Product)}>
               <i className="fa fa-shopping-cart" aria-hidden="true" />
             </a>
             <a href="#">

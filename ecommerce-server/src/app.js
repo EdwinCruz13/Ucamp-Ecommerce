@@ -24,6 +24,7 @@ appServer.use("/api/products", ProductsRouter);
 appServer.use("/api/products/categories", CategoryRouter);
 appServer.use("/api/products/colors", ColorRouter);
 appServer.use("/api/users", UsersRouter);
+appServer.use("/api/shoppingcart", ShoppingCart);
 
 
 

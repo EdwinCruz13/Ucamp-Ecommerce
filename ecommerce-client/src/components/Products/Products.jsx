@@ -18,29 +18,29 @@ export const Products = () => {
   const { products } = useContext(ProductContext);
   const { LoadProduct, LoadProductByCategory, LoadProductByColor } = useContext(ProductContext);
 
-  const { Category } = useContext(CategoryContext);
-  const { Color } = useContext(ColorContext);
+  const { Category, setCategory } = useContext(CategoryContext);
+  const { Color, setColor } = useContext(ColorContext);
 
   //use this hook in order to download all the products
   //from API
   useEffect(() => {
+    setCategory( null); 
+    setColor( null); 
     //load of product using a function from product context
     LoadProduct();
   }, []);
 
   useEffect(() => {
-    console.log(Color);
-
     //load of product using a function from product context
-    LoadProductByColor(Color._id);
+    if(Color)
+      LoadProductByColor(Color._id);
   }, [Color]);
 
   //use this hook when the category states changes values
   useEffect(() => {
-    console.log(Category);
-
     //load of product using a function from product context
-    LoadProductByCategory(Category._id);
+    if(Category)
+      LoadProductByCategory(Category._id);
   }, [Category]);
 
 

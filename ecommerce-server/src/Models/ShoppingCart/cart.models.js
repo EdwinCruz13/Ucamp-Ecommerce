@@ -9,11 +9,11 @@ const { UserSchema } = require("../Users/user.models");
  */
 const CartSchema = new mongoose.Schema(
   {
-    Customer: UserSchema,
-    Products: { ProductSchema },
+    Customer: { _id: { type: String }, Username: { type: String }, Email: { type: String }},
+    Products: [{_id: { type: String}, Name: { type: String}, Price: {type: Number}}],
   },
   { timeseries: true }
 );
 
-
-module.exports = mongoose.model("ShopingCart", CartSchema)
+const CartModel = mongoose.model("ShopingCart", CartSchema);
+module.exports = { CartModel };

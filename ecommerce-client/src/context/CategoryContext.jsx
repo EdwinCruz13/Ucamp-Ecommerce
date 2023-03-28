@@ -18,7 +18,8 @@ export const CategoryContextProvider = ({ children }) => {
    * @param {*} _item
    */
   const onSelectCategory = async (_item) => {
-    await setCategory(_item);
+    if(_item)
+      await setCategory(_item);
   };
 
   async function GetCategories() {

@@ -13,7 +13,8 @@ export const ColorContextProvider = ({ children }) => {
   const [Color, setColor] = useState({});
 
   const onSelectColor = async (_item) => {
-    await setColor(_item);
+    if(_item)
+      await setColor(_item);
   };
 
   /**

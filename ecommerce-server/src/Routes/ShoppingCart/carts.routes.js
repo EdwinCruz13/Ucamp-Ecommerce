@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { AddProduct } = require("../../Controllers/ShoppingCart/cart.controller")
+const { AddProduct, RemoveProduct } = require("../../Controllers/ShoppingCart/cart.controller")
 
 const router = Router();
 
@@ -8,6 +8,8 @@ const router = Router();
 ----------------------------------------------------*/
 //creating products routes
 router.post("/add", AddProduct);
+
+router.post("/remove", RemoveProduct);
 
 
 //export the router

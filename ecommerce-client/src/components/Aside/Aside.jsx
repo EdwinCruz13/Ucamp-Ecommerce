@@ -23,7 +23,6 @@ export const Aside = ({ ClassName }) => {
     GetCategories();
     GetColors();
 
-    console.log(colors);
     //console.table(categories);
   }, []);
 
