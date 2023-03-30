@@ -4,6 +4,7 @@ import Cookies from "universal-cookie";
 
 //import userContext
 import { UserContext } from "../../context/UserContext";
+import { ShoppingCartContext } from "../../context/ShoppingCartContext";
 
 import "./Navbar.css";
 
@@ -14,10 +15,16 @@ import "./Navbar.css";
 export const Navbar = () => {
   //get the user context saved
   const { user, authStatus, VerifyingToken } = useContext(UserContext);
+  const { itemsAdded, GetCountItems } = useContext(ShoppingCartContext);
 
   //check for any changes on the useState "user"
   useEffect(() => {
-    VerifyingToken();
+    async function init(){
+      await VerifyingToken();
+      await GetCountItems(user._id);
+    }
+
+    init();
   }, []);
 
   return (
@@ -64,7 +71,7 @@ export const Navbar = () => {
               <Link to="/ShoppingCart">
                 <i className="fa fa-shopping-cart" aria-hidden="true">
                   {" "}
-                  0
+                  { itemsAdded }
                 </i>
               </Link>
             </li>

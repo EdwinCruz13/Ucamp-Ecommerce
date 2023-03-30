@@ -16,15 +16,15 @@ for (let i = 1; i <= 6; i++) {
 }
 console.log(escalera);*/
 
-const Products= [{_id: 1, description: "1"}, {_id: 5, description: "5"}];
-const Cart = {
-  Products: [{_id: 1, description: "1", detail: "i am a detail" }, { _id: 2, description: "2", detail: "i am a detail"}, { _id: 3, description: "3", detail: "i am a detail" }, { _id: 4, description: "4", detail: "i am a detail" }],
-  Customer: { _id: 1, name: "leyo1"}
-};
+// const Products= [{_id: 1, description: "1"}, {_id: 5, description: "5"}];
+// const Cart = {
+//   Products: [{_id: 1, description: "1", detail: "i am a detail" }, { _id: 2, description: "2", detail: "i am a detail"}, { _id: 3, description: "3", detail: "i am a detail" }, { _id: 4, description: "4", detail: "i am a detail" }],
+//   Customer: { _id: 1, name: "leyo1"}
+// };
 
 
-const result = Cart.Products.filter((product) => { return Products.some((elemen) =>  { return elemen._id === product._id }) });
-console.log(result);
+// const result = Cart.Products.filter((product) => { return Products.some((elemen) =>  { return elemen._id === product._id }) });
+// console.log(result);
 
 
 

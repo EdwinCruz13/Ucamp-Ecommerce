@@ -18,6 +18,7 @@ import { ProductContextProvider } from "./context/ProductContext";
 import { ShoppingCartContextProvider } from "./context/ShoppingCartContext";
 import { CategoryContextProvider } from "./context/CategoryContext";
 import { ColorContextProvider } from "./context/ColorContext";
+import { ShoppingCart } from "./pages/Shopping/ShoppingCart";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/detail/:id" element={<Detailt />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/signin" element={<Signin />} />
+                <Route path="/shoppingcart" element={<ShoppingCart />} />
               </Routes>
             </ProductContextProvider>
           </ColorContextProvider>

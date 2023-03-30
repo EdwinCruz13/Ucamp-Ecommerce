@@ -6,6 +6,88 @@ const { ProductModel } = require("../../Models/Products/product.models");
 const { UserModel } = require("../../Models/Users/user.models");
 
 /**
+ * List of all the products added in the shopping cart
+ * @param {*} req 
+ * @param {*} resp 
+ * @returns 
+ */
+const ListProducts = async(req, resp) =>
+{
+  try {
+    const { CustomerID } = req.params ;
+    let cart = {};
+    
+
+    //load the products throught the customerID
+    let result = await (await CartModel.find()).filter((cart) => { return cart.Customer._id === CustomerID})
+    
+
+    //check if there is any item
+    if(result.length > 0){
+      cart = result[0];
+    }
+
+    else {
+      cart = null;
+    }
+
+
+    let Message = new MessageResponse("Items found.", true, cart);
+    return resp.status(200).json(Message.GetMessage());
+
+  } catch (error) {
+    let Message = new MessageResponse("There is an error listing the product from the shopping cart: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
+  }
+}
+
+
+/**
+ * method that allows to load the items from the shopping cart
+ * @param {*} req 
+ * @param {*} resp 
+ * @returns 
+ */
+const CountItem = async(req, resp) =>
+{
+  try {
+    const { _id } = req.params ;
+    let count = 0;
+
+    //load the products throught the customerID
+    let result = await (await CartModel.find()).filter((cart) => { return cart.Customer._id === _id})
+
+
+    //check if there is any item
+    if(result.length > 0){
+      let cart = result[0];
+      if(cart.Products){
+        count = cart.Products.length;
+      }
+
+      else {
+        count = 0;
+      }
+
+
+    }
+
+    else {
+      count = 0;
+    }
+
+
+    let Message = new MessageResponse("Items found.", true, count);
+    return resp.status(200).json(Message.GetMessage());
+
+  } catch (error) {
+    let Message = new MessageResponse("There is an error listing the product from the shopping cart: " + error, false, null);
+    return resp.status(500).json(Message.GetMessage());
+  }
+}
+
+
+/**
  * allow to add a new product
  * in case there is not a previous cart, create one,
  * if there is a registered cart then add the product into the shooping cart
@@ -21,6 +103,7 @@ const AddProduct = async (req, resp) => {
     //find if the user has a shopping cart registered
     let result = await (await CartModel.find()).filter((cart) => { return cart.Customer._id === Customer._id})
     
+
     //if there is an user, add an item
     if (result.length > 0) {
       previousCart = result[0];
@@ -147,4 +230,4 @@ const RemoveProduct = async (req, resp) => {
   }
 };
 
-module.exports = { AddProduct, RemoveProduct };
+module.exports = { ListProducts, CountItem, AddProduct, RemoveProduct };

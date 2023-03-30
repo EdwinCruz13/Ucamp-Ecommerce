@@ -14,9 +14,9 @@ body {
 .btn-group{
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  gap:2.25rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap:2.10rem;
 }
 
 .btn{
@@ -114,9 +114,11 @@ hr {
 .inputs-box{
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-around;
-  gap:1.5rem;
-  width: 120%;
+  gap:1.2rem;
+  width: 100%;
+
 }
 
 .inputs-box > div{
@@ -138,7 +140,7 @@ hr {
   padding:0.3rem;
 }
 
-.inputs-box > .form-control-inline div{
+.inputs-box > .form-control-inline div:not(.code-min){
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -146,8 +148,27 @@ hr {
   gap:0.5rem;
   align-items:center;
   width: 100%;
-  padding: 0 0.3rem;
+}
 
+.code-min{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap:0.5rem;
+
+  justify-content: left;
+  align-items:center;
+  width: 100%;
+}
+
+.code-min section{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap:0.5rem;
+
+  justify-content: flex-start;
+  align-items:flex-start;
 }
 
 label{

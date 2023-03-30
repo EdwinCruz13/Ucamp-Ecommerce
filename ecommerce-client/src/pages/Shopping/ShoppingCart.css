@@ -1,0 +1,249 @@
+.cart > ul li a,
+.cart > .navbar ul li a,
+.cart > .navbar ul li a,
+.cart > .navbar ul,
+.cart > ul li,
+.cart > .navbar .brand a,
+.cart .navbar .btn,
+.cart .usermenu {
+  color: #000;
+  text-shadow: none;
+}
+
+
+#ShoppingCart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 5rem;
+    width: 100%;
+    height: 100%;
+}
+
+
+.shoppingCart-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap:7rem;
+    justify-content: flex-start;
+}
+
+.shoppingCart-container .shopping-list,
+.shoppingCart-container .shopping-payment
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap:1rem;
+}
+
+.shoppingCart-container .shopping-list{ width: 40%;}
+.shoppingCart-container .shopping-payment{ width: 60%;}
+
+
+
+
+.shopping-items{
+    height:auto;
+    overflow-y: scroll;
+    margin-bottom: 2rem;
+    height: 420px;
+}
+
+
+.shopping-items::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.shopping-items::-webkit-scrollbar:vertical {
+    width:5px;
+}
+
+
+.shopping-items::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 1px solid #f1f2f3;
+    
+}
+
+.shopping-items::-webkit-scrollbar-track {
+    border-radius: 10px;  
+    cursor: pointer;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 3.2fr;
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    height:auto;
+    width: 95%;
+    margin-top: 1rem;
+    border-bottom: solid 0.5px #eeeeee;
+  }
+  
+  
+  .details {
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+  }
+  
+  .card .details .h1 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    padding: 0;
+    font-weight: bold;
+    color: #344055;
+  }
+  .card .detail-title{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.2rem;
+    width: 100%;
+  }
+
+  .card .details .detail-property {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block;
+    width: 220px;
+    padding: 0.2rem 0;
+
+    font-size: 14px;
+    font-weight: lighter;
+    color: #344055;
+    text-align: justify;
+    position: relative;
+    top:5px;
+  }
+
+  .card .image {
+    transition: all 0.3s ease-out;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  
+    display: inline-block;
+    
+  }
+  
+  .card .image {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+ 
+  .card .image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 25px;
+  }
+  .card .image .image:hover .info {
+    transform: translateX(0);
+  }
+  .card .image:hover img {
+    transition: all 0.3s ease-out;
+  }
+  .card .image:hover img {
+    transform: scale(1.1, 1.1);
+  }
+
+  .card .btn-group {
+    margin-top: 1.2rem;
+    gap: 0.2rem;
+    text-align: center;
+  }
+
+  .card .rounded-left{
+    border-radius: 25px 0 0 25px;
+    width: 40px;
+    height: 30px;
+    color:#fff;
+    text-align: center;
+    font-weight: lighter;
+  }
+
+  .card .rounded-right{
+    border-radius: 0 25px 25px 0;
+    width: 40px;
+    height: 30px;
+    color:#fff;
+    text-align: center;
+    font-weight: lighter;
+  }
+
+  .card span{
+    display: block;
+    width: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+
+
+  .invoice-ticket{
+    background-color: #EEEEEE;
+    padding: 1rem;
+  }
+  
+  .invoice-ticket table {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  
+  .invoice-ticket table tr{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  
+  .invoice-ticket table td, table th {
+    border: 1px solid transparent;
+    padding: 4px;
+    text-align: center;
+    color: #616161;
+  }
+  
+  .invoice-ticket table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .invoice-ticket table tr:hover {background-color: #ddd;}
+  
+  .invoice-ticket line{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-bottom: 0.01rem solid #797979;
+    margin-bottom: 0.5rem;
+  }
+  
+  .invoice-ticket table td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: transparent;
+    text-align: center;
+    color: #616161;
+  }

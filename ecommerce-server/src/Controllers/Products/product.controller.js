@@ -55,8 +55,6 @@ const CreateProduct = async (req, resp) => {
       Color,
     });
 
-    console.log(newProduct);
-
     //save product
     await newProduct.save();
 

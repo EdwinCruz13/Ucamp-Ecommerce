@@ -1,11 +1,15 @@
 const { Router } = require("express");
-const { AddProduct, RemoveProduct } = require("../../Controllers/ShoppingCart/cart.controller")
+const { ListProducts, CountItem,  AddProduct, RemoveProduct } = require("../../Controllers/ShoppingCart/cart.controller")
 
 const router = Router();
 
 /* ----------------------------------------------------
   defining routes
 ----------------------------------------------------*/
+router.get("/countItems/:_id", CountItem);
+
+router.get("/list/:CustomerID", ListProducts);
+
 //creating products routes
 router.post("/add", AddProduct);
 

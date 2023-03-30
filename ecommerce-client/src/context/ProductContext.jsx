@@ -8,8 +8,6 @@ import {
   getProductbyID,
 } from "../api/products.api";
 
-
-
 /**
  * this context will be shared for all
  * the app
@@ -40,7 +38,7 @@ export const ProductContextProvider = ({ children }) => {
 
   /**
    * load a product by ID
-   * @param {*} _id 
+   * @param {*} _id
    */
   async function LoadProductByID(_id) {
     const response = await getProductbyID(_id);
@@ -50,7 +48,6 @@ export const ProductContextProvider = ({ children }) => {
     //add the list of products as usestate
     setProduct(values.data);
   }
-
 
   /**
    * find products by category
@@ -76,10 +73,15 @@ export const ProductContextProvider = ({ children }) => {
   }
 
   async function SaveProduct(Product) {
+    if (Product) {
+      const response = await createProductsRequest(Product);
+      const values = await response.data;
+      return values;
+    }
 
-    const response = await createProductsRequest(Product);
-    const values = await response.data;
-    return values;
+    else{
+      alert("Please, login first");
+    }
   }
 
   return (
@@ -93,8 +95,7 @@ export const ProductContextProvider = ({ children }) => {
         LoadProductByID,
         LoadProductByCategory,
         LoadProductByColor,
-        SaveProduct
-
+        SaveProduct,
       }}
     >
       {children}
