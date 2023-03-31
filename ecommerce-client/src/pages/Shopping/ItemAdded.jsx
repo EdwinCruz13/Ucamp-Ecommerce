@@ -16,8 +16,6 @@ export const ItemAdded = ({ Product }) => {
             <b className="h1">fdfdf</b>
             <a href="#"><i className="fa fa-trash-o" aria-hidden="true"></i></a>
           </div>
-          <div className="detail-property">Category: </div>
-          <div className="detail-property">Color: </div>
           <div className="detail-property">Discount: 5%</div>
           <div className="detail-property">Tax: 15%</div>
           <div className="detail-property">Qty: 1 @ $ ""</div>
@@ -25,11 +23,11 @@ export const ItemAdded = ({ Product }) => {
             <b>$185</b>
           </div>
 
-          <div className="btn-group">
+          {/* <div className="btn-group">
             <button className="btn-primary rounded-left">-</button>
             <span>1</span>
             <button className="btn-primary rounded-right">+</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

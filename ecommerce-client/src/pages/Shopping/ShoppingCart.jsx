@@ -26,17 +26,19 @@ export const ShoppingCart = () => {
       <Navbar />
 
       <div id="ShoppingCart" className="container">
-        <Aside ClassName="main-menu" />
+        {/* <Aside ClassName="main-menu" /> */}
         <div className="shoppingCart-container">
           <div className="shopping-list">
-          <h2>Products</h2>
+            
             <div className="shopping-items">
-              
+            <h2>Products</h2>
               {cart.map((product) => {
                 return <ItemAdded key={product._id} Product={product} />;
               })}
             </div>
+          </div>
 
+          <div className="shopping-payment">
             <div className="invoice-ticket">
               <h3>In your bag</h3>
               <table>
@@ -59,9 +61,6 @@ export const ShoppingCart = () => {
                 </tr>
               </table>
             </div>
-          </div>
-
-          <div className="shopping-payment">
             <form>
               <div className="inputs-box">
                 <div className="form-control-inline">

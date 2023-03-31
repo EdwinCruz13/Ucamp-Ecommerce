@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap:7rem;
+    gap:3rem;
     justify-content: flex-start;
 }
 
@@ -34,14 +34,14 @@
 .shoppingCart-container .shopping-payment
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
     gap:1rem;
 }
 
-.shoppingCart-container .shopping-list{ width: 40%;}
-.shoppingCart-container .shopping-payment{ width: 60%;}
+.shoppingCart-container .shopping-list{ width: 30%;}
+.shoppingCart-container .shopping-payment{ width: 70%;}
+.shoppingCart-container .shopping-payment{ justify-content: flex-start; width: 100%;}
 
 
 
@@ -50,7 +50,7 @@
     height:auto;
     overflow-y: scroll;
     margin-bottom: 2rem;
-    height: 420px;
+    height: 620px;
 }
 
 
@@ -197,11 +197,16 @@
     font-weight: bold;
   }
 
-
+  .shopping-payment form{
+    background-color: #EEEEEE;
+    padding: 1rem;
+    width: 100%;
+  }
 
   .invoice-ticket{
     background-color: #EEEEEE;
     padding: 1rem;
+    width: 40%;
   }
   
   .invoice-ticket table {
