@@ -39,8 +39,8 @@
     gap:1rem;
 }
 
-.shoppingCart-container .shopping-list{ width: 30%;}
-.shoppingCart-container .shopping-payment{ width: 70%;}
+.shoppingCart-container .shopping-list{ width: 50%;}
+.shoppingCart-container .shopping-payment{ width: 50%;}
 .shoppingCart-container .shopping-payment{ justify-content: flex-start; width: 100%;}
 
 

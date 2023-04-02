@@ -27,7 +27,7 @@ export const UserContextProvider = ({ children }) => {
     //verify the token
     if (token) {
       const response = await getAuthorizationRequest(token);
-      console.log(token)
+      console.log(token);
 
       if (response) verification = await response.data;
       else {
@@ -44,16 +44,13 @@ export const UserContextProvider = ({ children }) => {
         setUser(verification.data);
         setAuthStatus(true);
       } else {
-        
         setUser(null);
         setAuthStatus(false);
         await cookies.remove("Token", { path: "/" });
       }
     } catch (error) {
-      
       console.log("Error verifying token: ", error);
     }
-
   }
 
   /**
@@ -61,15 +58,35 @@ export const UserContextProvider = ({ children }) => {
    * getting a new token and save it into a cookie variable
    * @param {*} _user
    */
-  async function Signup(_user) {
+  async function SignupSave(_user) {
     try {
       const response = await postSigupRequest(_user);
       const values = await response.data;
+      
+      
 
-      //create a cookie
+      //define the user useSate
+      if (values.code === true) {
+        await setUser({
+          _id: values.data._id,
+          Email: values.data.Email,
+          Username: values.data.Username,
+        });
+
+        alert(values.message);
+      }
+      else{
+        alert(values.message);
+      }
+
+      
+
+      //create the cookie
       const cookies = new Cookies();
-      await cookies.set("Token", values.data.Token, { path: "/" });
-      setAuthStatus(true);
+      cookies.set("Token", values.data.Token, { path: "/" });
+
+      //return message response
+      return { message: values.message, status: values.code };
     } catch (error) {
       console.log(error);
     }
@@ -120,7 +137,7 @@ export const UserContextProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, authStatus, Signup, Signin, Logout, VerifyingToken }}
+      value={{ user, authStatus, SignupSave, Signin, Logout, VerifyingToken }}
     >
       {children}
     </UserContext.Provider>

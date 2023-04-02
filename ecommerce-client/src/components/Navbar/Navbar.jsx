@@ -14,7 +14,7 @@ import "./Navbar.css";
 
 export const Navbar = () => {
   //get the user context saved
-  const { user, authStatus, VerifyingToken } = useContext(UserContext);
+  const { user, authStatus, Logout, VerifyingToken } = useContext(UserContext);
   const { itemsAdded, GetCountItems } = useContext(ShoppingCartContext);
 
   //check for any changes on the useState "user"
@@ -95,6 +95,10 @@ export const Navbar = () => {
                     <li className="dropdown-item">
                       <Link className="dropdown-link">Invoices Management</Link>
                     </li>
+
+                    <li className="dropdown-item">
+                      <Link className="dropdown-link" onClick={Logout}>Logout</Link>
+                    </li>
                   </ul>
               </li>
             ) : (
@@ -150,6 +154,10 @@ export const Navbar = () => {
                     </li>
                     <li className="dropdown-item">
                       <Link className="dropdown-link">Invoices Management</Link>
+                    </li>
+
+                    <li className="dropdown-item">
+                      <Link className="dropdown-link" onClick={Logout}>Logout</Link>
                     </li>
                   </ul>
               </li>

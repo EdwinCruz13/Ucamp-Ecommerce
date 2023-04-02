@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext";
 import "../Signin.css";
 
 export const Signup = () => {
+  const { SignupSave} = useContext(UserContext);
   const [formData, setFormData] = useState({ Email: "", Username: "", Password: ""});
+  let navigate = useNavigate();
   
   //create a handlesubmit in order to catch the datas from the form
   const handleChange = (event) => {
@@ -12,11 +15,23 @@ export const Signup = () => {
     //set formdata with the value
     setFormData({ ...formData, [event.target.name]: event.target.value });
 
-    console.log(formData);
+    //console.log(formData);
   };
 
-  const handlesubmit = (event) => {
+  const handlesubmit = async(event) => {
+    event.preventDefault();
+     //set a token
+     const response = await SignupSave(formData);
 
+     if (response.status) 
+     navigate("/home");
+ 
+       //redirect to home
+       
+    //  } else {
+    //    console.log(response);
+    //    alert("There are some problems to logging you");
+    //  }
   }
 
   return (
@@ -47,27 +62,33 @@ export const Signup = () => {
               <div>
                 <input
                   type="email"
+                  name="Email"
                   id="EmailInput"
                   className="form-control"
                   placeholder="Email"
+                  onChange={handleChange}
                 />
               </div>
 
               <div>
                 <input
                   type="text"
+                  name="Username"
                   id="UsernameInput"
                   className="form-control"
                   placeholder="Username"
+                  onChange={handleChange}
                 />
               </div>
 
               <div>
                 <input
                   type="password"
+                  name="Password"
                   id="PasswordInput"
                   className="form-control"
                   placeholder="Password"
+                  onChange={handleChange}
                 />
               </div>
 
@@ -80,7 +101,7 @@ export const Signup = () => {
                 />
               </div>
 
-              <button className="btn btn-primary">Sign Up</button>
+              <button type="submit" className="btn btn-primary">Sign Up</button>
             </div>
           </form>
         </section>

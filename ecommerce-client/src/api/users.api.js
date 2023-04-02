@@ -28,7 +28,9 @@ export const postSigupRequest = async (User) => {
         "Content-Type": "application/json",
       },
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 /**

@@ -2,25 +2,27 @@ import React from "react";
 
 export const ItemAdded = ({ Product }) => {
   return (
+    
     <>
-      <div data-id="{Product._id}" className="card">
+    {console.table(Product)}
+      <div data-id={Product._id} className="card">
         <div className="image">
           <img
-            src="https://github.com/EdwinCruz13/Ucamp-Restaurant/raw/main/structure/e1.png?raw=true"
+            src={Product.Url}
             alt=""
           />
         </div>
 
         <div className="details">
           <div className="detail-title">
-            <b className="h1">fdfdf</b>
+            <b className="h1">{Product.Name}</b>
             <a href="#"><i className="fa fa-trash-o" aria-hidden="true"></i></a>
           </div>
-          <div className="detail-property">Discount: 5%</div>
-          <div className="detail-property">Tax: 15%</div>
-          <div className="detail-property">Qty: 1 @ $ ""</div>
+          <div className="detail-property">Discount: {Product.Discount} %</div>
+          <div className="detail-property">Tax: {Product.Tax} %</div>
+          <div className="detail-property">Qty: 1 - $ {Product.Price}</div>
           <div className="detail-property">
-            <b>$185</b>
+            <b>$ {Product.Price}</b>
           </div>
 
           {/* <div className="btn-group">

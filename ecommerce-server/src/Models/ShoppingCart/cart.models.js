@@ -9,8 +9,22 @@ const { UserSchema } = require("../Users/user.models");
  */
 const CartSchema = new mongoose.Schema(
   {
-    Customer: { _id: { type: String }, Username: { type: String }, Email: { type: String }},
-    Products: [{_id: { type: String}, Name: { type: String}, Price: {type: Number}}],
+    Customer: {
+      _id: { type: String },
+      Username: { type: String },
+      Email: { type: String },
+    },
+    Products: [
+      {
+        _id: { type: String },
+        Name: { type: String },
+        Price: { type: Number },
+        Url: { type: String },
+        Discount: { type: Number },
+        Tax: { type: Number },
+        Quantity: { type: Number}
+      },
+    ],
   },
   { timeseries: true }
 );

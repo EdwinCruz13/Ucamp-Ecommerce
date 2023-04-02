@@ -15,26 +15,28 @@ const SigupUser = async (req, resp) => {
   try {
     //destructuring the object
     const { Email, Password, Username } = req.body;
+    
 
     //validate the user
     if(!(Email && Password && Username) ){
       let message = new MessageResponse("All inputs are required", false, null)
-      return resp.status(400).json(message.GetMessage());
+      return resp.status(200).json(message.GetMessage());
     }
 
 
     //check an existed user
     if(await UserModel.findOne({Email}))
     {
+      
       let message = new MessageResponse(Email + " is already registered", false, null)
-      return resp.status(400).json(message.GetMessage());
+      return resp.status(200).json(message.GetMessage());
     }
 
     //check an existed user
     if(await UserModel.findOne({Username}))
     {
       let message = new MessageResponse(Username + " is already registered", false, null)
-      return resp.status(400).json(message.GetMessage());
+      return resp.status(200).json(message.GetMessage());
     }
 
     //creating a new user
@@ -66,7 +68,7 @@ const SigupUser = async (req, resp) => {
     return resp.status(201).json(message.GetMessage());
   } catch (error) {
     let message = new MessageResponse("There is an error: " + error, false, null)
-    return resp.status(400).json(message.GetMessage());
+    return resp.status(500).json(message.GetMessage());
   }
 };
 
