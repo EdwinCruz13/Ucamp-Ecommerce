@@ -18,6 +18,7 @@ const CategoryRouter = require("./Routes/Products/products.categories.routes");
 const ColorRouter = require("./Routes/Products/products.colors.routes");
 const UsersRouter = require("./Routes/Users/user.routes.js");
 const ShoppingCart = require("./Routes/ShoppingCart/carts.routes");
+const InvoicesRouters = require("./Routes/Invoices/invoices.routes.js");
 
 // create a basic routes
 appServer.use("/api/products", ProductsRouter);
@@ -25,6 +26,7 @@ appServer.use("/api/products/categories", CategoryRouter);
 appServer.use("/api/products/colors", ColorRouter);
 appServer.use("/api/users", UsersRouter);
 appServer.use("/api/shoppingcart", ShoppingCart);
+appServer.use("/api/invoices", InvoicesRouters)
 
 
 

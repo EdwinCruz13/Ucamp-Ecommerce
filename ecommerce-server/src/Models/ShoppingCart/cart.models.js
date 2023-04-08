@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 //get the product schema
-const { ProductSchema } = require("../Products/product.models");
-const { UserSchema } = require("../Users/user.models");
+const { ProductSchema } = require('../Products/product.models')
+const { UserSchema } = require('../Users/user.models')
 
 /**
  * creating a cart schema
@@ -21,13 +21,18 @@ const CartSchema = new mongoose.Schema(
         Price: { type: Number },
         Url: { type: String },
         Discount: { type: Number },
-        Tax: { type: Number },
-        Quantity: { type: Number}
-      },
-    ],
+        Quantity: { type: Number },
+        Total: {
+          type: Number,
+          default: function () {
+            return (this.Price - (this.Price * (this.Discount / 100))).toFixed(2)
+          }
+        }
+      }
+    ]
   },
-  { timeseries: true }
-);
+  { timeseries: true },
+)
 
-const CartModel = mongoose.model("ShopingCart", CartSchema);
-module.exports = { CartModel };
+const CartModel = mongoose.model('ShoppingCart', CartSchema)
+module.exports = { CartModel, CartSchema }

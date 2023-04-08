@@ -15,17 +15,16 @@ import "./Navbar.css";
 export const Navbar = () => {
   //get the user context saved
   const { user, authStatus, Logout, VerifyingToken } = useContext(UserContext);
-  const { itemsAdded, GetCountItems } = useContext(ShoppingCartContext);
+  const { itemsAdded } = useContext(ShoppingCartContext);
 
   //check for any changes on the useState "user"
   useEffect(() => {
     async function init(){
-      await VerifyingToken();
-      await GetCountItems(user._id);
+      await VerifyingToken(); 
     }
 
-    init();
-  }, []);
+    init(); 
+  }, []); 
 
   return (
     <>

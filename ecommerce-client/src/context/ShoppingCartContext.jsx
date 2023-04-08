@@ -1,9 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   getShoppingCart,
   getCountFromShoppingCart,
   postAddItemRequest,
+  postRemoveItemRequest
 } from "../api/shoppingcart.api";
+
+import { UserContext } from "../context/UserContext";
 
 /**
  * create a context
@@ -11,34 +15,27 @@ import {
 export const ShoppingCartContext = createContext();
 
 export const ShoppingCartContextProvider = ({ children }) => {
-  const [shoppingCart, setShoppingCart] = useState({});
+  const {user, VerifyingToken} = useContext(UserContext)
+
   const [cart, setCart] = useState([{}]);
+  const [products, setproducts] = useState([{}]);
   const [itemsAdded, setItemsAdded] = useState(0);
 
   useEffect(() => {
-    async function Adding() {
-      if (shoppingCart.Customer) {
-        const response = await postAddItemRequest(shoppingCart);
-        const values = response.data;
-
-        alert(values.message);
-      }
-    }
-    Adding();
-  }, [shoppingCart]);
-
-  useEffect(() => {
-    setItemsAdded(0);
-    setCart([{}]);
+    GetItemmAdded()
   }, []);
 
-  async function GetItemmAdded(CustomerID) {
+  
+
+  async function GetItemmAdded() {
     try {
-      const response = await getShoppingCart(CustomerID);
+      const response = await getShoppingCart(user._id);
       const values = response.data;
 
       if (values.data) {
-        setCart(values.data.Products);
+        setCart(values.data);
+        setproducts(values.data.Products)
+        GetCountItems();
       } else {
         setCart([{}]);
       }
@@ -49,13 +46,16 @@ export const ShoppingCartContextProvider = ({ children }) => {
     }
   }
 
-  async function GetCountItems(CustomerID) {
+  async function GetCountItems() {
     try {
-      const response = await getCountFromShoppingCart(CustomerID);
-      const values = response.data;
+      const response = await getCountFromShoppingCart(user._id);
+      const values = await (response.data) ? response.data : null; 
 
       if (values.data) setItemsAdded(values.data);
       else setItemsAdded(0);
+
+      
+
     } catch (error) {
       setItemsAdded(0);
     }
@@ -66,12 +66,41 @@ export const ShoppingCartContextProvider = ({ children }) => {
    * @param {*} _customer
    * @param {*} _products
    */
-  async function AddCart(_customer, _products) {
+  async function AddCart(item) {
     try {
-      await setShoppingCart(() => ({
-        Customer: _customer,
-        Products: [_products],
-      }));
+      let _cart = { Customer: user, Products: [item] }
+      
+
+      const response = await postAddItemRequest(_cart);
+      const values = response.data;
+
+      GetItemmAdded();
+      alert(values.message); 
+
+      //   return values;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function RemoveItem(item) {
+    try {
+      //find the product to remove
+      const newItems = await cart.filter((product) => {
+          return product._id === item._id
+      });
+
+      let _cart = {
+        Customer: user,
+        Products: newItems
+      }
+
+      
+      const response = await postRemoveItemRequest(_cart);
+      const values = response.data;
+
+      GetItemmAdded();
+      alert(values.message)
 
       //   return values;
     } catch (error) {
@@ -82,14 +111,14 @@ export const ShoppingCartContextProvider = ({ children }) => {
   return (
     <ShoppingCartContext.Provider
       value={{
-        shoppingCart,
-        setShoppingCart,
         itemsAdded,
         cart,
+        products,
 
         GetItemmAdded,
         GetCountItems,
         AddCart,
+        RemoveItem
       }}
     >
       {children}

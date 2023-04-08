@@ -4,12 +4,14 @@ import "./Home.css";
 
 //import the navbar in whole page sections
 import { Navbar } from "../../components/Navbar/Navbar";
+import { PaypalButton } from "../../components/PaypalButton";
 
 export const Home = () => {
   return (
     <>
       <section id="container">
         <Navbar />
+        
 
         <div id="Home" className="container">
           <section id="home-header">
@@ -25,9 +27,12 @@ export const Home = () => {
                 View Collection{" "}
                 <i className="fa fa-chevron-circle-right" aria-hidden="true"></i>
               </button>
+              
             </article>
           </section>
         </div>
+
+        
       </section>
     </>
   );

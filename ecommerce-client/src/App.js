@@ -18,6 +18,7 @@ import { ProductContextProvider } from "./context/ProductContext";
 import { ShoppingCartContextProvider } from "./context/ShoppingCartContext";
 import { CategoryContextProvider } from "./context/CategoryContext";
 import { ColorContextProvider } from "./context/ColorContext";
+import { InvoiceContextProvider } from "./context/InvoiceContext";
 import { ShoppingCart } from "./pages/Shopping/ShoppingCart";
 
 function App() {
@@ -27,17 +28,19 @@ function App() {
         <CategoryContextProvider>
           <ColorContextProvider>
             <ProductContextProvider>
-              <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/warehouse" element={<Warehouse />} />
-                <Route path="/product" element={<ProductForm />} />
-                <Route path="/color" element={<ColorForm />} />
-                <Route path="/detail/:id" element={<Detailt />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/signin" element={<Signin />} />
-                <Route path="/shoppingcart" element={<ShoppingCart />} />
-              </Routes>
+              <InvoiceContextProvider>
+                <Routes>
+                  <Route exact path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/warehouse" element={<Warehouse />} />
+                  <Route path="/product" element={<ProductForm />} />
+                  <Route path="/color" element={<ColorForm />} />
+                  <Route path="/detail/:id" element={<Detailt />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/signin" element={<Signin />} />
+                  <Route path="/shoppingcart" element={<ShoppingCart />} />
+                </Routes>
+              </InvoiceContextProvider>
             </ProductContextProvider>
           </ColorContextProvider>
         </CategoryContextProvider>

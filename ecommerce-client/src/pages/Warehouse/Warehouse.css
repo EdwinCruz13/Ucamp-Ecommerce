@@ -168,6 +168,10 @@
   color: #e65100;
 }
 
+.price-item s {
+  text-decoration: line-through;
+}
+
 @media (min-width: 768px) and (max-width: 1282px) {
 }
 

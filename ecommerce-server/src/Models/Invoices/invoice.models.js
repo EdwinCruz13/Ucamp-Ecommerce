@@ -1,15 +1,21 @@
 const mongoose = require("mongoose"); 
 
-const { UserSchema } = require("../Users/user.models");
+const { CartSchema } = require("../ShoppingCart/cart.models");
+const { InvoiceItems_Schema } = require("./invoice.item.models");
 
 //create a new schem
 const InvoiceSchema = new mongoose.Schema({
-    InvoiceID: { type: String, require: true, trim: true },
-    Customer: UserSchema,
-    Transfer: { type: Boolean, require: true },
-    Comments: { type: String, require: false, trim: true, lowercase: true},
-    TotalAmount: { type: Number, require: true},
-    DateAt : { type: Date,  require: true, default: Date.Now },
+    Customer: {
+        _id: {type: String, require: true},
+        Email: { type: String, require: true},
+        Username: { type: String, require: true}
+    },
+    Tax: {type: Number, require: true},
+    Products: [InvoiceItems_Schema], 
+    TotalToPay: { type: Number, require: true},
+
+    //save a copy
+    Cart: CartSchema
 
 
 }, { timestamps: true });

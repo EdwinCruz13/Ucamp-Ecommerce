@@ -14,7 +14,7 @@
 #ShoppingCart {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-start;
     gap: 5rem;
     width: 100%;
@@ -28,22 +28,28 @@
     flex-wrap: nowrap;
     gap:3rem;
     justify-content: flex-start;
+    width: 100%;
 }
 
-.shoppingCart-container .shopping-list,
+.shoppingCart-container .shopping-list
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    gap:1rem;
+}
+
 .shoppingCart-container .shopping-payment
 {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: space-evenly;
     gap:1rem;
+
+    width: 100%;
 }
-
-.shoppingCart-container .shopping-list{ width: 50%;}
-.shoppingCart-container .shopping-payment{ width: 50%;}
-.shoppingCart-container .shopping-payment{ justify-content: flex-start; width: 100%;}
-
-
 
 
 .shopping-items{
@@ -77,7 +83,7 @@
 
 .card {
     display: grid;
-    grid-template-columns: 1fr 3.2fr;
+    grid-template-columns: 0.5fr 6fr;
     background: rgba(255, 255, 255, 0.9);
     text-align: center;
     border-radius: 5px;
@@ -130,6 +136,10 @@
     text-align: justify;
     position: relative;
     top:5px;
+  }
+
+  .detail-property s{
+    text-decoration:line-through #344055;   
   }
 
   .card .image {
@@ -206,7 +216,7 @@
   .invoice-ticket{
     background-color: #EEEEEE;
     padding: 1rem;
-    width: 40%;
+    width: 25%;
   }
   
   .invoice-ticket table {

@@ -49,7 +49,6 @@ const Auth_Authorization = async(req, resp, next) => {
     let _user = { _id: user.user_id, Email: user.Email, Username: user.Username}
 
     req.user = _user;
-    console.log(_user);
 
 
     // pass down functionality to the endpoint

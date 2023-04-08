@@ -164,11 +164,15 @@ const AddProduct = async (req, resp) => {
 const RemoveProduct = async (req, resp) => {
   try {
     let previousCart
-    const { Customer, Products } = req.body
+    const { Customer, Products } = req.body;
+   
 
-    previousCart = await CartModel.findOne({ Customer: Customer })
+    let list = await CartModel.find()
+    let filtered = list.filter((item) => {return item.Customer._id === Customer._id})
+    
+    if (filtered) {
+      previousCart = filtered[0];
 
-    if (previousCart) {
       //find if there is the item from the cart in order to remove
       const hasAllElems = await previousCart.Products.filter((product) => {
         return Products.some((element) => {
@@ -206,6 +210,8 @@ const RemoveProduct = async (req, resp) => {
       false,
       null,
     )
+
+    console.log(error)
     return resp.status(500).json(Message.GetMessage())
   }
 }
