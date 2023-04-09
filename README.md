@@ -26,33 +26,62 @@ Puedes Ver el sitio <a href="#">🔗 aqui</a>
     <br>
     Node.js es un entorno de tiempo de ejecución de JavaScript de back-end, se ejecuta en el motor de JavaScript V8 y ejecuta el código de JavaScript fuera de un navegador web.
 </p>
+<br><br>
+<img src="https://github.com/EdwinCruz13/Ucamp-Ecommerce/blob/main/othersFile/images/React-App.png?raw=true" />
 </details>
 
 
 <details open="">
   <summary><h2>🚀 Estructura del proyecto</h2></summary>
 <p dir="auto"> 
-Este sistema de restaurante fue creado en <b>react.js</b>, la estructura del proyecto consiste:
+Este sistema de Ecommerce fue creado en <b>react.js</b>, la estructura del proyecto consiste:
 Carpetas "public" que contiene archivos que será usado como la visualización principal.
-Carpetas "src" que contiene archivos .jsx que es la manera de como esta creado el proyecto.
+Carpetas "src" que contiene archivos .jsx en referencia a virtual DOM de react.
 Archivo "package.json" de como esta configurado el proyecto.
 
 Dentro de src encontraremos
 
-- [x] 📁 La carpeta <b>resources</b> contiene archivos de imagenes usados en la página web.
+- [x] 📁 La carpeta <b>api</b> contiene archivos de solicitudes de webservice en nodejs.
   <br>
-- [x] 📁 La carpeta <b>components</b> jsx con funcionalidad a nivel de componenten.
+- [x] 📁 La carpeta <b>components</b> jsx con funcionalidad a nivel de componente.
   <br>
-- [x] 📁 La carpeta <b>icons</b> contiene imagenes usada en el proyecto.
+- [x] 📁 La carpeta <b>context</b> contiene archivos de contexto que nos permite compartir valores y funcionalidades a través del árbol de componentes sin necesidad de usar props.
+  <br>
+- [x] 📁 La carpeta <b>images</b> contiene imagenes usada en el proyecto.
   <br>
 - [x] 📁 La carpeta <b>pages</b> que contiene archivos jsx como interfaz y redireccionamiento.
   <br>
-- [x] 🗎  El archivo <b>app.js</b> es el componente padre.
+- [x] 🗎  El archivo <b>app.js</b> es el componente padre donde se desplegará los contextos de react y páginas.
+ <br>
+- [x] 🗎  El archivo <b>app.css</b> archivo css para modulos principales.
   <br>
 - [x] 🗎  El archivo <b>index.js</b> es el archivo maestro.
-  <br><br>
-  <img src="" />
-            
+  <br><br> <br><br>  
+
+Ademas, el sistema de Ecommerce fue creado como API REST en <b>Nodejs</b>, la estructura del proyecto consiste:
+En una carpetas "src" que contiene todas las funcionalidades del proyecto de API Rest.
+El patrón de diseño es en <b>MVC</b> que permite implementar interfaces de usuario, datos y lógica de control. 
+Enfatiza una separación entre la lógica de negocios y su visualización en formato <b>JSON</b>.
+Archivo "package.json" de como esta configurado el proyecto.  
+
+Dentro de src encontraremos
+
+- [x] 📁 La carpeta <b>Config</b> contiene archivos de funcionalidades de bases de datos en <b>Mongo</b> y alertas.
+  <br>
+- [x] 📁 La carpeta <b>Middleware</b>contiene archivos de carga previas como lógica de intercambio.
+  <br>
+- [x] 📁 La carpeta <b>Models</b> contiene archivos de modelo de bases de datos usando el ORM <b>mongoose</b>.
+  <br>
+- [x] 📁 La carpeta <b>Controllers</b> contiene archivos de lógica de negocio, ademas de funcionar de intermediario entre la vista y model en el patron <b>MVC</b>.
+  <br>
+- [x] 📁 La carpeta <b>Routes</b> contiene archivos de routeadores que recibe la solicitud por parte del cliente, este módulo sera la vista en el patrón <b>MVC</b>.
+  <br>
+- [x] 🗎  El archivo <b>app.js</b> es el componente padre donde se inicializará las configuraciones de enlaces en el servidor web <b>ExpressJS</b>.
+  <br>
+- [x] 🗎  El archivo <b>index.js</b> es el archivo maestro que ejecutará el servidor web <b>ExpressJS</b>.
+  <br><br> <br><br>  
+
+
 </p>
 </details>
 
@@ -62,8 +91,8 @@ Dentro de src encontraremos
   Ver el proyecto <a href="#">🔗 aqui</a>
   <br>
   <ul>
-    <li><a href="#">1 - Versión desktop.</a></li>
-    <li><a href="#"> 2 - Versión mobile.</a></li>
+    <li><a href="https://github.com/EdwinCruz13/Ucamp-Ecommerce/blob/main/othersFile/images/React-App-Collections.png?raw=true">1 - Versión desktop.</a></li>
+    <li><a href="https://github.com/EdwinCruz13/Ucamp-Ecommerce/blob/main/othersFile/images/React-App-Collections-mobil.png?raw=true"> 2 - Versión mobile.</a></li>
   </ul>        
 </p>
 </details>
