@@ -15,12 +15,13 @@ import "./Navbar.css";
 export const Navbar = () => {
   //get the user context saved
   const { user, authStatus, Logout, VerifyingToken } = useContext(UserContext);
-  const { itemsAdded } = useContext(ShoppingCartContext);
+  const { itemsAdded, GetItemmAdded } = useContext(ShoppingCartContext);
 
   //check for any changes on the useState "user"
   useEffect(() => {
     async function init(){
       await VerifyingToken(); 
+      await GetItemmAdded();
     }
 
     init(); 
@@ -92,7 +93,7 @@ export const Navbar = () => {
                       <Link className="dropdown-link">Users Management</Link>
                     </li>
                     <li className="dropdown-item">
-                      <Link className="dropdown-link">Invoices Management</Link>
+                      <Link to="/invoices" className="dropdown-link">Invoices Management</Link>
                     </li>
 
                     <li className="dropdown-item">

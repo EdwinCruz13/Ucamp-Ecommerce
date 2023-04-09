@@ -1,4 +1,4 @@
-import React from "react";
+import {React} from "react";
 import { Routes, Route } from "react-router-dom";
 
 //defining routes
@@ -9,6 +9,7 @@ import { ColorForm } from "./pages/Product/ColorForm";
 import { Detailt } from "./pages/Details/Detail";
 import { Signup } from "./pages/User/Signup/Signup";
 import { Signin } from "./pages/User/Signin/Signin";
+import { Invoices } from "./pages/Invoice/Invoices";
 
 import "./App.css";
 
@@ -20,6 +21,9 @@ import { CategoryContextProvider } from "./context/CategoryContext";
 import { ColorContextProvider } from "./context/ColorContext";
 import { InvoiceContextProvider } from "./context/InvoiceContext";
 import { ShoppingCart } from "./pages/Shopping/ShoppingCart";
+
+
+
 
 function App() {
   return (
@@ -39,6 +43,7 @@ function App() {
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/signin" element={<Signin />} />
                   <Route path="/shoppingcart" element={<ShoppingCart />} />
+                  <Route path="/invoices" element={<Invoices />} />
                 </Routes>
               </InvoiceContextProvider>
             </ProductContextProvider>

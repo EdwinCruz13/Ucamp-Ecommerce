@@ -86,7 +86,7 @@ export const ShoppingCartContextProvider = ({ children }) => {
   async function RemoveItem(item) {
     try {
       //find the product to remove
-      const newItems = await cart.filter((product) => {
+      const newItems = await cart.Products.filter((product) => {
           return product._id === item._id
       });
 

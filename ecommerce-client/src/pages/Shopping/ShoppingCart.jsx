@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 
 //other componentes
 import { Navbar } from "../../components/Navbar/Navbar";
-import { ItemAdded } from "./ItemAdded";
+import { ProductCard } from "../../components/Products/ProductCard";
 import { PaypalButton } from "../../components/PaypalButton";
 
 //load context
@@ -63,7 +63,7 @@ export const ShoppingCart = () => {
               <div className="shopping-items">
                 <h2>Products</h2>
                 {products.map((product) => {
-                  return <ItemAdded key={product._id} Product={product} />;
+                  return <ProductCard key={product._id} Product={product} Remove = { true } />;
                 })}
               </div>
 

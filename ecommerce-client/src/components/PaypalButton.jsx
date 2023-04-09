@@ -16,7 +16,7 @@ export const PaypalButton = ({ value, purchases }) => {
   }
 
   useEffect(()=>{
-    console.log('adding the cart n' + purchases._id)
+    //console.log('adding the cart n' + purchases._id)
   }, [])
 
   return (
