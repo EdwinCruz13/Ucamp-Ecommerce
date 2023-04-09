@@ -1,4 +1,5 @@
 import axios from "axios";
+import env from "react-dotenv";
 
 /**
  * funtion that allow to signin
@@ -8,7 +9,7 @@ import axios from "axios";
  */
 export const postLoginRequest = async (User) => {
   try {
-    return await axios.post("http://localhost:5000/api/users/login", User, {
+    return await axios.post( env.URLBASE + "users/login", User, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -23,7 +24,7 @@ export const postLoginRequest = async (User) => {
  */
 export const postSigupRequest = async (User) => {
   try {
-    return await axios.post("http://localhost:5000/api/users/signup", User, {
+    return await axios.post(env.URLBASE + "users/signup", User, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -42,7 +43,7 @@ export const getAuthorizationRequest = async (Token) => {
   try {
     const configuration = {
       method: "get",
-      url: "http://localhost:5000/api/users/auth-access",
+      url: env.URLBASE + "users/auth-access",
       headers: {
         Authorization: `Bearer ${Token}`,
       },

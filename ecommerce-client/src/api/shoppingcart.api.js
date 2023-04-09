@@ -1,9 +1,11 @@
 import axios from "axios";
+import env from "react-dotenv";
+
 
 export const getShoppingCart = async (CustomerID) => {
   try {
     return await axios.get(
-      `http://localhost:5000/api/shoppingcart/list/${CustomerID}`
+      `${env.URLBASE}shoppingcart/list/${CustomerID}`
     );
   } catch (error) {
     console.log(error);
@@ -13,7 +15,7 @@ export const getShoppingCart = async (CustomerID) => {
 export const getCountFromShoppingCart = async (CustomerID) => {
   try {
     return await axios.get(
-      `http://localhost:5000/api/shoppingcart/countItems/${CustomerID}`
+      `${env.URLBASE}shoppingcart/countItems/${CustomerID}`
     );
   } catch (error) {
     console.log(error);
@@ -26,7 +28,7 @@ export const getCountFromShoppingCart = async (CustomerID) => {
 export const postAddItemRequest = async (shoppingCart) => {
   try {
     return await axios.post(
-      "http://localhost:5000/api/shoppingcart/add",
+      env.URLBASE + "shoppingcart/add",
       shoppingCart,
       { headers: { "Content-Type": "application/json" } }
     );
@@ -38,7 +40,7 @@ export const postAddItemRequest = async (shoppingCart) => {
 export const postRemoveItemRequest = async (shoppingCart) => {
   try {
     return await axios.post(
-      "http://localhost:5000/api/shoppingcart/remove",
+      env.URLBASE + "shoppingcart/remove",
       shoppingCart,
       { headers: { "Content-Type": "application/json" } }
     );

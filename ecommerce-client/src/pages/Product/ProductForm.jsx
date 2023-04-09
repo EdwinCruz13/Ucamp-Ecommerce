@@ -93,7 +93,12 @@ export const ProductForm = () => {
     event.preventDefault();
 
     const response = await SaveProduct(form);
-    alert(response.message);
+    if(!response)
+      alert("There is a problem saving a product, be sure the product will be not identical with name")
+
+    if(response)
+      alert("new product added") 
+    console.log(response)
     navigate(0);
   };
 

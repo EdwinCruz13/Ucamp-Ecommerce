@@ -1,4 +1,5 @@
 import axios from "axios";
+import env from "react-dotenv";
 
 /**
  * get the list of categories of products
@@ -7,7 +8,7 @@ import axios from "axios";
 export const getCategoriesRequest = async () => {
   try {
     return await axios.get(
-      "http://localhost:5000/api/products/categories/list"
+      env.URLBASE + "products/categories/list"
     );
   } catch (error) {}
 };

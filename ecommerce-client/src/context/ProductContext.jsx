@@ -76,8 +76,7 @@ export const ProductContextProvider = ({ children }) => {
   async function SaveProduct(Product) {
     if (Product) {
       const response = await createProductsRequest(Product);
-      const values = await response.data;
-      return values;
+      return response;
     }
 
     else{

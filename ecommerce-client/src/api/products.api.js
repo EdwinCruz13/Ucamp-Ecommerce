@@ -1,4 +1,6 @@
 import axios from "axios";
+import env from "react-dotenv";
+
 
 /**
  * Function that returns the list of products
@@ -6,13 +8,13 @@ import axios from "axios";
  */
 export const getProductsRequest = async () => {
   try {
-    return await axios.get("http://localhost:5000/api/products/list");
+    return await axios.get(env.URLBASE + "products/list");
   } catch (error) {}
 };
 
 export const getProductbyID = async (_id) => {
   try {
-    return await axios.get(`http://localhost:5000/api/products/detail/${_id}`);
+    return await axios.get(`${env.URLBASE}products/detail/${_id}`);
   } catch (error) {
     console.log(error);
   }
@@ -27,7 +29,7 @@ export const getProductsByCategoryRequest = async (CategoryID) => {
   console.log(CategoryID);
   try {
     return await axios.get(
-      `http://localhost:5000/api/products/ListByCategory/${CategoryID}`
+      `${env.URLBASE}products/ListByCategory/${CategoryID}`
     );
   } catch (error) {}
 };
@@ -47,7 +49,7 @@ export const getProductsByColorRequest = async (ColorID) => {
  */
 export const createProductsRequest = async (product) => {
   try {
-    return await axios.post("http://localhost:5000/api/products/create", product);
+    return await axios.post(env.URLBASE + "products/create", product);
   } catch (error) {
     console.log(error);
   }

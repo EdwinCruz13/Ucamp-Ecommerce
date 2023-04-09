@@ -1,4 +1,6 @@
 import axios from "axios";
+import env from "react-dotenv";
+
 
 /**
  * get the list of categories of products
@@ -7,7 +9,7 @@ import axios from "axios";
 export const getColorsRequest = async () => {
   try {
     return await axios.get(
-      "http://localhost:5000/api/products/colors/list"
+      env.URLBASE + "products/colors/list"
     );
   } catch (error) {}
 };
@@ -21,7 +23,7 @@ export const getColorsRequest = async () => {
 export const postSaveColorsRequest = async (Color) => {
   try {
     return await axios.post(
-      "http://localhost:5000/api/products/colors/create", Color
+      env.URLBASE + "products/colors/create", Color
     );
   } catch (error) {
     console.log(error);

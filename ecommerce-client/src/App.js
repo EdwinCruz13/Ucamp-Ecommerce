@@ -1,6 +1,8 @@
 import {React} from "react";
 import { Routes, Route } from "react-router-dom";
 
+
+
 //defining routes
 import { Home } from "./pages/Home/Home";
 import { Warehouse } from "./pages/Warehouse/Warehouse";
