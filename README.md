@@ -29,7 +29,7 @@ Puedes Ver el sitio <a href="#">🔗 aqui</a>
 <br><br>
 <img src="https://github.com/EdwinCruz13/Ucamp-Ecommerce/blob/main/othersFile/images/React-App.png?raw=true" />
 <br><br>
-<img src="https://github.com/EdwinCruz13/Ucamp-Ecommerce/blob/main/othersFile/images/React-App-Collections-mobil.png?raw=true" />
+<img src="https://github.com/EdwinCruz13/Ucamp-Ecommerce/blob/main/othersFile/images/React-App-Collections.png?raw=true" />
 </details>
 
 
