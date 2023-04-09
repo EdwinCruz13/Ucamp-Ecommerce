@@ -61,7 +61,8 @@ Dentro de src encontraremos
   <br><br>
 
 <b>Backend</b>
-Ademas, el sistema de Ecommerce fue creado como API REST en <b>Nodejs</b>, la estructura del proyecto consiste:
+<br>
+Además, el sistema de Ecommerce fue creado como API REST en <b>Nodejs</b>, la estructura del proyecto consiste:
 En una carpetas "src" que contiene todas las funcionalidades del proyecto de API Rest.
 El patrón de diseño es en <b>MVC</b> que permite implementar interfaces de usuario, datos y lógica de control. 
 Enfatiza una separación entre la lógica de negocios y su visualización en formato <b>JSON</b>.
@@ -111,7 +112,7 @@ Dentro de src encontraremos
     <li><a href="https://github.com/EdwinCruz13/Ucamp-Crud">CRUD - Lista de tareas usando localstoraged y JS</a></li>
     <li><a href="https://github.com/EdwinCruz13/Ucamp-Dashboard/">Dashboard - Consumiendo una API REST</a></li>
     <li><a href="https://github.com/EdwinCruz13/Ucamp-Restaurant">Sistema de Restaurante - Con React</a></li>
-    <li><a href="https://github.com/EdwinCruz13/Ucamp-Restaurant">Comercio electrónico - Web Full Stack</a></li>
+    <li><a href="https://github.com/EdwinCruz13/Ucamp-Ecommerce">Comercio electrónico - Web Full Stack</a></li>
     <li><a href="https://github.com/EdwinCruz13/MERN">MERN</a></li>
     <li><a href="#">Mongo</a></li>
     <li><a href="#">Express</a></li>
