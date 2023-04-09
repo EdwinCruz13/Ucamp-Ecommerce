@@ -1,5 +1,6 @@
 const { Router } = require("express");
-const { Create, List, Detail } = require("../../Controllers/Invoices/invoice.controller")
+const { Create, List, Detail } = require("../../Controllers/Invoices/invoice.controller");
+const { Auth_Authorization } = require("../../Middleware/auth.middleware");
 
 
 const router = Router();

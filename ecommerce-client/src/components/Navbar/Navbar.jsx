@@ -1,6 +1,5 @@
 import { React, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import Cookies from "universal-cookie";
 
 //import userContext
 import { UserContext } from "../../context/UserContext";
@@ -18,14 +17,15 @@ export const Navbar = () => {
   const { itemsAdded, GetItemmAdded } = useContext(ShoppingCartContext);
 
   //check for any changes on the useState "user"
-  useEffect(() => {
-    async function init(){
-      await VerifyingToken(); 
-      await GetItemmAdded();
-    }
+  // useEffect(() => {
+  //   async function init(){
+  //     await VerifyingToken(false); 
+  //     await GetItemmAdded();
+  //   }
 
-    init(); 
-  }, []); 
+  //   init(); 
+  // }, []); 
+  
 
   return (
     <>
@@ -90,7 +90,7 @@ export const Navbar = () => {
                       </Link>
                     </li>
                     <li className="dropdown-item">
-                      <Link className="dropdown-link">Users Management</Link>
+                      <Link to="/color" className="dropdown-link">Colors Management</Link>
                     </li>
                     <li className="dropdown-item">
                       <Link to="/invoices" className="dropdown-link">Invoices Management</Link>

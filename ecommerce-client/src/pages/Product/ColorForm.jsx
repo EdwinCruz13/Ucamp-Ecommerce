@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 //import the navbar in whole page sections
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Aside } from "../../components/Aside/Aside";
 
 //context
+import { UserContext } from "../../context/UserContext";
 import { ColorContext } from "../../context/ColorContext";
+import { ShoppingCartContext } from "../../context/ShoppingCartContext";
 
 import "./ProductForm.css";
 
 export const ColorForm = () => {
   const { SaveColor } = useContext(ColorContext);
-  const navigate = useNavigate();
+  const { VerifyingToken } = useContext(UserContext);
+  const { GetItemmAdded } = useContext(ShoppingCartContext);
+
   const [form, setForm] = useState({ Color: "", Hexadecimal: "" });
+
+  useEffect(() => {
+    async function init() {
+      await VerifyingToken();
+      await GetItemmAdded();
+    }
+
+    init();
+  }, []);
 
   /**
    * this method allows to save the product
@@ -28,13 +40,13 @@ export const ColorForm = () => {
     event.preventDefault();
 
     try {
-        const response = await SaveColor(form);
-        alert(response.message)
+      const response = await SaveColor(form);
+      alert(response.message);
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
 
-    navigate(0);
+    //navigate(0);
   };
 
   return (

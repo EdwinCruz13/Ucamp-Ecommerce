@@ -12,13 +12,15 @@ import { getColorsRequest } from "../../api/colors.api";
 
 //context
 import { ProductContext } from "../../context/ProductContext";
-// import { CategoryContext } from "../../context/CategoryContext";
-// import { ColorContext } from "../../context/ColorContext";
+import { UserContext } from "../../context/UserContext";
+import { ShoppingCartContext } from "../../context/ShoppingCartContext";
 
 import "./ProductForm.css";
 
 export const ProductForm = () => {
   const { SaveProduct } = useContext(ProductContext);
+  const { VerifyingToken } = useContext(UserContext);
+  const { GetItemmAdded } = useContext(ShoppingCartContext);
 
   //its necessary these useSate
   const [categories, setCategories] = useState([]);
@@ -50,6 +52,15 @@ export const ProductForm = () => {
     }
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function init() {
+      await VerifyingToken();
+      await GetItemmAdded();
+    }
+
+    init();
   }, []);
 
   //allow to change the color
@@ -145,7 +156,7 @@ export const ProductForm = () => {
                   })}
                 </optgroup>
               </select>
-            </div> 
+            </div>
 
             <div className="form-control-inline">
               <label htmlFor="Colors">Colors</label>
@@ -183,7 +194,7 @@ export const ProductForm = () => {
                   })}
                 </optgroup>
               </select>
-            </div> 
+            </div>
 
             <div className="form-control-inline">
               <label htmlFor="Description">Abreviation</label>

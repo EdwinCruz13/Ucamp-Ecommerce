@@ -16,7 +16,7 @@ export const PaypalButton = ({ value, purchases }) => {
   }
 
   useEffect(()=>{
-    //console.log('adding the cart n' + purchases._id)
+    // console.log(value, purchases)
   }, [])
 
   return (
@@ -24,12 +24,14 @@ export const PaypalButton = ({ value, purchases }) => {
       <PayPalButtons
         style={{ layout: "horizontal" }}
         createOrder={(data, actions) => {
-          
+
+          console.log(String(value))
+
           return actions.order.create({
             purchase_units: [
               {
                 amount: {
-                  value: value,
+                  value: String(value),
                 },
               },
             ],

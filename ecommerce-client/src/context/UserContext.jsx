@@ -1,87 +1,69 @@
-import { React, createContext, useEffect, useState } from "react";
+import { React, createContext, useContext, useEffect, useState } from "react";
 import Cookies from "universal-cookie";
+import { redirect, useNavigate } from "react-router-dom";
 
+//import api request
 import { postLoginRequest, postSigupRequest } from "../api/users.api";
 import { getAuthorizationRequest } from "../api/users.api";
 
+//import importants context
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
+
 /**create a context named userContext */
 export const UserContext = createContext();
-
 export const UserContextProvider = ({ children }) => {
-  useEffect(() => {
-    async function init() {
-      await VerifyingToken();
-    }
+  const navigate = useNavigate();
+  //const {  } = useContext(ShoppingCartContext)
 
-    init();
-  }, []);
+  // useEffect(() => {
+  //   async function init() {
+  //     await VerifyingToken();
+  //     //await GetItemmAdded();
+  //   }
 
-  const [user, setUser] = useState({
-    _id: "",
-    Email: "",
-    Username: "",
-    Password: "",
-  });
+  //   init();
+  // }, []);
+
+  const [user, setUser] = useState(null);
   const [authStatus, setAuthStatus] = useState(false);
 
   /**
    * function that allow to verify tokes
    */
-  async function VerifyingToken() {
+  async function VerifyingToken(_public = false) {
     const cookies = await new Cookies();
     const token = await cookies.get("Token");
     let verification;
 
-    try {
-      if (token) {
-        const response = await getAuthorizationRequest(token);
-        if (response) {
-          verification = response.data.data;
+    //first, check the toke wether exists or not
+    if (_public == false) {
+      if (token === undefined) {
+        alert("you must be logged");
+        navigate("/");
+      }
 
-          if (verification) {
-            await setUser(verification);
-            await setAuthStatus(true);
-          }
+      try {
+        if (token) {
+          const response = await getAuthorizationRequest(token);
 
-          else{
-            await setUser(null);
-            await setAuthStatus(false);
-            await cookies.remove("Token", { path: "/" });
+          if (response.data) {
+            verification = response.data.data;
+
+            if (verification.Token) {
+              await setUser(verification);
+              await setAuthStatus(true);
+            } else {
+              await setUser(null);
+              await setAuthStatus(false);
+              await cookies.remove("Token", { path: "/" });
+              navigate("/");
+            }
           }
         }
-
-        
+      } catch (error) {
+        console.log("Error verifying token: ", error);
       }
-    } catch (error) {
-      console.log("Error verifying token: ", error);
     }
-
-    //verify the token
-    // if (token) {
-    //   const response = await getAuthorizationRequest(token);
-
-    //   if (response) verification = await response.data;
-    //   else {
-    //     verification = null;
-    //     await cookies.remove("Token", { path: "/" });
-    //   }
-    // } else {
-    //   //si no existe el token, borrar cookie
-    //   await cookies.remove("Token", { path: "/" });
-    // }
-
-    // try {
-    //   if (verification) {
-    //     await setUser(verification.data);
-    //     await setAuthStatus(true);
-    //   } else {
-    //     await setUser(null);
-    //     await setAuthStatus(false);
-    //     await cookies.remove("Token", { path: "/" });
-    //   }
-    // } catch (error) {
-    //   console.log("Error verifying token: ", error);
-    // }
   }
 
   /**
@@ -154,6 +136,8 @@ export const UserContextProvider = ({ children }) => {
       await cookies.remove("Token", { path: "/" });
       setUser(null);
       setAuthStatus(false);
+
+      alert("Exiting of app");
     } catch (error) {
       console.log(error);
     }

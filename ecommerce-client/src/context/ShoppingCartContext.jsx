@@ -15,14 +15,21 @@ import { UserContext } from "../context/UserContext";
 export const ShoppingCartContext = createContext();
 
 export const ShoppingCartContextProvider = ({ children }) => {
-  const {user, VerifyingToken} = useContext(UserContext)
+  const {user, authStatus, VerifyingToken} = useContext(UserContext)
 
   const [cart, setCart] = useState([{}]);
   const [products, setproducts] = useState([{}]);
   const [itemsAdded, setItemsAdded] = useState(0);
 
   useEffect(() => {
-    GetItemmAdded()
+    async function init()
+    {
+      await VerifyingToken()
+      await GetItemmAdded()
+    }
+
+    init()
+    
   }, []);
 
   
@@ -32,10 +39,12 @@ export const ShoppingCartContextProvider = ({ children }) => {
       const response = await getShoppingCart(user._id);
       const values = response.data;
 
+      // console.log(values)
+
       if (values.data) {
-        setCart(values.data);
-        setproducts(values.data.Products)
-        GetCountItems();
+        await setCart(values.data);
+        await setproducts(values.data.Products)
+        await GetCountItems();
       } else {
         setCart([{}]);
       }
@@ -50,6 +59,8 @@ export const ShoppingCartContextProvider = ({ children }) => {
     try {
       const response = await getCountFromShoppingCart(user._id);
       const values = await (response.data) ? response.data : null; 
+
+      
 
       if (values.data) setItemsAdded(values.data);
       else setItemsAdded(0);

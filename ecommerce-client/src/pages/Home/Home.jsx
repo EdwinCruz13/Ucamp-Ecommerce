@@ -1,17 +1,31 @@
-import React from "react";
+import {React, useContext, useEffect} from "react";
 
 import "./Home.css";
 
 //import the navbar in whole page sections
 import { Navbar } from "../../components/Navbar/Navbar";
-import { PaypalButton } from "../../components/PaypalButton";
+
+//import all the context
+import { UserContext } from "../../context/UserContext";
+import { ShoppingCartContext } from "../../context/ShoppingCartContext";
 
 export const Home = () => {
+  const { VerifyingToken } = useContext(UserContext);
+  const { GetItemmAdded } = useContext(ShoppingCartContext);
+
+  useEffect(() => {
+    async function init() {
+      await VerifyingToken(true);
+      await GetItemmAdded();
+    }
+
+    init();
+  }, []);
+
   return (
     <>
       <section id="container">
         <Navbar />
-        
 
         <div id="Home" className="container">
           <section id="home-header">
@@ -25,14 +39,14 @@ export const Home = () => {
               </p>
               <button className="btn btn-primary">
                 View Collection{" "}
-                <i className="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                <i
+                  className="fa fa-chevron-circle-right"
+                  aria-hidden="true"
+                ></i>
               </button>
-              
             </article>
           </section>
         </div>
-
-        
       </section>
     </>
   );

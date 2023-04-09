@@ -24,15 +24,15 @@ export const InvoiceContextProvider = ({ children }) => {
     const [invoice , setInvoice] = useState({})
 
 
-    useEffect(() => {
-        async function init(){
-           await ListInvoices()
-        }
+    // useEffect(() => {
+    //     async function init(){
+    //        await ListInvoices()
+    //     }
 
-        init();
+    //     init();
         
           
-    }, [])
+    // }, [])
 
 
     /**
