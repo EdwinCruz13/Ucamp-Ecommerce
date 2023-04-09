@@ -34,6 +34,8 @@ Puedes Ver el sitio <a href="#">🔗 aqui</a>
 <details open="">
   <summary><h2>🚀 Estructura del proyecto</h2></summary>
 <p dir="auto"> 
+<b>Frontend</b>
+<br>
 Este sistema de Ecommerce fue creado en <b>react.js</b>, la estructura del proyecto consiste:
 Carpetas "public" que contiene archivos que será usado como la visualización principal.
 Carpetas "src" que contiene archivos .jsx en referencia a virtual DOM de react.
@@ -52,12 +54,13 @@ Dentro de src encontraremos
 - [x] 📁 La carpeta <b>pages</b> que contiene archivos jsx como interfaz y redireccionamiento.
   <br>
 - [x] 🗎  El archivo <b>app.js</b> es el componente padre donde se desplegará los contextos de react y páginas.
- <br>
+  <br>
 - [x] 🗎  El archivo <b>app.css</b> archivo css para modulos principales.
   <br>
 - [x] 🗎  El archivo <b>index.js</b> es el archivo maestro.
-  <br><br> <br><br>  
+  <br><br>
 
+<b>Backend</b>
 Ademas, el sistema de Ecommerce fue creado como API REST en <b>Nodejs</b>, la estructura del proyecto consiste:
 En una carpetas "src" que contiene todas las funcionalidades del proyecto de API Rest.
 El patrón de diseño es en <b>MVC</b> que permite implementar interfaces de usuario, datos y lógica de control. 
