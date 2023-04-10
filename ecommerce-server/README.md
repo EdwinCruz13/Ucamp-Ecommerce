@@ -29,8 +29,6 @@ Dentro de src encontraremos
 - [x] 🗎  El archivo <b>app.js</b> es el componente padre donde se inicializará las configuraciones de enlaces en el servidor web <b>ExpressJS</b>.
   <br>
 - [x] 🗎  El archivo <b>index.js</b> es el archivo maestro que ejecutará el servidor web <b>ExpressJS</b>.
-  <br><br>ec
-
-
+  <br><br>
 </p>
 </details>

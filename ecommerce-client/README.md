@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Comercio electrónico - Web Full Stack
+Bienvenido al repositorio de como crear una plataforma Ecommerce desarrollado en el stack MERN (Mongo - ExpressJS - React - NodeJS).
+<br>
+Puedes Ver el sitio <a href="https://ucamp-ecommerce-client-51lu.onrender.com/">🔗 aqui</a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<details open="">
+  <summary><h2>🚀 Estructura del proyecto</h2></summary>
+<p dir="auto"> 
+<b>Frontend</b>
+<br>
+Este sistema de Ecommerce fue creado en <b>react.js</b>, la estructura del proyecto consiste:
+Carpetas "public" que contiene archivos que será usado como la visualización principal.
+Carpetas "src" que contiene archivos .jsx en referencia a virtual DOM de react.
+Archivo "package.json" de como esta configurado el proyecto.
 
-## Available Scripts
+Dentro de src encontraremos
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [x] 📁 La carpeta <b>api</b> contiene archivos de solicitudes de webservice en nodejs.
+  <br>
+- [x] 📁 La carpeta <b>components</b> jsx con funcionalidad a nivel de componente.
+  <br>
+- [x] 📁 La carpeta <b>context</b> contiene archivos de contexto que nos permite compartir valores y funcionalidades a través del árbol de componentes sin necesidad de usar props.
+  <br>
+- [x] 📁 La carpeta <b>images</b> contiene imagenes usada en el proyecto.
+  <br>
+- [x] 📁 La carpeta <b>pages</b> que contiene archivos jsx como interfaz y redireccionamiento.
+  <br>
+- [x] 🗎  El archivo <b>app.js</b> es el componente padre donde se desplegará los contextos de react y páginas.
+  <br>
+- [x] 🗎  El archivo <b>app.css</b> archivo css para modulos principales.
+  <br>
+- [x] 🗎  El archivo <b>index.js</b> es el archivo maestro.
+  <br><br>
+</p>
+</details>
