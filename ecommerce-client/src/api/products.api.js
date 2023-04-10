@@ -37,7 +37,7 @@ export const getProductsByCategoryRequest = async (CategoryID) => {
 export const getProductsByColorRequest = async (ColorID) => {
   try {
     return await axios.get(
-      `http://localhost:5000/api/products/ListByColor/${ColorID}`
+      `${env.URLBASE}products/ListByColor/${ColorID}`
     );
   } catch (error) {}
 };
