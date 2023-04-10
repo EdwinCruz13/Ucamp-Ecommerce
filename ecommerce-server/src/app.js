@@ -13,6 +13,7 @@ appServer.use(cors());
 appServer.use(express.json());
 
 //adding routers
+const HomeRouter = require("./Routes/Home/home.routes");
 const ProductsRouter = require("./Routes/Products/products.routes.js");
 const CategoryRouter = require("./Routes/Products/products.categories.routes");
 const ColorRouter = require("./Routes/Products/products.colors.routes");
@@ -21,6 +22,7 @@ const ShoppingCart = require("./Routes/ShoppingCart/carts.routes");
 const InvoicesRouters = require("./Routes/Invoices/invoices.routes.js");
 
 // create a basic routes
+appServer.use("/", HomeRouter);
 appServer.use("/api/products", ProductsRouter);
 appServer.use("/api/products/categories", CategoryRouter);
 appServer.use("/api/products/colors", ColorRouter);
