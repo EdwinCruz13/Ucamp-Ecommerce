@@ -72,7 +72,7 @@ window.env = {
   "TERM_PROGRAM": "vscode",
   "TERM_PROGRAM_VERSION": "1.77.1",
   "TMP": "C:\\Users\\HPOMEN~1\\AppData\\Local\\Temp",
-  "URLBASE": "http://52.4.250.26/api/",
+  "URLBASE": "https://ucamp-ecommerce-server.onrender.com/api/",
   "USERDOMAIN": "EDWINC",
   "USERDOMAIN_ROAMINGPROFILE": "EDWINC",
   "USERNAME": "HP OMEN",
