@@ -16,7 +16,7 @@ strComments += "<p>para mas contenido visita el sitio: <a href='https://ucamp-ec
 
 //listing of users, 
 //add the token in order to verify the private access
-router.get("/", (req, resp) => {
+router.get("/home", (req, resp) => {
     return resp.send(strComments);
 });
 
