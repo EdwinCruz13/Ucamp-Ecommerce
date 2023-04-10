@@ -11,7 +11,7 @@ strComments += "<p><a href='https://ucamp-ecommerce-server.onrender.com/api/prod
 strComments += "<p><a href='https://ucamp-ecommerce-server.onrender.com/api/products/categories/list'>Listado de categorias de productos</a> </p>";
 strComments += "<p><a href='https://ucamp-ecommerce-server.onrender.com/api/users/list'>Listado de usuarios</a> </p>";
 
-strComments += "<p>para mas contenido visita el sitio: <a href='https://ucamp-ecommerce-client-51lu.onrender.com/'>https://ucamp-ecommerce-client-51lu.onrender.com/</a> </p>";
+strComments += "<p>para mas contenido visita el sitio: <a href='https://ucamp-ecommerce-client.onrender.com/'>https://ucamp-ecommerce-client.onrender.com/</a> </p>";
 
 
 //listing of users, 
