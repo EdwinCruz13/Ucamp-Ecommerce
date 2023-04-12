@@ -30,11 +30,12 @@ import { ShoppingCart } from "./pages/Shopping/ShoppingCart";
 function App() {
   return (
     <UserContextProvider>
-      <ShoppingCartContextProvider>
+      
         <CategoryContextProvider>
           <ColorContextProvider>
             <ProductContextProvider>
               <InvoiceContextProvider>
+                <ShoppingCartContextProvider>
                 <Routes>
                   <Route exact path="/" element={<Home />} />
                   <Route path="/home" element={<Home />} />
@@ -47,11 +48,12 @@ function App() {
                   <Route path="/shoppingcart" element={<ShoppingCart />} />
                   <Route path="/invoices" element={<Invoices />} />
                 </Routes>
+                </ShoppingCartContextProvider>
               </InvoiceContextProvider>
             </ProductContextProvider>
           </ColorContextProvider>
         </CategoryContextProvider>
-      </ShoppingCartContextProvider>
+      
     </UserContextProvider>
   );
 }

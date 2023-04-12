@@ -9,7 +9,7 @@ import "../Signin.css";
 import { UserContext } from "../../../context/UserContext";
 
 export const Signin = () => {
-  const { Signin } = useContext(UserContext);
+  const { Signin, VerifyingToken } = useContext(UserContext);
 
   //usestate for login
   const [login, setLogin] = useState({ Email: "", Password: "" });
@@ -31,6 +31,7 @@ export const Signin = () => {
       alert(response.message);
 
       //redirect to home
+      VerifyingToken();
       navigate("/home");
     } else {
       console.log(response);

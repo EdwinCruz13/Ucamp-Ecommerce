@@ -4,7 +4,7 @@ import { UserContext } from "../../../context/UserContext";
 import "../Signin.css";
 
 export const Signup = () => {
-  const { SignupSave} = useContext(UserContext);
+  const { SignupSave, VerifyingToken} = useContext(UserContext);
   const [formData, setFormData] = useState({ Email: "", Username: "", Password: ""});
   let navigate = useNavigate();
   
@@ -23,8 +23,11 @@ export const Signup = () => {
      //set a token
      const response = await SignupSave(formData);
 
-     if (response.status) 
-     navigate("/home");
+     if (response.status) {
+      VerifyingToken();
+      navigate("/home");
+     }
+     
  
        //redirect to home
        

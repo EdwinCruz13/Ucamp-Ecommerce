@@ -16,15 +16,16 @@ export const Navbar = () => {
   const { user, authStatus, Logout, VerifyingToken } = useContext(UserContext);
   const { itemsAdded, GetItemmAdded } = useContext(ShoppingCartContext);
 
-  //check for any changes on the useState "user"
-  // useEffect(() => {
-  //   async function init(){
-  //     await VerifyingToken(false); 
-  //     await GetItemmAdded();
-  //   }
 
-  //   init(); 
-  // }, []); 
+  //check for any changes on the useState "user"
+  useEffect(() => {
+    async function init(){
+      await VerifyingToken(true); 
+      await GetItemmAdded();
+    }
+
+    init(); 
+  }, [itemsAdded]); 
   
 
   return (

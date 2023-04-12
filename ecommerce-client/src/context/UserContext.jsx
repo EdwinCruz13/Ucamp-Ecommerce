@@ -6,14 +6,11 @@ import { redirect, useNavigate } from "react-router-dom";
 import { postLoginRequest, postSigupRequest } from "../api/users.api";
 import { getAuthorizationRequest } from "../api/users.api";
 
-//import importants context
-import { ShoppingCartContext } from "../context/ShoppingCartContext";
 
 /**create a context named userContext */
 export const UserContext = createContext();
 export const UserContextProvider = ({ children }) => {
   const navigate = useNavigate();
-  //const {  } = useContext(ShoppingCartContext)
 
   // useEffect(() => {
   //   async function init() {
@@ -137,7 +134,9 @@ export const UserContextProvider = ({ children }) => {
       setUser(null);
       setAuthStatus(false);
 
+
       alert("Exiting of app");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
