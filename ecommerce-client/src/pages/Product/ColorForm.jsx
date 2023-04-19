@@ -85,7 +85,7 @@ export const ColorForm = () => {
               />
             </div>
 
-            <button className="btn btn-primary">Sign Up</button>
+            <button className="btn btn-primary">Save my Color</button>
           </div>
         </form>
       </div>

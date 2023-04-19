@@ -266,7 +266,7 @@ export const ProductForm = () => {
               />
             </div>
 
-            <button className="btn btn-primary">Sign Up</button>
+            <button className="btn btn-primary">Save my Product</button>
           </div>
         </form>
       </div>

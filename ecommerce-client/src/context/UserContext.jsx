@@ -45,6 +45,7 @@ export const UserContextProvider = ({ children }) => {
 
           if (response.data) {
             verification = response.data.data;
+            console.log(verification)
 
             if (verification.Token) {
               await setUser(verification);
@@ -112,6 +113,7 @@ export const UserContextProvider = ({ children }) => {
         _id: values.data._id,
         Email: values.data.Email,
         Username: values.data.Username,
+        IsAdministrator: values.data.IsAdministrator
       });
 
       //create the cookie
