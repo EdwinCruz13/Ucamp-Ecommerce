@@ -44,7 +44,7 @@ const Auth_Authorization = async (req, resp, next) => {
       //user.Token = token;
 
       // pass the user down to the endpoints here
-      let _user = { _id: user.user_id, Email: user.Email, Username: user.Username }
+      let _user = { _id: user.user_id, Email: user.Email, Username: user.Username, IsAdministrator: user.IsAdministrator }
 
       _user.Token = token;
       req.user = _user
