@@ -12,6 +12,7 @@ import { Detailt } from "./pages/Details/Detail";
 import { Signup } from "./pages/User/Signup/Signup";
 import { Signin } from "./pages/User/Signin/Signin";
 import { Invoices } from "./pages/Invoice/Invoices";
+import { Contact } from "./pages/Contact/Contact"
 
 import "./App.css";
 
@@ -47,6 +48,7 @@ function App() {
                   <Route path="/signin" element={<Signin />} />
                   <Route path="/shoppingcart" element={<ShoppingCart />} />
                   <Route path="/invoices" element={<Invoices />} />
+                  <Route path="/contact" element={<Contact />} />
                 </Routes>
                 </ShoppingCartContextProvider>
               </InvoiceContextProvider>

@@ -80,13 +80,19 @@ export const ShoppingCartContextProvider = ({ children }) => {
   async function AddCart(item) {
     try {
       let _cart = { Customer: user, Products: [item] }
+      if(authStatus === true){
+        const response = await postAddItemRequest(_cart);
+        const values = response.data;
+
+        GetItemmAdded();
+        alert(values.message); 
+      }
+
+      else{
+        alert("You have to login first")
+      }
+
       
-
-      const response = await postAddItemRequest(_cart);
-      const values = response.data;
-
-      GetItemmAdded();
-      alert(values.message); 
 
       //   return values;
     } catch (error) {
