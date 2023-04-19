@@ -45,6 +45,7 @@ const SigupUser = async (req, resp) => {
       Email: Email,
       Password: encryptedPass,
       Username: Username,
+      IsAdministrator: false
     });
 
     //saving the user
@@ -104,7 +105,8 @@ const LoginUser = async (req, resp) => {
     const token = jwt.sign({
       user_id: foundUser._id, 
       Email: foundUser.Email, 
-      Username: foundUser.Username
+      Username: foundUser.Username,
+      IsAdministrator: foundUser.IsAdministrator
     }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.TOKEN_EXPIRE});
     foundUser.Token = token;
 

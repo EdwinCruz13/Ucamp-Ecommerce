@@ -7,6 +7,7 @@ const UserSchema = new moongose.Schema(
     Password: { type: String, required: true, trim: true },
     Username: { type: String, required: true, trim: true, unique: true },
     Token: { type: String },
+    IsAdministrator: { type: Boolean }, 
     DateAt: { type: Date, default: Date.now() },
   },
   {

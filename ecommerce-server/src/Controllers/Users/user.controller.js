@@ -46,6 +46,7 @@ const CreateUsers = async (req, resp) => {
       Email: Email,
       Password: encryptedPass,
       Username: Username,
+      IsAdministrator: false,
     });
 
     //saving the user
