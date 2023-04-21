@@ -90,6 +90,13 @@ Dentro de src encontraremos
 </details>
 
 <details open="">
+  <summary><h2>💡 Un diseño básico</h2></summary>
+<p dir="auto"> 
+  <img src="https://github.com/EdwinCruz13/Ucamp-Ecommerce/blob/main/othersFile/images/my_design.drawio.png?raw=true" />   
+</p>
+</details>
+
+<details open="">
   <summary><h2>💡 Resultado</h2></summary>
 <p dir="auto"> 
   Ver el proyecto <a href="https://ucamp-ecommerce-client.onrender.com/">🔗 aqui</a>
@@ -100,6 +107,8 @@ Dentro de src encontraremos
   </ul>        
 </p>
 </details>
+
+
 
 
 <details open="">
