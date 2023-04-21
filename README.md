@@ -117,7 +117,7 @@ Dentro de src encontraremos
     <li><a href="#">Mongo</a></li>
     <li><a href="#">Express</a></li>
     <li><a href="#">React</a></li>
-    <li><a href="https://github.com/EdwinCruz13/NodeJS-Lesson">NodeJS</a></li>
+    <li><a href="https://github.com/EdwinCruz13/NodeJS-Lesson">NodeJS </a></li>
   </ul>
 
 </p>
